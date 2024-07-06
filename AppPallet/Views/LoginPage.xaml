@@ -24,7 +24,6 @@ xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion
                     <Image Source="logo_login" VerticalOptions="Center" HeightRequest="64" />
                 </ContentView>
             </StackLayout>
-            <Image Source="logo_login.png" />
             <StackLayout>
                 <maskededit:SfMaskedEdit x:Name="maskedEdit" Mask="00/00/0000"/>
             </StackLayout>

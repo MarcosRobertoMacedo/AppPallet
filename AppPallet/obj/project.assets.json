@@ -29,14 +29,10 @@
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "Syncfusion.Licensing/26.1.40": {
@@ -55,14 +51,10 @@
           "Xamarin.Forms": "5.0.0.2012"
         },
         "compile": {
-          "lib/netstandard2.0/Syncfusion.Core.XForms.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Syncfusion.Core.XForms.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Syncfusion.Core.XForms.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Syncfusion.Core.XForms.dll": {}
         }
       },
       "Syncfusion.Xamarin.SfMaskedEdit/26.1.40": {
@@ -72,27 +64,19 @@
           "Xamarin.Forms": "5.0.0.2012"
         },
         "compile": {
-          "lib/netstandard2.0/Syncfusion.SfMaskedEdit.XForms.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Syncfusion.SfMaskedEdit.XForms.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Syncfusion.SfMaskedEdit.XForms.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Syncfusion.SfMaskedEdit.XForms.dll": {}
         }
       },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard2.0/System.Numerics.Vectors.dll": {
-            "related": ".xml"
-          }
+          "ref/netstandard2.0/System.Numerics.Vectors.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Numerics.Vectors.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/System.Numerics.Vectors.dll": {}
         }
       },
       "Xamarin.Essentials/1.7.0": {
@@ -101,35 +85,23 @@
           "System.Numerics.Vectors": "4.5.0"
         },
         "compile": {
-          "lib/netstandard2.0/Xamarin.Essentials.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Xamarin.Essentials.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Xamarin.Essentials.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Xamarin.Essentials.dll": {}
         }
       },
       "Xamarin.Forms/5.0.0.2196": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
-            "related": ".pdb;.xml"
-          },
+          "lib/netstandard2.0/Xamarin.Forms.Core.dll": {},
           "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {},
-          "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
-            "related": ".pdb;.xml"
-          },
+          "lib/netstandard2.0/Xamarin.Forms.Core.dll": {},
           "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {},
-          "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {}
         },
         "build": {
           "buildTransitive/Xamarin.Forms.props": {},
@@ -744,32 +716,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\teste\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\marco\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\teste\\OneDrive\\Documentos\\Projetos\\AppPallet\\AppPallet\\AppPallet.csproj",
+      "projectUniqueName": "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet\\AppPallet.csproj",
       "projectName": "AppPallet",
-      "projectPath": "C:\\Users\\teste\\OneDrive\\Documentos\\Projetos\\AppPallet\\AppPallet\\AppPallet.csproj",
-      "packagesPath": "C:\\Users\\teste\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\teste\\OneDrive\\Documentos\\Projetos\\AppPallet\\AppPallet\\obj\\",
+      "projectPath": "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet\\AppPallet.csproj",
+      "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\teste\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -782,11 +756,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -826,12 +795,11 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
