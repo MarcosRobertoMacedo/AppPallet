@@ -1,28 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet.iOS\\AppPallet.iOS.csproj": {}
+    "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet.iOS\\AppPallet.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet.iOS\\AppPallet.iOS.csproj": {
+    "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet.iOS\\AppPallet.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet.iOS\\AppPallet.iOS.csproj",
+        "projectUniqueName": "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet.iOS\\AppPallet.iOS.csproj",
         "projectName": "AppPallet.iOS",
-        "projectPath": "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet.iOS\\AppPallet.iOS.csproj",
-        "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet.iOS\\obj\\",
+        "projectPath": "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet.iOS\\AppPallet.iOS.csproj",
+        "packagesPath": "C:\\Users\\teste\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\teste\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "xamarinios10"
@@ -34,16 +32,25 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet\\AppPallet.csproj": {
-                "projectPath": "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet\\AppPallet.csproj"
+              "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet\\AppPallet.csproj": {
+                "projectPath": "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet\\AppPallet.csproj"
               }
             }
           }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "xamarinios10": {
           "dependencies": {
+            "Syncfusion.Xamarin.Buttons": {
+              "target": "Package",
+              "version": "[26.1.40, )"
+            },
             "Syncfusion.Xamarin.SfMaskedEdit": {
               "target": "Package",
               "version": "[26.1.40, )"
@@ -67,6 +74,9 @@
         "win": {
           "#import": []
         },
+        "win-arm64": {
+          "#import": []
+        },
         "win-x64": {
           "#import": []
         },
@@ -75,30 +85,29 @@
         }
       }
     },
-    "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet\\AppPallet.csproj": {
+    "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet\\AppPallet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet\\AppPallet.csproj",
+        "projectUniqueName": "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet\\AppPallet.csproj",
         "projectName": "AppPallet",
-        "projectPath": "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet\\AppPallet.csproj",
-        "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marco\\Documents\\Projetos Sites\\Roche\\AppPallet\\AppPallet\\obj\\",
+        "projectPath": "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet\\AppPallet.csproj",
+        "packagesPath": "C:\\Users\\teste\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\teste\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -111,6 +120,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -126,6 +140,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Syncfusion.Xamarin.Buttons": {
+              "target": "Package",
+              "version": "[26.1.40, )"
             },
             "Syncfusion.Xamarin.SfMaskedEdit": {
               "target": "Package",
@@ -150,11 +168,12 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

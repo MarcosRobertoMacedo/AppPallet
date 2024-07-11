@@ -1,3 +1,4 @@
+using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.MaskedEdit;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,8 @@ namespace AppPallet.iOS
             //Register Syncfusion license
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXhednVQQmZdVkxzVkY=");
 
-            global::Xamarin.Forms.Forms.Init();
+global::Xamarin.Forms.Forms.Init();
+SfButtonRenderer.Init();
             SfMaskedEditRenderer.Init();
             LoadApplication(new App());
 

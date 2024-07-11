@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
 xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -18,20 +19,34 @@ xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="logo_login" VerticalOptions="Center" HeightRequest="64" />
-                </ContentView>
-            </StackLayout>
-            <StackLayout>
-                <maskededit:SfMaskedEdit x:Name="maskedEdit" Mask="00/00/0000"/>
-            </StackLayout>
-            
-            <StackLayout>
-                <Button Margin="0,20,0,0" Padding="80, 10, 80, 10" BackgroundColor="#2993cb" FontAttributes="Bold" Text="Login" 
-        TextColor="White" HorizontalOptions="Center" VerticalOptions="FillAndExpand" Command="{Binding LoginCommand}"/>
-            </StackLayout>
+        <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <!-- Main structure-->
+            <Grid RowDefinitions="*,Auto">
+                <!--Main image-->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                        <Image Grid.RowSpan="2" Source="logo_login" HeightRequest="64" VerticalOptions="Start" Aspect="AspectFit" />
+                    </ContentView>
+                </StackLayout>
+
+                <!--Information Frame-->
+                <Frame Grid.Row="1" HasShadow="False" Margin="15,0,15,50" VerticalOptions="FillAndExpand" CornerRadius="20" Opacity="0.9" BackgroundColor="#5454ff">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="25" Padding="0,10,0,0">
+
+                        <maskededit:SfMaskedEdit x:Name="maskedEditCNPJ" TextColor="White" WatermarkColor="White" BorderColor="White"
+                                                 Grid.Row="0" Watermark="CNPJ" Mask="00,000,000/0000-00" Keyboard="Numeric" />
+
+                        <maskededit:SfMaskedEdit x:Name="maskedEditSenha" TextColor="White" WatermarkColor="White" BorderColor="White"
+                                                 Grid.Row="1" Watermark="Senha" PasswordChar="*" EnablePasswordDelay="True"/>
+
+
+                        <Button Grid.Row="2" Margin="0,20,0,0" Padding="80, 10, 80, 10" BackgroundColor="#030392" 
+                                    FontAttributes="Bold" Text="Login" TextColor="White" HorizontalOptions="Center" 
+                                    VerticalOptions="FillAndExpand" Command="{Binding LoginCommand}"/>
+
+                    </Grid>
+                </Frame>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 

@@ -11,6 +11,7 @@
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "13.0.3",
+          "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
@@ -37,6 +38,18 @@
       "Syncfusion.Licensing/26.1.40": {
         "runtime": {
           "lib/netstandard2.0/Syncfusion.Licensing.dll": {
+            "assemblyVersion": "26.1.40.0",
+            "fileVersion": "26.1.40.0"
+          }
+        }
+      },
+      "Syncfusion.Xamarin.Buttons/26.1.40": {
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "26.1.40",
+          "Xamarin.Forms": "5.0.0.2196"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Buttons.XForms.dll": {
             "assemblyVersion": "26.1.40.0",
             "fileVersion": "26.1.40.0"
           }
@@ -147,6 +160,13 @@
       "sha512": "sha512-Bkv28Hy2DbBsyKZkrcjh50LTWd0kBtYPCAG3slNC8DIwQSFCcniIcEpNhp7rEQdUnWNw7b57UbxGKIsNAFXf1g==",
       "path": "syncfusion.licensing/26.1.40",
       "hashPath": "syncfusion.licensing.26.1.40.nupkg.sha512"
+    },
+    "Syncfusion.Xamarin.Buttons/26.1.40": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bGojtUIovme7FLciwJPQHwzEqFqmlXPvEbl2v+yQjHzqwUlGV1m9cRzJ/bqfivXL22SEZ6sJiK9zS0txrs8tjQ==",
+      "path": "syncfusion.xamarin.buttons/26.1.40",
+      "hashPath": "syncfusion.xamarin.buttons.26.1.40.nupkg.sha512"
     },
     "Syncfusion.Xamarin.Core/26.1.40": {
       "type": "package",

@@ -6,6 +6,8 @@ public class MonoPackageManager_Resources {
 		"AppPallet.dll",
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.dll",
+		"Syncfusion.Buttons.XForms.Android.dll",
+		"Syncfusion.Buttons.XForms.dll",
 		"Syncfusion.Core.XForms.Android.dll",
 		"Syncfusion.Core.XForms.dll",
 		"Syncfusion.Licensing.dll",

@@ -20,8 +20,9 @@ public class XfxComboBoxFilter
 	public XfxComboBoxFilter ()
 	{
 		super ();
-		if (getClass () == XfxComboBoxFilter.class)
+		if (getClass () == XfxComboBoxFilter.class) {
 			mono.android.TypeManager.Activate ("Xfx.Controls.Droid.XfxComboBox.XfxComboBoxFilter, Xfx.Controls.Droid", "", this, new java.lang.Object[] {  });
+		}
 	}
 
 
