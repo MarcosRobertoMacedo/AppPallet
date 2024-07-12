@@ -164,8 +164,8 @@ public final class R {
 		public static final int TextAppearance_Compat_Notification_Line2 = 0x7f0f0186;
 		public static final int TextAppearance_Compat_Notification_Time = 0x7f0f0189;
 		public static final int TextAppearance_Compat_Notification_Title = 0x7f0f018b;
-		public static final int Widget_Compat_NotificationActionContainer = 0x7f0f0273;
-		public static final int Widget_Compat_NotificationActionText = 0x7f0f0274;
+		public static final int Widget_Compat_NotificationActionContainer = 0x7f0f0274;
+		public static final int Widget_Compat_NotificationActionText = 0x7f0f0275;
 	}
 	public static final class styleable {
 		public static final int[] Capability = new int[] { 0x7f030310, 0x7f030347 };

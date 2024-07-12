@@ -33,10 +33,11 @@ namespace AppPallet.Views
         {
             try
             {
-                string login = maskedEditCNPJ.Value.ToString().Replace(".","").Replace("/", "").Replace("-", "");
+                string cnpj = maskedEditCNPJ.Value.ToString().Replace(".","").Replace("/", "").Replace("-", "");
+                string login = maskedEditSenha.Value.ToString();
                 string passwd = maskedEditSenha.Value.ToString();
 
-                AddLogin(login, passwd);
+                AddLogin(cnpj, login, passwd);
             }
             catch (Exception exc)
             {
@@ -45,10 +46,10 @@ namespace AppPallet.Views
             }
         }
 
-        async void AddLogin(string log, string pass)
+        async void AddLogin(string cnpj, string log, string pass)
         {
             //string url = "http://" + server + ":8080/datasnap/rest/TServerAPPecf/loginapp/"+log+"/"+pass;
-            string url = "http://prosystem.dyndns-work.com:9090/datasnap/rest/TserverAPPnfe/LoginEmpresa/" + log;
+            string url = "http://prosystem.dyndns-work.com:9090/datasnap/rest/TserverAPPnfe/LoginEmpresa/" + cnpj;
             try
             {
                 Login obj = new Login();
@@ -62,13 +63,15 @@ namespace AppPallet.Views
                 trends = new ObservableCollection<Login>(tr);
 
                 obj.codigo = trends[0].codigo;
+                obj.login = log;
                 obj.empresa = trends[0].empresa;
                 obj.servidor = trends[0].servidor;
                 obj.porta = trends[0].porta;
-                //obj.validado = trends[0].validado;
+                obj.cnpj = cnpj;
+                obj.senha = pass;
 
                 string urlLoginAcesso = "http://" + obj.servidor + ":" + obj.porta + "/datasnap/rest/TserverAPPnfe/LoginPalete/"
-                    + "MARCELI/IT1010";
+                    + obj.login + "/" + obj.senha;
 
                 await AcessoLogin(urlLoginAcesso);
             }

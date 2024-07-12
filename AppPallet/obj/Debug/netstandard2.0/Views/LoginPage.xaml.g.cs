@@ -20,12 +20,16 @@ namespace AppPallet.Views {
         private global::Syncfusion.XForms.MaskedEdit.SfMaskedEdit maskedEditCNPJ;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Syncfusion.XForms.MaskedEdit.SfMaskedEdit maskedEditLogin;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Syncfusion.XForms.MaskedEdit.SfMaskedEdit maskedEditSenha;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(LoginPage));
             maskedEditCNPJ = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.MaskedEdit.SfMaskedEdit>(this, "maskedEditCNPJ");
+            maskedEditLogin = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.MaskedEdit.SfMaskedEdit>(this, "maskedEditLogin");
             maskedEditSenha = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.MaskedEdit.SfMaskedEdit>(this, "maskedEditSenha");
         }
     }

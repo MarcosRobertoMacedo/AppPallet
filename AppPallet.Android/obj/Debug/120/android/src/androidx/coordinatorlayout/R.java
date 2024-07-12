@@ -171,9 +171,9 @@ public final class R {
 		public static final int TextAppearance_Compat_Notification_Line2 = 0x7f0f0186;
 		public static final int TextAppearance_Compat_Notification_Time = 0x7f0f0189;
 		public static final int TextAppearance_Compat_Notification_Title = 0x7f0f018b;
-		public static final int Widget_Compat_NotificationActionContainer = 0x7f0f0273;
-		public static final int Widget_Compat_NotificationActionText = 0x7f0f0274;
-		public static final int Widget_Support_CoordinatorLayout = 0x7f0f02f7;
+		public static final int Widget_Compat_NotificationActionContainer = 0x7f0f0274;
+		public static final int Widget_Compat_NotificationActionText = 0x7f0f0275;
+		public static final int Widget_Support_CoordinatorLayout = 0x7f0f02f8;
 	}
 	public static final class styleable {
 		public static final int[] ColorStateListItem = new int[] { 0x010101a5, 0x0101031f, 0x7f030032 };

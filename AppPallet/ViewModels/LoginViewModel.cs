@@ -26,14 +26,15 @@ namespace AppPallet.ViewModels
             Debug.WriteLine("DEBUG VAZIO");
         }
 
-        public LoginViewModel(string loginvm, string passwdvm)
+        public LoginViewModel(string cnpjvm, string loginvm, string passwdvm)
         {
+            Debug.WriteLine("LOGIN VIEW MODEL " + cnpjvm);
             Debug.WriteLine("LOGIN VIEW MODEL " + loginvm);
             Debug.WriteLine("LOGIN VIEW MODEL " + passwdvm);
-            LoginCommand = new Command(async () => await AddLogin(loginvm, passwdvm));
+            LoginCommand = new Command(async () => await AddLogin(cnpjvm, loginvm, passwdvm));
         }
 
-        async Task AddLogin(string log, string pass)
+        async Task AddLogin(string cnpjvm, string log, string pass)
         {
 
             Debug.Write("ENTROU NO ADD LOGIN");

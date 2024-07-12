@@ -36,11 +36,14 @@ xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion
                         <maskededit:SfMaskedEdit x:Name="maskedEditCNPJ" TextColor="White" WatermarkColor="White" BorderColor="White"
                                                  Grid.Row="0" Watermark="CNPJ" Mask="00,000,000/0000-00" Keyboard="Numeric" />
 
+                        <maskededit:SfMaskedEdit x:Name="maskedEditLogin"  TextColor="White" WatermarkColor="White" BorderColor="White"
+                                                 Grid.Row="1" Watermark="Login" />
+
                         <maskededit:SfMaskedEdit x:Name="maskedEditSenha" TextColor="White" WatermarkColor="White" BorderColor="White"
-                                                 Grid.Row="1" Watermark="Senha" PasswordChar="*" EnablePasswordDelay="True"/>
+                                                 Grid.Row="2" Watermark="Senha" PasswordChar="*" EnablePasswordDelay="True"/>
 
 
-                        <Button Grid.Row="2" Margin="0,20,0,0" Padding="80, 10, 80, 10" BackgroundColor="#030392" 
+                        <Button Grid.Row="3" Margin="0,20,0,0" Padding="80, 10, 80, 10" BackgroundColor="#030392" 
                                     FontAttributes="Bold" Text="Login" TextColor="White" HorizontalOptions="Center" 
                                     VerticalOptions="FillAndExpand" Clicked="Login"/>
 
