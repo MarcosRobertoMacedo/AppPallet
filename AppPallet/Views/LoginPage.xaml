@@ -42,7 +42,7 @@ xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion
 
                         <Button Grid.Row="2" Margin="0,20,0,0" Padding="80, 10, 80, 10" BackgroundColor="#030392" 
                                     FontAttributes="Bold" Text="Login" TextColor="White" HorizontalOptions="Center" 
-                                    VerticalOptions="FillAndExpand" Command="{Binding LoginCommand}"/>
+                                    VerticalOptions="FillAndExpand" Clicked="Login"/>
 
                     </Grid>
                 </Frame>

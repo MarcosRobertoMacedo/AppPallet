@@ -14,18 +14,26 @@ using Newtonsoft.Json;
 
 namespace AppPallet.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModel : INotifyPropertyChanged
     {
-        public Command LoginCommand { get; }
+        public ICommand LoginCommand { get; private set; }
+
         private HttpClient _client = new HttpClient();
         ObservableCollection<Login> trends { get; set; } = new ObservableCollection<Login>();
 
         public LoginViewModel()
         {
-            LoginCommand = new Command(OnLoginClicked);
+            Debug.WriteLine("DEBUG VAZIO");
         }
 
-        private async void OnLoginClicked(object obj)
+        public LoginViewModel(string loginvm, string passwdvm)
+        {
+            Debug.WriteLine("LOGIN VIEW MODEL " + loginvm);
+            Debug.WriteLine("LOGIN VIEW MODEL " + passwdvm);
+            LoginCommand = new Command(async () => await AddLogin(loginvm, passwdvm));
+        }
+
+        async Task AddLogin(string log, string pass)
         {
 
             Debug.Write("ENTROU NO ADD LOGIN");
@@ -70,73 +78,13 @@ namespace AppPallet.ViewModels
             await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
         }
 
-        //public ICommand AddPedidoCommand { get; private set; }
+        #region INotifyPropertyChanged      
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
 
-        //public IPedidoRepository _pedidoRepository;
-        //// This handles the Web data request
-        //private HttpClient _client = new HttpClient();
-        //ObservableCollection<Login> trends { get; set; } = new ObservableCollection<Login>();
-
-        //public LoginViewModel()
-        //{
-        //    Debug.WriteLine("DEBUG VAZIO");
-        //}
-
-        //public LoginViewModel(string loginvm, string passwdvm)
-        //{
-        //    Debug.WriteLine("LOGIN VIEW MODEL " + loginvm);
-        //    Debug.WriteLine("LOGIN VIEW MODEL " + passwdvm);
-        //    LoginCommand = new Command(async () => await AddLogin(loginvm, passwdvm));
-        //}
-
-
-
-        //async Task AddLogin(string log, string pass)
-        //{
-        //    Debug.Write("ENTROU NO ADD LOGIN");
-        //    string url = "http://vps3894.masterdaweb.net:8080/datasnap/rest/TServerAPPecf/loginapp/PROSYSTEM/PROSYS";
-        //    try
-        //    {
-        //        //Activity indicator visibility on
-        //        //activity_indicator.IsRunning = true;
-        //        //Getting JSON data from the Web
-        //        var content = await _client.GetStringAsync(url);
-        //        //We deserialize the JSON data from this line
-        //        var tr = JsonConvert.DeserializeObject<List<Login>>(content);
-        //        //After deserializing , we store our data in the List called ObservableCollection
-        //        trends = new ObservableCollection<Login>(tr);
-
-        //        Debug.Write("CONSOLE TRENDS " + trends[0].codigo.ToString());
-        //        Debug.Write("CONSOLE TRENDS " + trends[0].validado.ToString());
-        //        Debug.Write("CONSOLE TRENDS " + trends[0].empresa.ToString());
-
-        //        Debug.WriteLine("LOGIN " + log);
-        //        Debug.WriteLine("LOGIN " + pass);
-
-        //        /*if (String.IsNullOrEmpty(log) || String.IsNullOrEmpty(pass))
-        //        {
-        //            DependencyService.Get<IMessage>().LongAlert("Login ou senha inválidos");
-        //        }
-        //        else
-        //        {
-        //            DependencyService.Get<IMessage>().LongAlert("Bem vindo " + log);
-        //            //Navigation.PushAsync(new LoginPage10());
-        //            App.Current.MainPage = new Views.HomePage();
-        //        }*/
-
-        //    }
-        //    catch (Exception ey)
-        //    {
-        //        Debug.WriteLine("DEBUG" + ey);
-        //    }
-        //}
-
-        //#region INotifyPropertyChanged      
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-        //#endregion
     }
 }
