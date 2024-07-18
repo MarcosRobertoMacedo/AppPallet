@@ -17,6 +17,7 @@
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
         </StackLayout>
+        
     </ContentPage.Content>
     
 </ContentPage>

@@ -200,11 +200,11 @@ namespace AppPallet.Views
                 {
                     DependencyService.Get<IMessage>().LongAlert("Bem vindo " + log);
 
-                    _controleRepository.InsertLoginAcesso(obj);
+                    //_controleRepository.InsertLoginAcesso(obj);
 
                     Preferences.Set("login", "true");
 
-                    App.Current.MainPage = new Views.BaixaPalletPage();
+                    await Shell.Current.GoToAsync($"//{nameof(BaixaPalletPage)}");
                 }
             }
             catch (Exception ex)
