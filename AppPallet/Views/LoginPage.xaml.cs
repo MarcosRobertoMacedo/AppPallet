@@ -1,5 +1,6 @@
 ﻿using AppPallet.ViewModels;
 using Newtonsoft.Json;
+using Syncfusion.XForms.MaskedEdit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,29 +22,108 @@ namespace AppPallet.Views
         ObservableCollection<Login> trends { get; set; } = new ObservableCollection<Login>();
         ObservableCollection<LoginAcesso> trendsAcesso { get; set; } = new ObservableCollection<LoginAcesso>();
 
-        public IPedidoRepository _pedidoRepository;
+        public IControleRepository _controleRepository;
 
+        // Método para validar o preenchimento do SfMaskedEdit
+        private bool IsMaskedEditFilled(SfMaskedEdit maskedEdit)
+        {
+            // Verifica se o valor do SfMaskedEdit não é nulo e não está vazio
+            return !string.IsNullOrEmpty(maskedEdit.Value?.ToString());
+        }
+
+        private async void Button_OnClicked(object sender, EventArgs e)
+        {
+            await ShowMessage("Dialog Title", "Prompt", "Ok", async () =>
+            {
+                await ShowMessage("OK was pressed", "Message", "OK", null);
+            });
+
+        }
+
+
+
+        public async Task ShowMessage(string message,
+            string title,
+            string buttonText,
+            Action afterHideCallback)
+        {
+            await DisplayAlert(
+                title,
+                message,
+                buttonText);
+
+            afterHideCallback?.Invoke();
+        }
 
         public LoginPage()
         {
             InitializeComponent();
+
+            VersionCode.Text = "Versão • " + DependencyService.Get<IAppVersionAndBuild>().GetVersionNumber();
+
             this.BindingContext = new LoginViewModel();
+
+            
         }
 
         protected void Login(object s, EventArgs e)
         {
             try
             {
-                string cnpj = maskedEditCNPJ.Value.ToString().Replace(".","").Replace("/", "").Replace("-", "");
-                string login = maskedEditSenha.Value.ToString();
-                string passwd = maskedEditSenha.Value.ToString();
+                string cnpj = "";
+                string login = "";
+                string passwd = "";
 
-                AddLogin(cnpj, login, passwd);
+                string mensagemErro = "";
+
+                //if (IsMaskedEditFilled(maskedEditCNPJ))
+                //{
+                //    cnpj = maskedEditCNPJ.Value.ToString().Replace(".", "").Replace("/", "").Replace("-", "");                    
+                //}
+                //else
+                //{
+                //    maskedEditCNPJ.ErrorBorderColor = Color.Red;
+                //    mensagemErro = "O campo CNPJ deve ser preenchido! \n";
+                //}
+
+                //if (IsMaskedEditFilled(maskedEditLogin))
+                //{
+                //    cnpj = maskedEditLogin.Value.ToString().Replace(".", "").Replace("/", "").Replace("-", "");                   
+                //}
+                //else
+                //{
+                //    maskedEditLogin.ErrorBorderColor = Color.Red;
+                //    mensagemErro = mensagemErro + "O campo Login deve ser preenchido! \n";
+                //}
+
+                //if (IsMaskedEditFilled(maskedEditSenha))
+                //{
+                //    cnpj = maskedEditSenha.Value.ToString().Replace(".", "").Replace("/", "").Replace("-", "");
+                //}
+                //else
+                //{
+                //    maskedEditSenha.ErrorBorderColor = Color.Red;
+                //    mensagemErro = mensagemErro + "O campo Senha deve ser preenchido! \n";
+                //}
+
+
+                //if (!IsMaskedEditFilled(maskedEditCNPJ) || !IsMaskedEditFilled(maskedEditLogin) || !IsMaskedEditFilled(maskedEditSenha))
+                //{
+                //    DependencyService.Get<IMessage>().LongAlert(mensagemErro);
+                //    //DisplayAlert("Validação", mensagemErro, "OK");
+                //}
+                //else
+                //{
+                //    AddLogin(cnpj, login, passwd);
+                //}
+
+
+                AddLogin("09334805000146", "MARCELI", "IT1010");
             }
             catch (Exception exc)
             {
                 //Debug.WriteLine("EXCEPTION DEU ERRO! " + exc);
-                //DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
+                DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
             }
         }
 
@@ -62,28 +143,36 @@ namespace AppPallet.Views
                 //After deserializing , we store our data in the List called ObservableCollection
                 trends = new ObservableCollection<Login>(tr);
 
-                obj.codigo = trends[0].codigo;
-                obj.login = log;
-                obj.empresa = trends[0].empresa;
-                obj.servidor = trends[0].servidor;
-                obj.porta = trends[0].porta;
-                obj.cnpj = cnpj;
-                obj.senha = pass;
+                if (trends[0].codigo == "0")
+                {
+                    DependencyService.Get<IMessage>().LongAlert("Verifique se seu CNPJ esta correto e tente novamente!");
+                }
+                else
+                {
+                    obj.codigo = trends[0].codigo;
+                    obj.login = log;
+                    obj.empresa = trends[0].empresa;
+                    obj.servidor = trends[0].servidor;
+                    obj.porta = trends[0].porta;
+                    obj.cnpj = cnpj;
+                    obj.senha = pass;
 
-                string urlLoginAcesso = "http://" + obj.servidor + ":" + obj.porta + "/datasnap/rest/TserverAPPnfe/LoginPalete/"
-                    + obj.login + "/" + obj.senha;
+                    string urlLoginAcesso = "http://" + obj.servidor + ":" + obj.porta + "/datasnap/rest/TserverAPPnfe/LoginPalete/"
+                        + obj.login + "/" + obj.senha;
 
-                await AcessoLogin(urlLoginAcesso);
+                    await AcessoLogin(urlLoginAcesso, log, pass);
+                }
             }
             catch (Exception ey)
             {
                 //Debug.WriteLine("DEBUG AQUI " + ey);
-                //DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
+                DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
             }
         }
 
-        async Task AcessoLogin(string urlLoginAcesso)
+        async Task AcessoLogin(string urlLoginAcesso, string log, string pass)
         {
+            
             LoginAcesso obj = new LoginAcesso();
             
             try
@@ -103,7 +192,20 @@ namespace AppPallet.Views
                 obj.placa = trendsAcesso[0].placa;
                 obj.equipe = trendsAcesso[0].equipe;
 
-                // Por exemplo: atualize a interface do usuário ou armazene os dados em algum lugar
+                if (String.IsNullOrEmpty(log) || String.IsNullOrEmpty(pass) || trendsAcesso[0].validado == "F")
+                {
+                    DependencyService.Get<IMessage>().LongAlert("Login ou senha inválidos");
+                }
+                else
+                {
+                    DependencyService.Get<IMessage>().LongAlert("Bem vindo " + log);
+
+                    _controleRepository.InsertLoginAcesso(obj);
+
+                    Preferences.Set("login", "true");
+
+                    App.Current.MainPage = new Views.BaixaPalletPage();
+                }
             }
             catch (Exception ex)
             {

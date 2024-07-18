@@ -47,6 +47,18 @@
       "frameworks": {
         "monoandroid12.0": {
           "dependencies": {
+            "PCLExt.FileStorage": {
+              "target": "Package",
+              "version": "[1.4.1.1, )"
+            },
+            "SQLiteNetExtensions": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "SQLiteNetExtensions.Async": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
             "Syncfusion.Xamarin.Buttons": {
               "target": "Package",
               "version": "[26.1.40, )"
@@ -70,6 +82,10 @@
             "Xfx.Controls": {
               "target": "Package",
               "version": "[1.0.4, )"
+            },
+            "sqlite-net-pcl": {
+              "target": "Package",
+              "version": "[1.7.335, )"
             }
           }
         }
@@ -131,6 +147,18 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "PCLExt.FileStorage": {
+              "target": "Package",
+              "version": "[1.4.1.1, )"
+            },
+            "SQLiteNetExtensions": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "SQLiteNetExtensions.Async": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
             "Syncfusion.Xamarin.Buttons": {
               "target": "Package",
               "version": "[26.1.40, )"
@@ -150,6 +178,10 @@
             "Xfx.Controls": {
               "target": "Package",
               "version": "[1.0.4, )"
+            },
+            "sqlite-net-pcl": {
+              "target": "Package",
+              "version": "[1.7.335, )"
             }
           },
           "imports": [

@@ -13,7 +13,7 @@ namespace AppPallet
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<IMessageService, MessageService>();
             MainPage = new AppShell();
         }
 

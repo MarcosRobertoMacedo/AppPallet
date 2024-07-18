@@ -1,6 +1,12 @@
+AppPallet.Droid.CustomEntryRenderer, AppPallet.Android;crc64e99f36f9af527773.CustomEntryRenderer
+AppPallet.Droid.CustomEntryRenderer;crc64e99f36f9af527773.CustomEntryRenderer
+apppallet.droid.CustomEntryRenderer;crc64e99f36f9af527773.CustomEntryRenderer
 AppPallet.Droid.MainActivity, AppPallet.Android;crc64e99f36f9af527773.MainActivity
 AppPallet.Droid.MainActivity;crc64e99f36f9af527773.MainActivity
 apppallet.droid.MainActivity;crc64e99f36f9af527773.MainActivity
+AppPallet.Droid.SplashActivity, AppPallet.Android;crc64e99f36f9af527773.SplashActivity
+AppPallet.Droid.SplashActivity;crc64e99f36f9af527773.SplashActivity
+apppallet.droid.SplashActivity;crc64e99f36f9af527773.SplashActivity
 Syncfusion.Buttons.XForms.SfButtonRenderer, Syncfusion.Buttons.XForms.Android;crc64c9e0fc3fe4585769.SfButtonRenderer
 Syncfusion.Buttons.XForms.SfButtonRenderer;crc64c9e0fc3fe4585769.SfButtonRenderer
 syncfusion.buttons.xforms.SfButtonRenderer;crc64c9e0fc3fe4585769.SfButtonRenderer
