@@ -1,4 +1,5 @@
-﻿using AppPallet.ViewModels;
+﻿using AppPallet.Models;
+using AppPallet.ViewModels;
 using Newtonsoft.Json;
 using Syncfusion.XForms.MaskedEdit;
 using System;
@@ -21,6 +22,7 @@ namespace AppPallet.Views
         private HttpClient _client = new HttpClient();
         ObservableCollection<Login> trends { get; set; } = new ObservableCollection<Login>();
         ObservableCollection<LoginAcesso> trendsAcesso { get; set; } = new ObservableCollection<LoginAcesso>();
+        private LoginAcessoPreferenciasServicos _loginAcessoPreferenciasServicos;
 
         public IControleRepository _controleRepository;
 
@@ -58,6 +60,7 @@ namespace AppPallet.Views
         public LoginPage()
         {
             InitializeComponent();
+            _loginAcessoPreferenciasServicos = new LoginAcessoPreferenciasServicos();
 
             VersionCode.Text = "Versão • " + DependencyService.Get<IAppVersionAndBuild>().GetVersionNumber();
 
@@ -185,9 +188,9 @@ namespace AppPallet.Views
                 //After deserializing , we store our data in the List called ObservableCollection
                 trendsAcesso = new ObservableCollection<LoginAcesso>(result);
 
-                obj.codigo = trendsAcesso[0].codigo;
+                obj.codigo_Placa = trendsAcesso[0].codigo_Placa;
                 obj.validado = trendsAcesso[0].validado;
-                obj.empresa = trendsAcesso[0].empresa;
+                obj.codigo_Empresa = trendsAcesso[0].codigo_Empresa;
                 obj.id_Placa = trendsAcesso[0].id_Placa;
                 obj.placa = trendsAcesso[0].placa;
                 obj.equipe = trendsAcesso[0].equipe;
@@ -202,14 +205,17 @@ namespace AppPallet.Views
 
                     //_controleRepository.InsertLoginAcesso(obj);
 
-                    Preferences.Set("login", "true");
+                    //Preferences.Set(LoginAcesso, obj);
+
+                    _loginAcessoPreferenciasServicos.SaveUser(obj);
 
                     await Shell.Current.GoToAsync($"//{nameof(BaixaPalletPage)}");
+                    //await Shell.Current.GoToAsync($"//{nameof(BaixaPalletPage)}?codigoEmpresa=" + obj.codigo + "&codigoPlaca=" + obj.empresa);
                 }
             }
             catch (Exception ex)
             {
-                // Lide com exceções para a segunda chamada assíncrona
+                DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
             }
         }
     }

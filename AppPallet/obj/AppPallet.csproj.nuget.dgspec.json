@@ -80,6 +80,10 @@
               "target": "Package",
               "version": "[26.1.40, )"
             },
+            "Syncfusion.Xamarin.SfPicker": {
+              "target": "Package",
+              "version": "[26.1.40, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.7.0, )"

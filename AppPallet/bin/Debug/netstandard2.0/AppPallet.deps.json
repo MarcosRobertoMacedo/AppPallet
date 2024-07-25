@@ -16,6 +16,7 @@
           "SQLiteNetExtensions.Async": "2.1.0",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
+          "Syncfusion.Xamarin.SfPicker": "26.1.40",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
           "Xfx.Controls": "1.0.4",
@@ -161,6 +162,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Syncfusion.SfMaskedEdit.XForms.dll": {
+            "assemblyVersion": "26.1.40.0",
+            "fileVersion": "26.1.40.0"
+          }
+        }
+      },
+      "Syncfusion.Xamarin.SfPicker/26.1.40": {
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "26.1.40",
+          "Xamarin.Forms": "5.0.0.2196"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.SfPicker.XForms.dll": {
             "assemblyVersion": "26.1.40.0",
             "fileVersion": "26.1.40.0"
           }
@@ -353,6 +366,13 @@
       "sha512": "sha512-OWQWHERhckqe4t4rylWYnJ183naxdpx8SlZnFCckuVnoNpdWePWrtH2HAG+VLR8mjPYZeJlK7aGy8xJtZ/VhxA==",
       "path": "syncfusion.xamarin.sfmaskededit/26.1.40",
       "hashPath": "syncfusion.xamarin.sfmaskededit.26.1.40.nupkg.sha512"
+    },
+    "Syncfusion.Xamarin.SfPicker/26.1.40": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-r9V6wclJz9opAtzDQ11Wi80+ilG9JuocjkRkOEZCDavgTZTkEHWKHKi2BvIEZ9qqLpeabWCrpNCA0f2k5wvZjA==",
+      "path": "syncfusion.xamarin.sfpicker/26.1.40",
+      "hashPath": "syncfusion.xamarin.sfpicker.26.1.40.nupkg.sha512"
     },
     "System.Buffers/4.4.0": {
       "type": "package",

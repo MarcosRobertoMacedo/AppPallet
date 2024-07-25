@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6rPFo5smUDU=",
+  "dgSpecHash": "BK9GvEt0O0E=",
   "success": true,
   "projectFilePath": "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet.Android\\AppPallet.Android.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\teste\\.nuget\\packages\\syncfusion.xamarin.buttons\\26.1.40\\syncfusion.xamarin.buttons.26.1.40.nupkg.sha512",
     "C:\\Users\\teste\\.nuget\\packages\\syncfusion.xamarin.core\\26.1.40\\syncfusion.xamarin.core.26.1.40.nupkg.sha512",
     "C:\\Users\\teste\\.nuget\\packages\\syncfusion.xamarin.sfmaskededit\\26.1.40\\syncfusion.xamarin.sfmaskededit.26.1.40.nupkg.sha512",
+    "C:\\Users\\teste\\.nuget\\packages\\syncfusion.xamarin.sfpicker\\26.1.40\\syncfusion.xamarin.sfpicker.26.1.40.nupkg.sha512",
     "C:\\Users\\teste\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\teste\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\teste\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",

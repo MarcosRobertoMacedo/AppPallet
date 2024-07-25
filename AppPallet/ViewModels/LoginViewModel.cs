@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Newtonsoft.Json;
+using AppPallet.Models;
 
 namespace AppPallet.ViewModels
 {

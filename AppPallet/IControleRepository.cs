@@ -1,4 +1,4 @@
-﻿using AppPallet.ViewModels;
+﻿using AppPallet.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

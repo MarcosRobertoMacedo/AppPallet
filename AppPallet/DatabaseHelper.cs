@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using AppPallet.ViewModels;
+using AppPallet.Models;
 using PCLExt.FileStorage;
 using PCLExt.FileStorage.Folders;
 using SQLite;

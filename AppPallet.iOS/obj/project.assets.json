@@ -189,6 +189,31 @@
           "lib/Xamarin.iOS10/Syncfusion.SfMaskedEdit.XForms.iOS.dll": {}
         }
       },
+      "Syncfusion.Xamarin.SfPicker/26.1.40": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "26.1.40",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll": {
+            "related": ".XML"
+          },
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll": {
+            "related": ".XML"
+          },
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Buffers/4.4.0": {
         "type": "package",
         "compile": {
@@ -425,6 +450,7 @@
           "SQLiteNetExtensions.Async": "2.1.0",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
+          "Syncfusion.Xamarin.SfPicker": "26.1.40",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
           "Xfx.Controls": "1.0.4",
@@ -626,6 +652,31 @@
           "lib/Xamarin.iOS10/Syncfusion.SfMaskedEdit.XForms.iOS.dll": {}
         }
       },
+      "Syncfusion.Xamarin.SfPicker/26.1.40": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "26.1.40",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll": {
+            "related": ".XML"
+          },
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll": {
+            "related": ".XML"
+          },
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Buffers/4.4.0": {
         "type": "package",
         "compile": {
@@ -862,6 +913,7 @@
           "SQLiteNetExtensions.Async": "2.1.0",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
+          "Syncfusion.Xamarin.SfPicker": "26.1.40",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
           "Xfx.Controls": "1.0.4",
@@ -1063,6 +1115,31 @@
           "lib/Xamarin.iOS10/Syncfusion.SfMaskedEdit.XForms.iOS.dll": {}
         }
       },
+      "Syncfusion.Xamarin.SfPicker/26.1.40": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "26.1.40",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll": {
+            "related": ".XML"
+          },
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll": {
+            "related": ".XML"
+          },
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Buffers/4.4.0": {
         "type": "package",
         "compile": {
@@ -1299,6 +1376,7 @@
           "SQLiteNetExtensions.Async": "2.1.0",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
+          "Syncfusion.Xamarin.SfPicker": "26.1.40",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
           "Xfx.Controls": "1.0.4",
@@ -1500,6 +1578,31 @@
           "lib/Xamarin.iOS10/Syncfusion.SfMaskedEdit.XForms.iOS.dll": {}
         }
       },
+      "Syncfusion.Xamarin.SfPicker/26.1.40": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "26.1.40",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll": {
+            "related": ".XML"
+          },
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll": {
+            "related": ".XML"
+          },
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Buffers/4.4.0": {
         "type": "package",
         "compile": {
@@ -1736,6 +1839,7 @@
           "SQLiteNetExtensions.Async": "2.1.0",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
+          "Syncfusion.Xamarin.SfPicker": "26.1.40",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
           "Xfx.Controls": "1.0.4",
@@ -1937,6 +2041,31 @@
           "lib/Xamarin.iOS10/Syncfusion.SfMaskedEdit.XForms.iOS.dll": {}
         }
       },
+      "Syncfusion.Xamarin.SfPicker/26.1.40": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "26.1.40",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll": {
+            "related": ".XML"
+          },
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll": {
+            "related": ".XML"
+          },
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Buffers/4.4.0": {
         "type": "package",
         "compile": {
@@ -2173,6 +2302,7 @@
           "SQLiteNetExtensions.Async": "2.1.0",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
+          "Syncfusion.Xamarin.SfPicker": "26.1.40",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
           "Xfx.Controls": "1.0.4",
@@ -2492,6 +2622,36 @@
         "lib/uap10.0/Syncfusion.SfMaskedEdit.XForms.xml",
         "syncfusion.xamarin.sfmaskededit.26.1.40.nupkg.sha512",
         "syncfusion.xamarin.sfmaskededit.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Xamarin.SfPicker/26.1.40": {
+      "sha512": "r9V6wclJz9opAtzDQ11Wi80+ilG9JuocjkRkOEZCDavgTZTkEHWKHKi2BvIEZ9qqLpeabWCrpNCA0f2k5wvZjA==",
+      "type": "package",
+      "path": "syncfusion.xamarin.sfpicker/26.1.40",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/MonoAndroid10.0/Syncfusion.SfPicker.Android.dll",
+        "lib/MonoAndroid10.0/Syncfusion.SfPicker.Android.xml",
+        "lib/MonoAndroid10.0/Syncfusion.SfPicker.XForms.Android.dll",
+        "lib/MonoAndroid10.0/Syncfusion.SfPicker.XForms.XML",
+        "lib/MonoAndroid10.0/Syncfusion.SfPicker.XForms.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.XML",
+        "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfPicker.XForms.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfPicker.iOS.xml",
+        "lib/netstandard2.0/Syncfusion.SfPicker.XForms.XML",
+        "lib/netstandard2.0/Syncfusion.SfPicker.XForms.dll",
+        "lib/uap10.0/Syncfusion.SfPicker.XForms.UWP.XML",
+        "lib/uap10.0/Syncfusion.SfPicker.XForms.UWP.dll",
+        "lib/uap10.0/Syncfusion.SfPicker.XForms.XML",
+        "lib/uap10.0/Syncfusion.SfPicker.XForms.dll",
+        "syncfusion.xamarin.sfpicker.26.1.40.nupkg.sha512",
+        "syncfusion.xamarin.sfpicker.nuspec",
         "syncfusion_logo.png"
       ]
     },
@@ -2903,6 +3063,7 @@
       "SQLiteNetExtensions.Async >= 2.1.0",
       "Syncfusion.Xamarin.Buttons >= 26.1.40",
       "Syncfusion.Xamarin.SfMaskedEdit >= 26.1.40",
+      "Syncfusion.Xamarin.SfPicker >= 26.1.40",
       "Xamarin.Essentials >= 1.7.0",
       "Xamarin.Forms >= 5.0.0.2196",
       "Xfx.Controls >= 1.0.4",
@@ -2973,6 +3134,10 @@
             "version": "[26.1.40, )"
           },
           "Syncfusion.Xamarin.SfMaskedEdit": {
+            "target": "Package",
+            "version": "[26.1.40, )"
+          },
+          "Syncfusion.Xamarin.SfPicker": {
             "target": "Package",
             "version": "[26.1.40, )"
           },
