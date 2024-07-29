@@ -5,6 +5,7 @@ using Syncfusion.XForms.MaskedEdit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -22,7 +23,7 @@ namespace AppPallet.Views
         private HttpClient _client = new HttpClient();
         ObservableCollection<Login> trends { get; set; } = new ObservableCollection<Login>();
         ObservableCollection<LoginAcesso> trendsAcesso { get; set; } = new ObservableCollection<LoginAcesso>();
-        private LoginAcessoPreferenciasServicos _loginAcessoPreferenciasServicos;
+        //private DadosServicos _dadosServicos;
 
         public IControleRepository _controleRepository;
 
@@ -42,8 +43,6 @@ namespace AppPallet.Views
 
         }
 
-
-
         public async Task ShowMessage(string message,
             string title,
             string buttonText,
@@ -60,7 +59,8 @@ namespace AppPallet.Views
         public LoginPage()
         {
             InitializeComponent();
-            _loginAcessoPreferenciasServicos = new LoginAcessoPreferenciasServicos();
+
+            _controleRepository = new ControleRepository();
 
             VersionCode.Text = "Versão • " + DependencyService.Get<IAppVersionAndBuild>().GetVersionNumber();
 
@@ -77,7 +77,7 @@ namespace AppPallet.Views
                 string login = "";
                 string passwd = "";
 
-                string mensagemErro = "";
+                //string mensagemErro = "";
 
                 //if (IsMaskedEditFilled(maskedEditCNPJ))
                 //{
@@ -121,11 +121,15 @@ namespace AppPallet.Views
                 //}
 
 
-                AddLogin("09334805000146", "MARCELI", "IT1010");
+                cnpj = "09334805000146";
+                login = "MARCELI";
+                passwd = "IT1010";
+
+                AddLogin(cnpj, login, passwd);
             }
             catch (Exception exc)
             {
-                //Debug.WriteLine("EXCEPTION DEU ERRO! " + exc);
+                Debug.WriteLine("DEBUG" + exc.Message);
                 DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
             }
         }
@@ -163,19 +167,24 @@ namespace AppPallet.Views
                     string urlLoginAcesso = "http://" + obj.servidor + ":" + obj.porta + "/datasnap/rest/TserverAPPnfe/LoginPalete/"
                         + obj.login + "/" + obj.senha;
 
+                    _controleRepository.InsertLogin(obj);
+
+                    DadosServicos.Instance.LoginDados = obj;
+
+                    var dados = _controleRepository.GetAllLoginData();
+
                     await AcessoLogin(urlLoginAcesso, log, pass);
                 }
             }
             catch (Exception ey)
             {
-                //Debug.WriteLine("DEBUG AQUI " + ey);
+                Debug.WriteLine("DEBUG" + ey.Message);
                 DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
             }
         }
 
         async Task AcessoLogin(string urlLoginAcesso, string log, string pass)
-        {
-            
+        {            
             LoginAcesso obj = new LoginAcesso();
             
             try
@@ -188,9 +197,9 @@ namespace AppPallet.Views
                 //After deserializing , we store our data in the List called ObservableCollection
                 trendsAcesso = new ObservableCollection<LoginAcesso>(result);
 
-                obj.codigo_Placa = trendsAcesso[0].codigo_Placa;
+                obj.codigo = trendsAcesso[0].codigo;
                 obj.validado = trendsAcesso[0].validado;
-                obj.codigo_Empresa = trendsAcesso[0].codigo_Empresa;
+                obj.empresa = trendsAcesso[0].empresa;
                 obj.id_Placa = trendsAcesso[0].id_Placa;
                 obj.placa = trendsAcesso[0].placa;
                 obj.equipe = trendsAcesso[0].equipe;
@@ -203,11 +212,12 @@ namespace AppPallet.Views
                 {
                     DependencyService.Get<IMessage>().LongAlert("Bem vindo " + log);
 
-                    //_controleRepository.InsertLoginAcesso(obj);
+                    _controleRepository.InsertLoginAcesso(obj);
 
-                    //Preferences.Set(LoginAcesso, obj);
+                    Preferences.Set("LoginAcesso", response);
+                    DadosServicos.Instance.AcessoDados = obj;
 
-                    _loginAcessoPreferenciasServicos.SaveUser(obj);
+                    var loginAcesso = Preferences.Get("LoginAcesso", "false");
 
                     await Shell.Current.GoToAsync($"//{nameof(BaixaPalletPage)}");
                     //await Shell.Current.GoToAsync($"//{nameof(BaixaPalletPage)}?codigoEmpresa=" + obj.codigo + "&codigoPlaca=" + obj.empresa);
@@ -215,6 +225,7 @@ namespace AppPallet.Views
             }
             catch (Exception ex)
             {
+                Debug.WriteLine("DEBUG" + ex.Message);
                 DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
             }
         }

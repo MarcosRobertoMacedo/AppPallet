@@ -1,7 +1,11 @@
-﻿namespace AppPallet.Models
+﻿using SQLite;
+
+namespace AppPallet.Models
 {
     public class Login
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id_key { get; set; }
         public string codigo { get; set; }
         public string empresa { get; set; }
         public string servidor { get; set; }

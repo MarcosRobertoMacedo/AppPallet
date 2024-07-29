@@ -65,6 +65,8 @@ C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstand
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppPallet.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\Views\BaixaPalletPage.xaml.g.cs
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\Views\ItemDetailPage.xaml.g.cs
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\Views\ItemsPage.xaml.g.cs
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
@@ -78,5 +80,3 @@ C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstand
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\refint\AppPallet.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppPallet.pdb
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\ref\AppPallet.dll
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\Views\BaixaPalletPage.xaml.g.cs
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs

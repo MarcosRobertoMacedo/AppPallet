@@ -15,6 +15,9 @@ namespace AppPallet
 
             DependencyService.Register<IMessageService, MessageService>();
             MainPage = new AppShell();
+
+            // Navegar para a página de login ao iniciar
+            Shell.Current.GoToAsync("//LoginPage");
         }
 
         protected override void OnStart()
