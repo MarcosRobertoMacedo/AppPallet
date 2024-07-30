@@ -23,10 +23,15 @@ namespace AppPallet.Views
         {
             InitializeComponent();
            
-            _controleRepository = new ControleRepository();
+            _controleRepository = new ControleRepository();            
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
             // Recuperar os dados do serviço singleton
-            _acessoDados = DadosServicos.Instance.AcessoDados;            
+            _acessoDados = DadosServicos.Instance.AcessoDados;
 
             LoadData();
         }
@@ -116,7 +121,7 @@ namespace AppPallet.Views
                     // Logging the URL for debugging purposes
                     Console.WriteLine($"Sending data to URL: {url}");
 
-                    var response = await client.PostAsync(url, null);
+                    var response = await client.PutAsync(url, null);
                     if (response.IsSuccessStatusCode)
                     {
                         return true;

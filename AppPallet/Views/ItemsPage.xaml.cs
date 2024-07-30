@@ -1,10 +1,12 @@
 ﻿using AppPallet.Models;
 using AppPallet.ViewModels;
 using AppPallet.Views;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -15,13 +17,11 @@ namespace AppPallet.Views
     public partial class ItemsPage : ContentPage
     {
         ItemsViewModel _viewModel;
+        private HttpClient _client = new HttpClient();
 
         public ItemsPage()
         {
             InitializeComponent();
-
-            UpdatePotinhoPosition(100); // Exemplo inicial
-
             BindingContext = _viewModel = new ItemsViewModel();
         }
 
@@ -29,69 +29,289 @@ namespace AppPallet.Views
         {
             base.OnAppearing();
             _viewModel.OnAppearing();
+            PositionStarting();
+            FetchAndUpdatePositions();
         }
 
-        public void UpdatePotinhoPosition(int paletesEntregues)
+        private async void FetchAndUpdatePositions()
         {
-            double x = 0, y = 0;
+            try
+            {
+                string url = "http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/PosicaoEquipes/1";
+                var response = await _client.GetStringAsync(url);
+                var positions = JArray.Parse(response);
+                int qtd = 0;
+                // Processar cada item no retorno
+                foreach (var position in positions)
+                {
+                    qtd++;
+                    string equipe = (string)position["EQUIPE"];
+                    int quant = (int)position["QUANT"];
+                    UpdatePotinhoPosition(equipe, quant, qtd);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Lidar com erros de forma apropriada (exibir mensagem, log, etc.)
+                Console.WriteLine($"Erro ao buscar posições: {ex.Message}");
+            }
+        }
 
+        private void PositionStarting()
+        {
+            AbsoluteLayout.SetLayoutBounds(PotinhoAmarelo, new Rectangle(0.2, 0.18, 10, 10));
+
+            AbsoluteLayout.SetLayoutBounds(PotinhoVerde, new Rectangle(0.2, 0.20, 10, 10));
+
+            AbsoluteLayout.SetLayoutBounds(PotinhoAzul, new Rectangle(0.2, 0.22, 10, 10));
+        }
+
+        private void UpdatePotinhoPosition(string equipe, int paletesEntregues, int qtd)
+        {
+            double x = 0.2, y = 0.22;
+            if (qtd == 1)
+            {
+                paletesEntregues = 600;
+        }
+             else
+            {
+               paletesEntregues = 500;
+            }
             // Definir coordenadas para cada valor de paletes entregues
             switch (paletesEntregues)
             {
-                case 100:
-                    x = 0.1; y = 0.1;
+                case int n when (n >= 100 && n < 200):
+                    if (qtd == 1)
+                    {
+                        x = 0.26; y = 0.18;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.26; y = 0.20;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.26; y = 0.22;
+                        break;
+                    }
+                case int n when (n >= 200 && n < 300):
+                    if (qtd == 1)
+                    {
+                        x = 0.39; y = 0.18;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.39; y = 0.20;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.39; y = 0.22;
+                        break;
+                    }
+                case int n when (n >= 300 && n < 400):
+                    if (qtd == 1)
+                    {
+                        x = 0.52; y = 0.18;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.52; y = 0.20;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.52; y = 0.22;
+                        break;
+                    }
+                case int n when (n >= 400 && n < 500):
+                    if (qtd == 1)
+                    {
+                        x = 0.66; y = 0.18;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.66; y = 0.20;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.66; y = 0.22;
+                        break;
+                    }
+                case int n when (n >= 500 && n < 600):
+                    if (qtd == 1)
+                    {
+                        x = 0.85; y = 0.45;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.85; y = 0.47;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.85; y = 0.49;
+                        break;
+                    }
+                case int n when (n >= 600 && n < 700):
+                    if (qtd == 1)
+                    {
+                        x = 0.85; y = 0.45;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.85; y = 0.45;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.85; y = 0.45;
+                        break;
+                    }
+                case int n when (n >= 700 && n < 800):
+                    if (qtd == 1)
+                    {
+                        x = 0.66; y = 0.47;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.66; y = 0.49;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.66; y = 0.51;
+                        break;
+                    }
+                case int n when (n >= 800 && n < 900):
+                    if (qtd == 1)
+                    {
+                        x = 0.52; y = 0.47;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.52; y = 0.49;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.52; y = 0.51;
+                        break;
+                    }
+                case int n when (n >= 900 && n < 1000):
+                    if (qtd == 1)
+                    {
+                        x = 0.39; y = 0.47;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.39; y = 0.49;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.39; y = 0.51;
+                        break;
+                    }
+                case int n when (n >= 1000 && n < 1100):
+                    if (qtd == 1)
+                    {
+                        x = 0.26; y = 0.47;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.26; y = 0.49;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.26; y = 0.51;
+                        break;
+                    }
+                case int n when (n >= 1100 && n < 1200):
+                    if (qtd == 1)
+                    {
+                        x = 0.15; y = 0.53;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.15; y = 0.55;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.15; y = 0.57;
+                        break;
+                    }
+                case int n when (n >= 1200 && n < 1300):
+                    if (qtd == 1)
+                    {
+                        x = 0.15; y = 0.71;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.15; y = 0.73;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.15; y = 0.75;
+                        break;
+                    }
+                case int n when (n >= 1300 && n < 1400):
+                    x = 0.85; y = 0.45;
                     break;
-                case 200:
-                    x = 0.2; y = 0.1;
+                case int n when (n >= 1400 && n < 1500):
+                    x = 0.85; y = 0.45;
                     break;
-                case 300:
-                    x = 0.3; y = 0.1;
-                    break;
-                case 400:
-                    x = 0.4; y = 0.1;
-                    break;
-                case 500:
-                    x = 0.5; y = 0.1;
-                    break;
-                case 600:
-                    x = 0.6; y = 0.1;
-                    break;
-                case 700:
-                    x = 0.7; y = 0.1;
-                    break;
-                case 800:
-                    x = 0.8; y = 0.1;
-                    break;
-                case 900:
-                    x = 0.9; y = 0.1;
-                    break;
-                case 1000:
-                    x = 0.9; y = 0.2;
-                    break;
-                case 1100:
-                    x = 0.9; y = 0.3;
-                    break;
-                case 1200:
-                    x = 0.9; y = 0.4;
-                    break;
-                case 1300:
-                    x = 0.9; y = 0.5;
-                    break;
-                case 1400:
-                    x = 0.9; y = 0.6;
-                    break;
-                case 1500:
-                    x = 0.9; y = 0.7;
-                    break;
+                // Adicionar mais casos conforme necessário
                 default:
-                    x = 0.1; y = 0.1;
-                    break;
+                    if (qtd == 1)
+                    {
+                        x = 0.2; y = 0.18;
+                        break;
+                    }
+                    else if (qtd == 2)
+                    {
+                        x = 0.2; y = 0.20;
+                        break;
+                    }
+                    else
+                    {
+                        x = 0.2; y = 0.22;
+                        break;
+                    }
             }
 
-            // Atualizar a posição dos potinhos
-            AbsoluteLayout.SetLayoutBounds(Potinho1, new Rectangle(x, y, 50, 50));
-            AbsoluteLayout.SetLayoutBounds(Potinho2, new Rectangle(x, y, 50, 50));
-            AbsoluteLayout.SetLayoutBounds(Potinho3, new Rectangle(x, y, 50, 50));
+            // Atualizar a posição dos potinhos baseado na equipe
+            switch (equipe)
+            {
+                case "AMARELO":
+                    AbsoluteLayout.SetLayoutBounds(PotinhoAmarelo, new Rectangle(x, y, 10, 10));
+                    break;
+                case "VERDE":
+                    AbsoluteLayout.SetLayoutBounds(PotinhoVerde, new Rectangle(x, y, 10, 10));
+                    break;
+                case "AZUL":
+                    AbsoluteLayout.SetLayoutBounds(PotinhoAzul, new Rectangle(x, y, 10, 10));
+                    break;
+                    // Adicionar mais equipes conforme necessário
+            }
         }
     }
+
 }
