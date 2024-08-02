@@ -16,17 +16,16 @@ namespace AppPallet.Views
         ObservableCollection<LoginAcesso> dadosAcesso { get; set; } = new ObservableCollection<LoginAcesso>();
         private LoginAcesso _acessoDados;
         private VerificaCarga _verificaCargaDados;
-        private HttpClient _client;
+        private static readonly HttpClient _client = new HttpClient(new HttpClientHandler
+        {
+            AllowAutoRedirect = false
+        });
 
         public BaixaPalletPage()
         {
             InitializeComponent();
 
             _controleRepository = new ControleRepository();
-            _client = new HttpClient(new HttpClientHandler
-            {
-                AllowAutoRedirect = false
-            });
         }
 
         protected override void OnAppearing()
@@ -38,55 +37,75 @@ namespace AppPallet.Views
             LoadData();
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-
-            _client.Dispose();
-        }
-
         private async void LoadData()
         {
-            string url = $"http://prosystem.dyndns-work.com:8081//datasnap/rest/TserverAPPnfe/VerificaCarga/{_acessoDados.empresa}/{_acessoDados.codigo}";
+            string url = $"http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/VerificaCarga/{_acessoDados.empresa}/{_acessoDados.codigo}";
 
             try
             {
-                string jsonResponse = await _client.GetStringAsync(url);
-                var verificaCargaList = JsonConvert.DeserializeObject<List<VerificaCarga>>(jsonResponse);
+                HttpResponseMessage response = await _client.GetAsync(url);
 
-                if (verificaCargaList != null && verificaCargaList.Count > 0)
+                if (response.IsSuccessStatusCode)
                 {
-                    var data = verificaCargaList[0];
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
 
-                    DateTime parsedDate;
-                    if (DateTime.TryParse(data.DATA, out parsedDate))
+                    // Log para depurar a resposta recebida
+                    Console.WriteLine($"Resposta recebida: {jsonResponse}");
+
+                    if (IsJson(jsonResponse))
                     {
-                        dataDatePicker.Date = parsedDate;
+                        var verificaCargaList = JsonConvert.DeserializeObject<List<VerificaCarga>>(jsonResponse);
+
+                        if (verificaCargaList != null && verificaCargaList.Count > 0)
+                        {
+                            var data = verificaCargaList[0];
+
+                            DateTime parsedDate;
+                            if (DateTime.TryParse(data.DATA, out parsedDate))
+                            {
+                                dataDatePicker.Date = parsedDate;
+                            }
+
+                            placaEntry.Text = data.PLACA;
+                            entregaEntry.Text = data.QUANT;
+                            devolucaoEntry.Text = data.QUANTDV;
+
+                            DadosServicos.Instance.VerificaCargaDados = data;
+                        }
+                        else
+                        {
+                            await DisplayAlert("Aviso", "Nenhum dado encontrado.", "OK");
+                        }
                     }
-
-                    placaEntry.Text = data.PLACA;
-                    entregaEntry.Text = data.QUANT;
-                    devolucaoEntry.Text = data.QUANTDV;
-
-                    DadosServicos.Instance.VerificaCargaDados = data;
+                    else
+                    {
+                        await DisplayAlert("Erro", "Resposta do servidor não é JSON válido.", "OK");
+                    }
                 }
                 else
                 {
-                    await DisplayAlert("Aviso", "Nenhum dado encontrado.", "OK");
+                    // Tratar erro de status HTTP não esperado
+                    await DisplayAlert("Erro", $"Erro ao carregar dados. StatusCode: {response.StatusCode}", "OK");
                 }
             }
             catch (HttpRequestException httpEx)
             {
-                await DisplayAlert("Erro", "Erro de rede ao carregar dados: " + httpEx.Message, "OK");
+                await DisplayAlert("Erro", $"Erro de rede ao carregar dados: {httpEx.Message}", "OK");
             }
             catch (JsonException jsonEx)
             {
-                await DisplayAlert("Erro", "Erro ao processar os dados recebidos: " + jsonEx.Message, "OK");
+                await DisplayAlert("Erro", $"Erro ao processar os dados recebidos: {jsonEx.Message}", "OK");
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Erro", "Falha ao carregar dados: " + ex.Message, "OK");
+                await DisplayAlert("Erro", $"Falha ao carregar dados: {ex.Message}", "OK");
             }
+        }
+
+        private bool IsJson(string input)
+        {
+            input = input.Trim();
+            return input.StartsWith("{") && input.EndsWith("}") || input.StartsWith("[") && input.EndsWith("]");
         }
 
         private async void GravarButton_Clicked(object sender, EventArgs e)
@@ -111,6 +130,7 @@ namespace AppPallet.Views
                     if (success)
                     {
                         await DisplayAlert("Sucesso", "Dados enviados com sucesso!", "OK");
+                        await Shell.Current.GoToAsync("//CopaPalletPage");
                     }
                     else
                     {
@@ -169,6 +189,5 @@ namespace AppPallet.Views
 
             return false;
         }
-
     }
 }

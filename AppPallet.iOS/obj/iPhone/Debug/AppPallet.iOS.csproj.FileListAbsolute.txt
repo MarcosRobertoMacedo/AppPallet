@@ -64,16 +64,3 @@ C:\Users\teste\OneDrive\Documentos\Projetos\AppPallet\AppPallet.iOS\obj\iPhone\D
 C:\Users\teste\OneDrive\Documentos\Projetos\AppPallet\AppPallet.iOS\obj\iPhone\Debug\AppPalle.7574842F.Up2Date
 C:\Users\teste\OneDrive\Documentos\Projetos\AppPallet\AppPallet.iOS\obj\iPhone\Debug\AppPallet.iOS.exe
 C:\Users\teste\OneDrive\Documentos\Projetos\AppPallet\AppPallet.iOS\obj\iPhone\Debug\AppPallet.iOS.pdb
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\actool\_PartialAppManifest.items
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\actool\_ProcessedImageAssetsPath.items
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\ibtool\_ProcessedInterfaceDefinitionsPath.items
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\coremlc\_PartialAppManifest.items
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\coremlc\_BundleResourceWithLogicalName.items
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\coremlc\_ProcessedCoreMLModelsPath.items
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\_ProcessedBundleResourcesPath.items
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\_ProcessedContentPath.items
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\optimized\
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\AppPallet.iOS.csproj.AssemblyReference.cache
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\obj\iPhone\Debug\AppPallet.iOS.csproj.CoreCompileInputs.cache

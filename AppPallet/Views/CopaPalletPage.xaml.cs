@@ -1,5 +1,6 @@
 ﻿using AppPallet.Models;
 using AppPallet.ViewModels;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,20 @@ namespace AppPallet.Views
             BindingContext = _viewModel = new ItemsViewModel();
         }
 
+        private async Task ShowActionSheet()
+        {
+            string result = await DisplayActionSheet("A baixa a ser feita", "Cancelar", "OK");
+            if (result == "OK")
+            {
+                await Navigation.PushAsync(new BaixaPalletPage());
+            }
+        }
+
+        private async Task ShowCustomAlertPage()
+        {
+            var customAlertPage = new CustomPopupPage();
+            await Navigation.PushModalAsync(customAlertPage);
+        }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -40,19 +55,19 @@ namespace AppPallet.Views
                         _isCheckingUrl = true;
                         try
                         {
-                            bool result = await CheckUrl();
-                            Device.BeginInvokeOnMainThread(() =>
+                            var verificaCarga = await CheckUrl();
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
-                                if (result)
+                                if (verificaCarga != null)
                                 {
                                     Console.WriteLine("URL acessível.");
 
-                                    // Exibir popup quando a URL estiver acessível
-                                    ShowCustomAlertPage();
+                                    // Navega para BaixaPalletPage quando a URL estiver acessível
+                                    await Shell.Current.GoToAsync("//BaixaPalletPage");
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Erro ao acessar a URL.");
+                                    Console.WriteLine("Erro ao acessar a URL ou dados inválidos.");
                                 }
                             });
                         }
@@ -70,22 +85,8 @@ namespace AppPallet.Views
             _ = CheckUrlPeriodically(); // Lançar a tarefa sem esperar
         }
 
-        private async Task ShowActionSheet()
-        {
-            string result = await DisplayActionSheet("A baixa a ser feita", "Cancelar", "OK");
-            if (result == "OK")
-            {
-                await Navigation.PushAsync(new BaixaPalletPage());
-            }
-        }
 
-        private async Task ShowCustomAlertPage()
-        {
-            var customAlertPage = new CustomPopupPage();
-            await Navigation.PushModalAsync(customAlertPage);
-        }
-
-        public async Task<bool> CheckUrl()
+        public async Task<VerificaCarga> CheckUrl()
         {
             try
             {
@@ -97,25 +98,39 @@ namespace AppPallet.Views
                 {
                     string content = await response.Content.ReadAsStringAsync();
                     Console.WriteLine($"Resposta da URL: {content}");
-                    return !string.IsNullOrWhiteSpace(content); // Verifica se a resposta não está vazia
+
+                    // Deserializar como lista de VerificaCarga
+                    var verificaCargaList = JsonConvert.DeserializeObject<List<VerificaCarga>>(content);
+
+                    if (verificaCargaList != null && verificaCargaList.Count > 0)
+                    {
+                        var verificaCarga = verificaCargaList[0];
+
+                        // Verificar se ID e DATA são diferentes de "0"
+                        if (!string.IsNullOrWhiteSpace(verificaCarga.ID) && !verificaCarga.ID.Equals("0") &&
+                            !string.IsNullOrWhiteSpace(verificaCarga.DATA) && !verificaCarga.DATA.Equals("0"))
+                        {
+                            return verificaCarga;
+                        }
+                    }
                 }
                 else
                 {
                     Console.WriteLine($"Erro ao acessar a URL: {response.StatusCode}");
-                    return false;
                 }
             }
             catch (HttpRequestException httpEx)
             {
                 Console.WriteLine($"Erro HTTP ao verificar a URL: {httpEx.Message}");
-                return false;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro ao verificar a URL: {ex.Message}");
-                return false;
             }
+
+            return null;
         }
+
 
         private async Task FetchAndUpdatePositions(string empresaId)
         {
