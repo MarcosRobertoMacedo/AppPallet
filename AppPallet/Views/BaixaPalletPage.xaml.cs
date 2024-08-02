@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace AppPallet.Views
 {
@@ -74,31 +75,37 @@ namespace AppPallet.Views
                         }
                         else
                         {
-                            await DisplayAlert("Aviso", "Nenhum dado encontrado.", "OK");
+                            //await DisplayAlert("Aviso", "Nenhum dado encontrado.", "OK");
+                            DependencyService.Get<IMessage>().LongAlert("Nenhum dado encontrado.");
                         }
                     }
                     else
                     {
-                        await DisplayAlert("Erro", "Resposta do servidor não é JSON válido.", "OK");
+                        //await DisplayAlert("Erro", "Resposta do servidor não é JSON válido.", "OK");
+                        DependencyService.Get<IMessage>().LongAlert("Resposta do servidor não é JSON válido.");
                     }
                 }
                 else
                 {
                     // Tratar erro de status HTTP não esperado
-                    await DisplayAlert("Erro", $"Erro ao carregar dados. StatusCode: {response.StatusCode}", "OK");
+                    //await DisplayAlert("Erro", $"Erro ao carregar dados. StatusCode: {response.StatusCode}", "OK");
+                    DependencyService.Get<IMessage>().LongAlert($"Erro ao carregar dados. StatusCode: {response.StatusCode}");
                 }
             }
             catch (HttpRequestException httpEx)
             {
-                await DisplayAlert("Erro", $"Erro de rede ao carregar dados: {httpEx.Message}", "OK");
+                //await DisplayAlert("Erro", $"Erro de rede ao carregar dados: {httpEx.Message}", "OK");
+                DependencyService.Get<IMessage>().LongAlert($"Erro de rede ao carregar dados: {httpEx.Message}");
             }
             catch (JsonException jsonEx)
             {
-                await DisplayAlert("Erro", $"Erro ao processar os dados recebidos: {jsonEx.Message}", "OK");
+                //await DisplayAlert("Erro", $"Erro ao processar os dados recebidos: {jsonEx.Message}", "OK");
+                DependencyService.Get<IMessage>().LongAlert($"Erro ao processar os dados recebidos: {jsonEx.Message}");
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Erro", $"Falha ao carregar dados: {ex.Message}", "OK");
+                //await DisplayAlert("Erro", $"Falha ao carregar dados: {ex.Message}", "OK");
+                DependencyService.Get<IMessage>().LongAlert($"Falha ao carregar dados: {ex.Message}");
             }
         }
 
@@ -116,7 +123,8 @@ namespace AppPallet.Views
 
                 if (_verificaCargaDados == null)
                 {
-                    await DisplayAlert("Erro", "Dados da carga não encontrados.", "OK");
+                    //await DisplayAlert("Erro", "Dados da carga não encontrados.", "OK");
+                    DependencyService.Get<IMessage>().LongAlert("Dados da carga não encontrados.");
                     return;
                 }
 
@@ -129,22 +137,26 @@ namespace AppPallet.Views
                     bool success = await SendDataToServer(cargaId, quantidadeEntregue, quantidadeDevolvido);
                     if (success)
                     {
-                        await DisplayAlert("Sucesso", "Dados enviados com sucesso!", "OK");
+                        //await DisplayAlert("Sucesso", "Dados enviados com sucesso!", "OK");
+                        DependencyService.Get<IMessage>().LongAlert("Dados enviados com sucesso!");
                         await Shell.Current.GoToAsync("//CopaPalletPage");
                     }
                     else
                     {
-                        await DisplayAlert("Erro", "Falha ao enviar dados.", "OK");
+                        //await DisplayAlert("Erro", "Falha ao enviar dados.", "OK");
+                        DependencyService.Get<IMessage>().LongAlert("Falha ao enviar dados.");
                     }
                 }
                 else
                 {
-                    await DisplayAlert("Erro", "Entradas inválidas.", "OK");
+                    //await DisplayAlert("Erro", "Entradas inválidas.", "OK");
+                    DependencyService.Get<IMessage>().LongAlert("Entradas inválidas.");
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Erro", $"Ocorreu um erro: {ex.Message}", "OK");
+                //await DisplayAlert("Erro", $"Ocorreu um erro: {ex.Message}", "OK");
+                DependencyService.Get<IMessage>().LongAlert($"Ocorreu um erro: {ex.Message}");
             }
         }
 
@@ -170,21 +182,25 @@ namespace AppPallet.Views
                 else
                 {
                     string errorMessage = await response.Content.ReadAsStringAsync();
-                    await DisplayAlert("Erro", $"Falha ao enviar dados. StatusCode: {response.StatusCode}, Message: {errorMessage}", "OK");
+                    //await DisplayAlert("Erro", $"Falha ao enviar dados. StatusCode: {response.StatusCode}, Message: {errorMessage}", "OK");
+                    DependencyService.Get<IMessage>().LongAlert($"Falha ao enviar dados. StatusCode: {response.StatusCode} Message: {errorMessage}");
                     return false;
                 }
             }
             catch (HttpRequestException httpEx)
             {
-                await DisplayAlert("Erro", $"Erro de rede ao enviar dados: {httpEx.Message}", "OK");
+                //await DisplayAlert("Erro", $"Erro de rede ao enviar dados: {httpEx.Message}", "OK");
+                DependencyService.Get<IMessage>().LongAlert($"Erro de rede ao enviar dados: {httpEx.Message}");
             }
             catch (TaskCanceledException timeoutEx)
             {
-                await DisplayAlert("Erro", $"Tempo de solicitação esgotado: {timeoutEx.Message}", "OK");
+                //await DisplayAlert("Erro", $"Tempo de solicitação esgotado: {timeoutEx.Message}", "OK");
+                DependencyService.Get<IMessage>().LongAlert($"Tempo de solicitação esgotado: {timeoutEx.Message}");
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Erro", $"Erro ao enviar dados para o servidor: {ex.Message}", "OK");
+                //await DisplayAlert("Erro", $"Erro ao enviar dados para o servidor: {ex.Message}", "OK");
+                DependencyService.Get<IMessage>().LongAlert($"Erro ao enviar dados para o servidor: {ex.Message}");
             }
 
             return false;

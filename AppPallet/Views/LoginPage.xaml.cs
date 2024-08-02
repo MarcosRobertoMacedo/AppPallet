@@ -24,7 +24,6 @@ namespace AppPallet.Views
         ObservableCollection<LoginAcesso> loginAcesso { get; set; } = new ObservableCollection<LoginAcesso>();
 
         public IControleRepository _controleRepository;
-
         public LoginPage()
         {
             InitializeComponent();
@@ -56,13 +55,56 @@ namespace AppPallet.Views
         {
             try
             {
-                string cnpj = "09334805000146";
-                string login = "MARCELI";
-                string passwd = "IT1010";
-
                 ShowLoading(true);
 
-                await AddLogin(cnpj, login, passwd);
+                string cnpj = string.Empty;
+                string login = string.Empty;
+                string passwd = string.Empty;
+                string mensagemErro = "";
+
+                if (IsMaskedEditFilled(maskedEditCNPJ))
+                {
+                    cnpj = maskedEditCNPJ.Value.ToString().Replace(".", "").Replace("/", "").Replace("-", "");
+                    if (!CnpjValidator.IsValidCnpj(cnpj))
+                    {
+                        //DependencyService.Get<IMessage>().LongAlert("CNPJ inválido.");
+                        mensagemErro = "O CNPJ é inválido. \n";                        
+                    }                    
+                }
+                else
+                {
+                    maskedEditCNPJ.ErrorBorderColor = Color.Red;
+                    mensagemErro = "O campo CNPJ deve ser preenchido! \n";
+                }
+
+                if (IsMaskedEditFilled(maskedEditLogin))
+                {
+                    login = maskedEditLogin.Value.ToString().ToUpper();
+                }
+                else
+                {
+                    maskedEditLogin.ErrorBorderColor = Color.Red;
+                    mensagemErro += "O campo Login deve ser preenchido! \n";
+                }
+
+                if (IsMaskedEditFilled(maskedEditSenha))
+                {
+                    passwd = maskedEditSenha.Value.ToString().ToUpper();
+                }
+                else
+                {
+                    maskedEditSenha.ErrorBorderColor = Color.Red;
+                    mensagemErro += "O campo Senha deve ser preenchido! \n";
+                }
+
+                if (!string.IsNullOrEmpty(mensagemErro))
+                {
+                    DependencyService.Get<IMessage>().LongAlert(mensagemErro);
+                }
+                else
+                {
+                    await AddLogin(cnpj, login, passwd);
+                }
             }
             catch (Exception exc)
             {
@@ -139,7 +181,6 @@ namespace AppPallet.Views
                 DependencyService.Get<IMessage>().LongAlert($"Bem vindo {log}");
 
                 _controleRepository.InsertLoginAcesso(obj);
-                //Preferences.Set("LoginAcesso", response);
                 DadosServicos.Instance.AcessoDados = obj;
 
                 await Shell.Current.GoToAsync($"//{nameof(CopaPalletPage)}");
