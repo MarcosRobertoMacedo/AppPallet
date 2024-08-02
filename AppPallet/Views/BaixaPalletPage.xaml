@@ -63,7 +63,7 @@ xmlns:sfDatePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Data  " Grid.Column="0" VerticalOptions="Center" />
+                    <Label Text="Data  " FontSize="Medium" Grid.Column="0" VerticalOptions="Center" />
                     <Frame BorderColor="LightBlue" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
                         <DatePicker x:Name="dataDatePicker" Format="dd/MM/yyyy" BackgroundColor="Transparent" />
                     </Frame>
@@ -77,7 +77,7 @@ xmlns:sfDatePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Placa" Grid.Column="0" VerticalOptions="Center" />
+                    <Label Text="Placa" FontSize="Medium" Grid.Column="0" VerticalOptions="Center" />
                     <Frame BorderColor="LightBlue" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
                         <Entry x:Name="placaEntry" Placeholder="Placa" BackgroundColor="Transparent" />
                     </Frame>
@@ -112,8 +112,8 @@ xmlns:sfDatePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.
                 </Grid>
 
                 <!-- Buttons Section -->
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="10">
-                    <Button x:Name="GravarButton" Text="Gravar" WidthRequest="100" HorizontalOptions="CenterAndExpand" BackgroundColor="Blue" TextColor="White" Clicked="GravarButton_Clicked"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,50,0,0">
+                    <Button x:Name="GravarButton" Text="Gravar" WidthRequest="200" HorizontalOptions="Center" BackgroundColor="Blue" TextColor="White" Clicked="GravarButton_Clicked"/>
                     <Button IsVisible="false" Text="Cancelar" WidthRequest="100" HorizontalOptions="CenterAndExpand" BackgroundColor="Red" TextColor="White"/>
                 </StackLayout>
 

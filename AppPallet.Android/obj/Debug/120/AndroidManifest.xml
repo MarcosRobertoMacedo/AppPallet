@@ -6,19 +6,14 @@
     the contents are regenerated.
     -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.apppallet" android:installLocation="auto">
-  <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="31" />
+  <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="31" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <application android:label="Prosystem Pallet" android:icon="@drawable/logo_prosystem" android:usesCleartextTraffic="true" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true" android:extractNativeLibs="true">
-    <activity android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:icon="@mipmap/icon" android:label="AppPallet" android:theme="@style/MainTheme" android:name="crc64e99f36f9af527773.MainActivity" android:exported="true">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-    <activity android:noHistory="true" android:theme="@style/SplashTheme" android:name="crc64e99f36f9af527773.SplashActivity" android:exported="true">
+    <activity android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:icon="@mipmap/icon" android:label="AppPallet" android:theme="@style/MainTheme" android:name="crc64e99f36f9af527773.MainActivity" />
+    <activity android:noHistory="true" android:theme="@style/Theme.Splash" android:name="crc64e99f36f9af527773.SplashActivity" android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
