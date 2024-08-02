@@ -2,7 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:AppPallet.Views"
-       Title="AppPallet"
+       Title="Prosystem Pallet"
        x:Class="AppPallet.AppShell">
 
     <!--
@@ -83,7 +83,7 @@
         <ShellContent Route="BaixaPalletPage" ContentTemplate="{DataTemplate local:BaixaPalletPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Copa dos Paletes" Icon="icon_feed.png">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="CopaPalletPage" ContentTemplate="{DataTemplate local:CopaPalletPage}" />
     </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->

@@ -29,12 +29,20 @@ namespace AppPallet.Views {
         private global::Xamarin.Forms.Label VersionCode;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Grid loadingOverlay;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.ActivityIndicator activityIndicator;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(LoginPage));
             maskedEditCNPJ = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.MaskedEdit.SfMaskedEdit>(this, "maskedEditCNPJ");
             maskedEditLogin = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.MaskedEdit.SfMaskedEdit>(this, "maskedEditLogin");
             maskedEditSenha = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.MaskedEdit.SfMaskedEdit>(this, "maskedEditSenha");
             VersionCode = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "VersionCode");
+            loadingOverlay = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "loadingOverlay");
+            activityIndicator = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "activityIndicator");
         }
     }
 }

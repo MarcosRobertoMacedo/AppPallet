@@ -19,18 +19,22 @@ namespace AppPallet.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        // This handles the Web data request
-        private HttpClient _client = new HttpClient();
-        ObservableCollection<Login> trends { get; set; } = new ObservableCollection<Login>();
-        ObservableCollection<LoginAcesso> trendsAcesso { get; set; } = new ObservableCollection<LoginAcesso>();
-        //private DadosServicos _dadosServicos;
+        private readonly HttpClient _client = new HttpClient();
+        ObservableCollection<Login> login { get; set; } = new ObservableCollection<Login>();
+        ObservableCollection<LoginAcesso> loginAcesso { get; set; } = new ObservableCollection<LoginAcesso>();
 
         public IControleRepository _controleRepository;
 
-        // Método para validar o preenchimento do SfMaskedEdit
+        public LoginPage()
+        {
+            InitializeComponent();
+            _controleRepository = new ControleRepository();
+            VersionCode.Text = "Versão • " + DependencyService.Get<IAppVersionAndBuild>().GetVersionNumber();
+            this.BindingContext = new LoginViewModel();
+        }
+
         private bool IsMaskedEditFilled(SfMaskedEdit maskedEdit)
         {
-            // Verifica se o valor do SfMaskedEdit não é nulo e não está vazio
             return !string.IsNullOrEmpty(maskedEdit.Value?.ToString());
         }
 
@@ -40,194 +44,126 @@ namespace AppPallet.Views
             {
                 await ShowMessage("OK was pressed", "Message", "OK", null);
             });
-
         }
 
-        public async Task ShowMessage(string message,
-            string title,
-            string buttonText,
-            Action afterHideCallback)
+        public async Task ShowMessage(string message, string title, string buttonText, Action afterHideCallback)
         {
-            await DisplayAlert(
-                title,
-                message,
-                buttonText);
-
+            await DisplayAlert(title, message, buttonText);
             afterHideCallback?.Invoke();
         }
 
-        public LoginPage()
-        {
-            InitializeComponent();
-
-            _controleRepository = new ControleRepository();
-
-            VersionCode.Text = "Versão • " + DependencyService.Get<IAppVersionAndBuild>().GetVersionNumber();
-
-            this.BindingContext = new LoginViewModel();
-
-            
-        }
-
-        protected void Login(object s, EventArgs e)
+        protected async void Login(object s, EventArgs e)
         {
             try
             {
-                string cnpj = "";
-                string login = "";
-                string passwd = "";
+                string cnpj = "09334805000146";
+                string login = "MARCELI";
+                string passwd = "IT1010";
 
-                //string mensagemErro = "";
+                ShowLoading(true);
 
-                //if (IsMaskedEditFilled(maskedEditCNPJ))
-                //{
-                //    cnpj = maskedEditCNPJ.Value.ToString().Replace(".", "").Replace("/", "").Replace("-", "");                    
-                //}
-                //else
-                //{
-                //    maskedEditCNPJ.ErrorBorderColor = Color.Red;
-                //    mensagemErro = "O campo CNPJ deve ser preenchido! \n";
-                //}
-
-                //if (IsMaskedEditFilled(maskedEditLogin))
-                //{
-                //    cnpj = maskedEditLogin.Value.ToString().Replace(".", "").Replace("/", "").Replace("-", "");                   
-                //}
-                //else
-                //{
-                //    maskedEditLogin.ErrorBorderColor = Color.Red;
-                //    mensagemErro = mensagemErro + "O campo Login deve ser preenchido! \n";
-                //}
-
-                //if (IsMaskedEditFilled(maskedEditSenha))
-                //{
-                //    cnpj = maskedEditSenha.Value.ToString().Replace(".", "").Replace("/", "").Replace("-", "");
-                //}
-                //else
-                //{
-                //    maskedEditSenha.ErrorBorderColor = Color.Red;
-                //    mensagemErro = mensagemErro + "O campo Senha deve ser preenchido! \n";
-                //}
-
-
-                //if (!IsMaskedEditFilled(maskedEditCNPJ) || !IsMaskedEditFilled(maskedEditLogin) || !IsMaskedEditFilled(maskedEditSenha))
-                //{
-                //    DependencyService.Get<IMessage>().LongAlert(mensagemErro);
-                //    //DisplayAlert("Validação", mensagemErro, "OK");
-                //}
-                //else
-                //{
-                //    AddLogin(cnpj, login, passwd);
-                //}
-
-
-                cnpj = "09334805000146";
-                login = "MARCELI";
-                passwd = "IT1010";
-
-                AddLogin(cnpj, login, passwd);
+                await AddLogin(cnpj, login, passwd);
             }
             catch (Exception exc)
             {
-                Debug.WriteLine("DEBUG" + exc.Message);
+                Debug.WriteLine("DEBUG: " + exc.Message);
                 DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
+            }
+            finally
+            {
+                ShowLoading(false);
             }
         }
 
-        async void AddLogin(string cnpj, string log, string pass)
+        async Task AddLogin(string cnpj, string log, string pass)
         {
-            //string url = "http://" + server + ":8080/datasnap/rest/TServerAPPecf/loginapp/"+log+"/"+pass;
-            string url = "http://prosystem.dyndns-work.com:9090/datasnap/rest/TserverAPPnfe/LoginEmpresa/" + cnpj;
+            string url = $"http://prosystem.dyndns-work.com:9090/datasnap/rest/TserverAPPnfe/LoginEmpresa/{cnpj}";
             try
             {
-                Login obj = new Login();
-                //Activity indicator visibility on
-                //activity_indicator.IsRunning = true;
-                //Getting JSON data from the Web
+                ShowLoading(true);
+
                 var content = await _client.GetStringAsync(url);
-                //We deserialize the JSON data from this line
                 var tr = JsonConvert.DeserializeObject<List<Login>>(content);
-                //After deserializing , we store our data in the List called ObservableCollection
-                trends = new ObservableCollection<Login>(tr);
+                login = new ObservableCollection<Login>(tr);
 
-                if (trends[0].codigo == "0")
+                if (login.Count == 0 || login[0].codigo == "0")
                 {
-                    DependencyService.Get<IMessage>().LongAlert("Verifique se seu CNPJ esta correto e tente novamente!");
+                    DependencyService.Get<IMessage>().LongAlert("Verifique se seu CNPJ está correto e tente novamente!");
+                    return;
                 }
-                else
-                {
-                    obj.codigo = trends[0].codigo;
-                    obj.login = log;
-                    obj.empresa = trends[0].empresa;
-                    obj.servidor = trends[0].servidor;
-                    obj.porta = trends[0].porta;
-                    obj.cnpj = cnpj;
-                    obj.senha = pass;
 
-                    string urlLoginAcesso = "http://" + obj.servidor + ":" + obj.porta + "/datasnap/rest/TserverAPPnfe/LoginPalete/"
-                        + obj.login + "/" + obj.senha;
+                var obj = login[0];
+                obj.login = log;
+                obj.senha = pass;
 
-                    _controleRepository.InsertLogin(obj);
+                string urlLoginAcesso = $"http://{obj.servidor}:{obj.porta}/datasnap/rest/TserverAPPnfe/LoginPalete/{obj.login}/{obj.senha}";
 
-                    DadosServicos.Instance.LoginDados = obj;
+                _controleRepository.InsertLogin(obj);
+                DadosServicos.Instance.LoginDados = obj;
 
-                    var dados = _controleRepository.GetAllLoginData();
-
-                    await AcessoLogin(urlLoginAcesso, log, pass);
-                }
+                await AcessoLogin(urlLoginAcesso, log, pass);
             }
-            catch (Exception ey)
+            catch (HttpRequestException httpEx)
             {
-                Debug.WriteLine("DEBUG" + ey.Message);
+                Debug.WriteLine("DEBUG (HttpRequestException): " + httpEx.Message);
                 DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DEBUG: " + ex.Message);
+                DependencyService.Get<IMessage>().LongAlert("Erro ao processar os dados!");
+            }
+            finally
+            {
+                ShowLoading(false);
             }
         }
 
         async Task AcessoLogin(string urlLoginAcesso, string log, string pass)
-        {            
-            LoginAcesso obj = new LoginAcesso();
-            
+        {
             try
             {
-                //Getting JSON data from the Web
+                ShowLoading(true);
+
                 var response = await _client.GetStringAsync(urlLoginAcesso);
-                //We deserialize the JSON data from this line
-                var result = JsonConvert.DeserializeObject< List<LoginAcesso>>(response);
+                var result = JsonConvert.DeserializeObject<List<LoginAcesso>>(response);
+                loginAcesso = new ObservableCollection<LoginAcesso>(result);
 
-                //After deserializing , we store our data in the List called ObservableCollection
-                trendsAcesso = new ObservableCollection<LoginAcesso>(result);
-
-                obj.codigo = trendsAcesso[0].codigo;
-                obj.validado = trendsAcesso[0].validado;
-                obj.empresa = trendsAcesso[0].empresa;
-                obj.id_Placa = trendsAcesso[0].id_Placa;
-                obj.placa = trendsAcesso[0].placa;
-                obj.equipe = trendsAcesso[0].equipe;
-
-                if (String.IsNullOrEmpty(log) || String.IsNullOrEmpty(pass) || trendsAcesso[0].validado == "F")
+                if (loginAcesso.Count == 0 || string.IsNullOrEmpty(log) || string.IsNullOrEmpty(pass) || loginAcesso[0].validado == "F")
                 {
                     DependencyService.Get<IMessage>().LongAlert("Login ou senha inválidos");
+                    return;
                 }
-                else
-                {
-                    DependencyService.Get<IMessage>().LongAlert("Bem vindo " + log);
 
-                    _controleRepository.InsertLoginAcesso(obj);
+                var obj = loginAcesso[0];
+                DependencyService.Get<IMessage>().LongAlert($"Bem vindo {log}");
 
-                    Preferences.Set("LoginAcesso", response);
-                    DadosServicos.Instance.AcessoDados = obj;
+                _controleRepository.InsertLoginAcesso(obj);
+                //Preferences.Set("LoginAcesso", response);
+                DadosServicos.Instance.AcessoDados = obj;
 
-                    var loginAcesso = Preferences.Get("LoginAcesso", "false");
-
-                    await Shell.Current.GoToAsync($"//{nameof(BaixaPalletPage)}");
-                    //await Shell.Current.GoToAsync($"//{nameof(BaixaPalletPage)}?codigoEmpresa=" + obj.codigo + "&codigoPlaca=" + obj.empresa);
-                }
+                await Shell.Current.GoToAsync($"//{nameof(CopaPalletPage)}");
+            }
+            catch (HttpRequestException httpEx)
+            {
+                Debug.WriteLine("DEBUG (HttpRequestException): " + httpEx.Message);
+                DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("DEBUG" + ex.Message);
-                DependencyService.Get<IMessage>().LongAlert("Erro de conexão com o servidor!");
+                Debug.WriteLine("DEBUG: " + ex.Message);
+                DependencyService.Get<IMessage>().LongAlert("Erro ao processar os dados!");
             }
+            finally
+            {
+                ShowLoading(false);
+            }
+        }
+
+        private void ShowLoading(bool show)
+        {
+            loadingOverlay.IsVisible = show;
+            activityIndicator.IsRunning = show;
         }
     }
 }

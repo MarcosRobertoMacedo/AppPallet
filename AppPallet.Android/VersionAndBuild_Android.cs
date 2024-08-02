@@ -14,13 +14,16 @@ namespace AppPallet.Droid
             var context = Android.App.Application.Context;
             _appInfo = context.PackageManager.GetPackageInfo(context.PackageName, 0);
         }
+
         public string GetVersionNumber()
         {
             return _appInfo.VersionName;
         }
+
         public string GetBuildNumber()
         {
-            return _appInfo.VersionCode.ToString();
+            // Use LongVersionCode instead of VersionCode
+            return _appInfo.LongVersionCode.ToString();
         }
     }
 }

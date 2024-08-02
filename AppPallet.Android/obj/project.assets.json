@@ -34,6 +34,25 @@
           }
         }
       },
+      "Rg.Plugins.Popup/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid10.0/Rg.Plugins.Popup.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid10.0/Rg.Plugins.Popup.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "sqlite-net-pcl/1.7.335": {
         "type": "package",
         "dependencies": {
@@ -2719,26 +2738,13 @@
           "buildTransitive/monoandroid50/Xamarin.Google.Guava.ListenableFuture.targets": {}
         }
       },
-      "Xfx.Controls/1.0.4": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Forms": "2.0.0"
-        },
-        "compile": {
-          "lib/MonoAndroid/Xfx.Controls.Droid.dll": {},
-          "lib/MonoAndroid/Xfx.Controls.dll": {}
-        },
-        "runtime": {
-          "lib/MonoAndroid/Xfx.Controls.Droid.dll": {},
-          "lib/MonoAndroid/Xfx.Controls.dll": {}
-        }
-      },
       "AppPallet/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "PCLExt.FileStorage": "1.4.1.1",
+          "Rg.Plugins.Popup": "2.1.0",
           "SQLiteNetExtensions": "2.1.0",
           "SQLiteNetExtensions.Async": "2.1.0",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
@@ -2746,7 +2752,6 @@
           "Syncfusion.Xamarin.SfPicker": "26.1.40",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
-          "Xfx.Controls": "1.0.4",
           "sqlite-net-pcl": "1.7.335"
         },
         "compile": {
@@ -2834,6 +2839,51 @@
         "lib/uap10.0/PCLExt.FileStorage.xml",
         "pclext.filestorage.1.4.1.1.nupkg.sha512",
         "pclext.filestorage.nuspec"
+      ]
+    },
+    "Rg.Plugins.Popup/2.1.0": {
+      "sha512": "caKjkvimzpUqk4pO/WSFn3uOX43uZNW5rPWCx7eXkOlGG9Br90MTwNVS1nxhtyypB69uUe/0GQPEC3rz+kscbA==",
+      "type": "package",
+      "path": "rg.plugins.popup/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "icon.png",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.dll",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.pdb",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.xml",
+        "lib/net472/Rg.Plugins.Popup.dll",
+        "lib/net472/Rg.Plugins.Popup.pdb",
+        "lib/net472/Rg.Plugins.Popup.xml",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.dll",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.pdb",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.xml",
+        "lib/netstandard2.0/Rg.Plugins.Popup.dll",
+        "lib/netstandard2.0/Rg.Plugins.Popup.pdb",
+        "lib/netstandard2.0/Rg.Plugins.Popup.xml",
+        "lib/tizen80/Rg.Plugins.Popup.dll",
+        "lib/tizen80/Rg.Plugins.Popup.pdb",
+        "lib/tizen80/Rg.Plugins.Popup.xml",
+        "lib/uap10.0.18362/Rg.Plugins.Popup.dll",
+        "lib/uap10.0.18362/Rg.Plugins.Popup.pdb",
+        "lib/uap10.0.18362/Rg.Plugins.Popup.pri",
+        "lib/uap10.0.18362/Rg.Plugins.Popup.xml",
+        "lib/xamarinios10/Rg.Plugins.Popup.dll",
+        "lib/xamarinios10/Rg.Plugins.Popup.pdb",
+        "lib/xamarinios10/Rg.Plugins.Popup.xml",
+        "lib/xamarinmac20/Rg.Plugins.Popup.dll",
+        "lib/xamarinmac20/Rg.Plugins.Popup.pdb",
+        "lib/xamarinmac20/Rg.Plugins.Popup.xml",
+        "lib/xamarintvos10/Rg.Plugins.Popup.dll",
+        "lib/xamarintvos10/Rg.Plugins.Popup.pdb",
+        "lib/xamarintvos10/Rg.Plugins.Popup.xml",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.dll",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.pdb",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.xml",
+        "readme.txt",
+        "rg.plugins.popup.2.1.0.nupkg.sha512",
+        "rg.plugins.popup.nuspec"
       ]
     },
     "sqlite-net-pcl/1.7.335": {
@@ -5469,24 +5519,6 @@
         "xamarin.google.guava.listenablefuture.nuspec"
       ]
     },
-    "Xfx.Controls/1.0.4": {
-      "sha512": "0K0fnbaWAmmuFGp8vBzwl/jSsObkWLP8uj8ilM8SKcDzWYw7sdDSMAV6IMsKhxLIn/STMmBsr5O/mnacP0S5tg==",
-      "type": "package",
-      "path": "xfx.controls/1.0.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/MonoAndroid/Xfx.Controls.Droid.dll",
-        "lib/MonoAndroid/Xfx.Controls.dll",
-        "lib/Xamarin.iOS10/Xfx.Controls.dll",
-        "lib/Xamarin.iOS10/Xfx.Controls.iOS.dll",
-        "lib/netcore45/Xfx.Controls.dll",
-        "lib/netstandard1.3/Xfx.Controls.dll",
-        "lib/portable-net45+win8+wpa81+wp8/Xfx.Controls.dll",
-        "xfx.controls.1.0.4.nupkg.sha512",
-        "xfx.controls.nuspec"
-      ]
-    },
     "AppPallet/1.0.0": {
       "type": "project",
       "path": "../AppPallet/AppPallet.csproj",
@@ -5497,6 +5529,7 @@
     "MonoAndroid,Version=v12.0": [
       "AppPallet >= 1.0.0",
       "PCLExt.FileStorage >= 1.4.1.1",
+      "Rg.Plugins.Popup >= 2.1.0",
       "SQLiteNetExtensions >= 2.1.0",
       "SQLiteNetExtensions.Async >= 2.1.0",
       "Syncfusion.Xamarin.Buttons >= 26.1.40",
@@ -5505,7 +5538,6 @@
       "Xamarin.Android.Support.Design >= 28.0.0.3",
       "Xamarin.Essentials >= 1.7.0",
       "Xamarin.Forms >= 5.0.0.2196",
-      "Xfx.Controls >= 1.0.4",
       "sqlite-net-pcl >= 1.7.335"
     ]
   },
@@ -5560,6 +5592,10 @@
             "target": "Package",
             "version": "[1.4.1.1, )"
           },
+          "Rg.Plugins.Popup": {
+            "target": "Package",
+            "version": "[2.1.0, )"
+          },
           "SQLiteNetExtensions": {
             "target": "Package",
             "version": "[2.1.0, )"
@@ -5591,10 +5627,6 @@
           "Xamarin.Forms": {
             "target": "Package",
             "version": "[5.0.0.2196, )"
-          },
-          "Xfx.Controls": {
-            "target": "Package",
-            "version": "[1.0.4, )"
           },
           "sqlite-net-pcl": {
             "target": "Package",

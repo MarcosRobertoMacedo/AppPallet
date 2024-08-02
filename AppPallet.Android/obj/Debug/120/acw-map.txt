@@ -7,6 +7,12 @@ apppallet.droid.MainActivity;crc64e99f36f9af527773.MainActivity
 AppPallet.Droid.SplashActivity, AppPallet.Android;crc64e99f36f9af527773.SplashActivity
 AppPallet.Droid.SplashActivity;crc64e99f36f9af527773.SplashActivity
 apppallet.droid.SplashActivity;crc64e99f36f9af527773.SplashActivity
+Rg.Plugins.Popup.Droid.Renderers.PopupPageRenderer, Rg.Plugins.Popup;crc643dd37f507f3d9710.PopupPageRenderer
+Rg.Plugins.Popup.Droid.Renderers.PopupPageRenderer;crc643dd37f507f3d9710.PopupPageRenderer
+rg.plugins.popup.droid.renderers.PopupPageRenderer;crc643dd37f507f3d9710.PopupPageRenderer
+Rg.Plugins.Popup.Droid.Gestures.RgGestureDetectorListener, Rg.Plugins.Popup;crc64fdbeeba101bd56dc.RgGestureDetectorListener
+Rg.Plugins.Popup.Droid.Gestures.RgGestureDetectorListener;crc64fdbeeba101bd56dc.RgGestureDetectorListener
+rg.plugins.popup.droid.gestures.RgGestureDetectorListener;crc64fdbeeba101bd56dc.RgGestureDetectorListener
 Syncfusion.Buttons.XForms.SfButtonRenderer, Syncfusion.Buttons.XForms.Android;crc64c9e0fc3fe4585769.SfButtonRenderer
 Syncfusion.Buttons.XForms.SfButtonRenderer;crc64c9e0fc3fe4585769.SfButtonRenderer
 syncfusion.buttons.xforms.SfButtonRenderer;crc64c9e0fc3fe4585769.SfButtonRenderer
@@ -2437,15 +2443,3 @@ com.google.android.material.animation.TransformationCallback;com.google.android.
 Google.Common.Util.Concurrent.IListenableFuture, Xamarin.Google.Guava.ListenableFuture;com.google.common.util.concurrent.ListenableFuture
 Google.Common.Util.Concurrent.IListenableFuture;com.google.common.util.concurrent.ListenableFuture
 com.google.common.util.concurrent.ListenableFuture;com.google.common.util.concurrent.ListenableFuture
-Xfx.Controls.Droid.Renderers.XfxComboBoxRendererDroid, Xfx.Controls.Droid;crc64d6b30408f1d8848a.XfxComboBoxRendererDroid
-Xfx.Controls.Droid.Renderers.XfxComboBoxRendererDroid;crc64d6b30408f1d8848a.XfxComboBoxRendererDroid
-xfx.controls.droid.renderers.XfxComboBoxRendererDroid;crc64d6b30408f1d8848a.XfxComboBoxRendererDroid
-Xfx.Controls.Droid.Renderers.XfxEntryRendererDroid, Xfx.Controls.Droid;crc64d6b30408f1d8848a.XfxEntryRendererDroid
-Xfx.Controls.Droid.Renderers.XfxEntryRendererDroid;crc64d6b30408f1d8848a.XfxEntryRendererDroid
-xfx.controls.droid.renderers.XfxEntryRendererDroid;crc64d6b30408f1d8848a.XfxEntryRendererDroid
-Xfx.Controls.Droid.XfxComboBox.XfxComboBoxArrayAdapter, Xfx.Controls.Droid;crc64def78b934ccdb414.XfxComboBoxArrayAdapter
-Xfx.Controls.Droid.XfxComboBox.XfxComboBoxArrayAdapter;crc64def78b934ccdb414.XfxComboBoxArrayAdapter
-xfx.controls.droid.xfxcombobox.XfxComboBoxArrayAdapter;crc64def78b934ccdb414.XfxComboBoxArrayAdapter
-Xfx.Controls.Droid.XfxComboBox.XfxComboBoxFilter, Xfx.Controls.Droid;crc64def78b934ccdb414.XfxComboBoxFilter
-Xfx.Controls.Droid.XfxComboBox.XfxComboBoxFilter;crc64def78b934ccdb414.XfxComboBoxFilter
-xfx.controls.droid.xfxcombobox.XfxComboBoxFilter;crc64def78b934ccdb414.XfxComboBoxFilter

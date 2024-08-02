@@ -51,6 +51,10 @@
               "target": "Package",
               "version": "[1.4.1.1, )"
             },
+            "Rg.Plugins.Popup": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
             "SQLiteNetExtensions": {
               "target": "Package",
               "version": "[2.1.0, )"
@@ -78,10 +82,6 @@
             "Xamarin.Forms": {
               "target": "Package",
               "version": "[5.0.0.2196, )"
-            },
-            "Xfx.Controls": {
-              "target": "Package",
-              "version": "[1.0.4, )"
             },
             "sqlite-net-pcl": {
               "target": "Package",
@@ -165,6 +165,10 @@
               "target": "Package",
               "version": "[1.4.1.1, )"
             },
+            "Rg.Plugins.Popup": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
             "SQLiteNetExtensions": {
               "target": "Package",
               "version": "[2.1.0, )"
@@ -192,10 +196,6 @@
             "Xamarin.Forms": {
               "target": "Package",
               "version": "[5.0.0.2196, )"
-            },
-            "Xfx.Controls": {
-              "target": "Package",
-              "version": "[1.0.4, )"
             },
             "sqlite-net-pcl": {
               "target": "Package",

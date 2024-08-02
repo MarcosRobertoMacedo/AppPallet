@@ -12,6 +12,7 @@
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "13.0.3",
           "PCLExt.FileStorage": "1.4.1.1",
+          "Rg.Plugins.Popup": "2.1.0",
           "SQLiteNetExtensions": "2.1.0",
           "SQLiteNetExtensions.Async": "2.1.0",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
@@ -19,7 +20,6 @@
           "Syncfusion.Xamarin.SfPicker": "26.1.40",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
-          "Xfx.Controls": "1.0.4",
           "sqlite-net-pcl": "1.7.335"
         },
         "runtime": {
@@ -49,6 +49,17 @@
           "lib/netstandard2.0/PCLExt.FileStorage.dll": {
             "assemblyVersion": "1.4.1.1",
             "fileVersion": "1.4.1.1"
+          }
+        }
+      },
+      "Rg.Plugins.Popup/2.1.0": {
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2196"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Rg.Plugins.Popup.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
           }
         }
       },
@@ -242,17 +253,6 @@
             "fileVersion": "5.0.0.786"
           }
         }
-      },
-      "Xfx.Controls/1.0.4": {
-        "dependencies": {
-          "Xamarin.Forms": "5.0.0.2196"
-        },
-        "runtime": {
-          "lib/netstandard1.3/Xfx.Controls.dll": {
-            "assemblyVersion": "1.0.4.0",
-            "fileVersion": "1.0.4.0"
-          }
-        }
       }
     }
   },
@@ -289,6 +289,13 @@
       "sha512": "sha512-1obyFostdhYsRVTld0Lo/h5c9ZgXPWfe/BRkd2TKn6M33bE+LLJVdLfPcfUxrjUvYElwor4hh8zJ2DkH/l0KYA==",
       "path": "pclext.filestorage/1.4.1.1",
       "hashPath": "pclext.filestorage.1.4.1.1.nupkg.sha512"
+    },
+    "Rg.Plugins.Popup/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-caKjkvimzpUqk4pO/WSFn3uOX43uZNW5rPWCx7eXkOlGG9Br90MTwNVS1nxhtyypB69uUe/0GQPEC3rz+kscbA==",
+      "path": "rg.plugins.popup/2.1.0",
+      "hashPath": "rg.plugins.popup.2.1.0.nupkg.sha512"
     },
     "sqlite-net-pcl/1.7.335": {
       "type": "package",
@@ -415,13 +422,6 @@
       "sha512": "sha512-zSXDiZukojtEBmZKUUG1yYBwlB9tI8JLPkc6n+Sm1PAX01QyzErWE9AaFJgP7usyoGHn92l4HnQF7A+/MPI6VA==",
       "path": "xamarin.forms/5.0.0.2196",
       "hashPath": "xamarin.forms.5.0.0.2196.nupkg.sha512"
-    },
-    "Xfx.Controls/1.0.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-0K0fnbaWAmmuFGp8vBzwl/jSsObkWLP8uj8ilM8SKcDzWYw7sdDSMAV6IMsKhxLIn/STMmBsr5O/mnacP0S5tg==",
-      "path": "xfx.controls/1.0.4",
-      "hashPath": "xfx.controls.1.0.4.nupkg.sha512"
     }
   }
 }

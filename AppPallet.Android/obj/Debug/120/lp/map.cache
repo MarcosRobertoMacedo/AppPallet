@@ -1,5 +1,6 @@
 FormsViewGroup.dll
 PCLExt.FileStorage.dll
+Rg.Plugins.Popup.dll
 SQLitePCLRaw.lib.e_sqlite3.android.dll
 Syncfusion.Buttons.XForms.Android.dll
 Syncfusion.Core.XForms.Android.dll
@@ -63,7 +64,6 @@ Xamarin.Forms.Platform.Android.dll
 Xamarin.Forms.Platform.dll
 Xamarin.Google.Android.Material.dll
 Xamarin.Google.Guava.ListenableFuture.dll
-Xfx.Controls.Droid.dll
 androidx.versionedparcelable.versionedparcelable.aar
 androidx.arch.core.core-runtime.aar
 androidx.lifecycle.lifecycle-runtime.aar

@@ -8,6 +8,7 @@ public class MonoPackageManager_Resources {
 		"Newtonsoft.Json.dll",
 		"PCLExt.FileStorage.Abstractions.dll",
 		"PCLExt.FileStorage.dll",
+		"Rg.Plugins.Popup.dll",
 		"SQLite-net.dll",
 		"SQLiteNetExtensions.dll",
 		"SQLiteNetExtensionsAsync.dll",
@@ -118,8 +119,6 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Forms.Xaml.dll",
 		"Xamarin.Google.Android.Material.dll",
 		"Xamarin.Google.Guava.ListenableFuture.dll",
-		"Xfx.Controls.dll",
-		"Xfx.Controls.Droid.dll",
 	};
 	public static String[] Dependencies = new String[]{
 	};
