@@ -43,6 +43,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidLinkTool>r8</AndroidLinkTool>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -85,6 +86,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomDatePickerRenderer .cs" />
     <Compile Include="CustomEntryRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MessageAndroid.cs" />
