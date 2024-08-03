@@ -62,8 +62,16 @@ namespace AppPallet.Views
                                 {
                                     Console.WriteLine("URL acessível.");
 
-                                    // Navega para BaixaPalletPage quando a URL estiver acessível
-                                    await Shell.Current.GoToAsync("//BaixaPalletPage");
+                                    // Verifica se a página atual é a CopapalletPage antes de navegar
+                                    if (Shell.Current.CurrentPage is CopaPalletPage)
+                                    {
+                                        // Navega para BaixaPalletPage quando a URL estiver acessível
+                                        await Shell.Current.GoToAsync("//BaixaPalletPage");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Não está na página CopapalletPage.");
+                                    }
                                 }
                                 else
                                 {
@@ -84,6 +92,7 @@ namespace AppPallet.Views
             // Inicia o método assíncrono
             _ = CheckUrlPeriodically(); // Lançar a tarefa sem esperar
         }
+
 
 
         public async Task<VerificaCarga> CheckUrl()

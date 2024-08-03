@@ -6,9 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -23,13 +21,35 @@ namespace AppPallet.Views
         ObservableCollection<Login> login { get; set; } = new ObservableCollection<Login>();
         ObservableCollection<LoginAcesso> loginAcesso { get; set; } = new ObservableCollection<LoginAcesso>();
 
+        private Login _loginDados;
+        private LoginAcesso _acessoDados;
+
         public IControleRepository _controleRepository;
+
         public LoginPage()
         {
             InitializeComponent();
             _controleRepository = new ControleRepository();
             VersionCode.Text = "Versão • " + DependencyService.Get<IAppVersionAndBuild>().GetVersionNumber();
             this.BindingContext = new LoginViewModel();
+        }
+
+        // Limpa os campos de entrada
+        private void ClearLoginFields()
+        {
+            maskedEditCNPJ.Value = string.Empty;
+            maskedEditLogin.Value = string.Empty;
+            maskedEditSenha.Value = string.Empty;
+
+            maskedEditCNPJ.ErrorBorderColor = Color.Default;
+            maskedEditLogin.ErrorBorderColor = Color.Default;
+            maskedEditSenha.ErrorBorderColor = Color.Default;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ClearLoginFields(); // Limpa os campos sempre que a página aparece
         }
 
         private bool IsMaskedEditFilled(SfMaskedEdit maskedEdit)
@@ -60,6 +80,11 @@ namespace AppPallet.Views
                 string cnpj = string.Empty;
                 string login = string.Empty;
                 string passwd = string.Empty;
+
+                maskedEditCNPJ.Value = "09334805000146";
+                maskedEditLogin.Value = "marceli";
+                maskedEditSenha.Value = "it1010";
+
                 string mensagemErro = "";
 
                 if (IsMaskedEditFilled(maskedEditCNPJ))
@@ -67,9 +92,8 @@ namespace AppPallet.Views
                     cnpj = maskedEditCNPJ.Value.ToString().Replace(".", "").Replace("/", "").Replace("-", "");
                     if (!CnpjValidator.IsValidCnpj(cnpj))
                     {
-                        //DependencyService.Get<IMessage>().LongAlert("CNPJ inválido.");
-                        mensagemErro = "O CNPJ é inválido. \n";                        
-                    }                    
+                        mensagemErro = "O CNPJ é inválido. \n";
+                    }
                 }
                 else
                 {
@@ -182,6 +206,9 @@ namespace AppPallet.Views
 
                 _controleRepository.InsertLoginAcesso(obj);
                 DadosServicos.Instance.AcessoDados = obj;
+
+                _acessoDados = DadosServicos.Instance.AcessoDados;
+                _loginDados = DadosServicos.Instance.LoginDados;
 
                 await Shell.Current.GoToAsync($"//{nameof(CopaPalletPage)}");
             }
