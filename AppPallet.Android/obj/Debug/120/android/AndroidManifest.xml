@@ -17,7 +17,7 @@
       <action android:name="android.media.browse.MediaBrowserService" />
     </intent>
   </queries>
-  <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@drawable/logo_prosystem" android:label="Prosystem Pallet" android:usesCleartextTraffic="true">
+  <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@drawable/logo_prosystem_1" android:label="Prosystem Pallet" android:usesCleartextTraffic="true">
     <activity android:name="crc64e99f36f9af527773.MainActivity" android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:icon="@mipmap/icon" android:label="AppPallet" android:theme="@style/MainTheme" />
     <activity android:name="crc64e99f36f9af527773.SplashActivity" android:exported="true" android:noHistory="true" android:theme="@style/Theme.Splash">
       <intent-filter>
