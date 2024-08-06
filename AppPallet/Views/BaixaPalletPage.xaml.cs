@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using FluentFTP.Helpers;
+using AppPallet.Services;
+using FluentFTP.Exceptions;
 
 
 namespace AppPallet.Views
@@ -45,6 +48,7 @@ namespace AppPallet.Views
 
         private async void LoadData()
         {
+            ShowLoading(true);
             string url = $"http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/VerificaCarga/{_acessoDados.empresa}/{_acessoDados.codigo}";
 
             try
@@ -77,21 +81,25 @@ namespace AppPallet.Views
                             devolucaoEntry.Text = data.QUANTDV;
 
                             DadosServicos.Instance.VerificaCargaDados = data;
+                            _verificaCargaDados = DadosServicos.Instance.VerificaCargaDados;
                         }
                         else
                         {
+                            ShowLoading(false);
                             //await DisplayAlert("Aviso", "Nenhum dado encontrado.", "OK");
                             DependencyService.Get<IMessage>().LongAlert("Nenhum dado encontrado.");
                         }
                     }
                     else
                     {
+                        ShowLoading(false);
                         //await DisplayAlert("Erro", "Resposta do servidor não é JSON válido.", "OK");
                         DependencyService.Get<IMessage>().LongAlert("Resposta do servidor não é JSON válido.");
                     }
                 }
                 else
                 {
+                    ShowLoading(false);
                     // Tratar erro de status HTTP não esperado
                     //await DisplayAlert("Erro", $"Erro ao carregar dados. StatusCode: {response.StatusCode}", "OK");
                     DependencyService.Get<IMessage>().LongAlert($"Erro ao carregar dados. StatusCode: {response.StatusCode}");
@@ -99,18 +107,25 @@ namespace AppPallet.Views
             }
             catch (HttpRequestException httpEx)
             {
+                ShowLoading(false);
                 //await DisplayAlert("Erro", $"Erro de rede ao carregar dados: {httpEx.Message}", "OK");
                 DependencyService.Get<IMessage>().LongAlert($"Erro de rede ao carregar dados: {httpEx.Message}");
             }
             catch (JsonException jsonEx)
             {
+                ShowLoading(false);
                 //await DisplayAlert("Erro", $"Erro ao processar os dados recebidos: {jsonEx.Message}", "OK");
                 DependencyService.Get<IMessage>().LongAlert($"Erro ao processar os dados recebidos: {jsonEx.Message}");
             }
             catch (Exception ex)
             {
+                ShowLoading(false);
                 //await DisplayAlert("Erro", $"Falha ao carregar dados: {ex.Message}", "OK");
                 DependencyService.Get<IMessage>().LongAlert($"Falha ao carregar dados: {ex.Message}");
+            }
+            finally
+            {
+                ShowLoading(false);
             }
         }
 
@@ -129,15 +144,20 @@ namespace AppPallet.Views
                 if (photo == null)
                     return;
 
+                var nomeFoto = _verificaCargaDados.ID + "_BAIXA_PALETE";
+
                 // Salvar o arquivo na memória local
-                var newFile = Path.Combine(FileSystem.AppDataDirectory, $"{Path.GetRandomFileName()}.jpg");
+                
+                var newFile = Path.Combine(FileSystem.AppDataDirectory, $"{nomeFoto}.jpg");
                 using (var stream = await photo.OpenReadAsync())
                 using (var newStream = File.OpenWrite(newFile))
                     await stream.CopyToAsync(newStream);
 
                 _photoPath = newFile;
+                caminhoFotoEntry.Text = _photoPath;
 
-                // Atualizar UI ou notificar usuário que a foto foi capturada
+                UploadImage(_photoPath);
+                
                 DependencyService.Get<IMessage>().LongAlert("Foto capturada com sucesso!");
             }
             catch (Exception ex)
@@ -146,12 +166,52 @@ namespace AppPallet.Views
             }
         }
 
+        public void UploadImage(string localImagePath)
+        {
+            try
+            {
+                ShowLoading(true);
+
+                // URL do servidor FTP (sem "ftp://")
+                string ftpHost = "prosystem.dyndns-work.com";
+                int ftpPort = 21; // Porta padrão do FTP
+
+                // Caminho local do arquivo a ser enviado
+                string localFilePath = localImagePath;
+                // Caminho remoto no servidor FTP onde o arquivo será salvo
+                string remoteFilePath = "/sistemas/sistemas-teste/Sagwin-NFE/ANEXOS/Paletes/" + Path.GetFileName(_photoPath);
+
+                // Criar uma instância do FtpService
+                var ftpService = new FtpService(ftpHost, ftpPort);
+
+                // Chamar o método UploadFile
+                bool uploadSuccess = ftpService.UploadFile(localFilePath, remoteFilePath);
+
+                // Verificar o resultado
+                if (uploadSuccess)
+                {
+                    DependencyService.Get<IMessage>().LongAlert("Arquivo enviado com sucesso!");
+                }
+                else
+                {
+                    DependencyService.Get<IMessage>().LongAlert("Falha ao enviar o arquivo.");
+                }
+            }
+            catch (Exception ex)
+            {
+                DependencyService.Get<IMessage>().LongAlert($"Erro ao subir foto via FTP: {ex.Message}");
+            }
+            finally
+            {
+                ShowLoading(false);
+            }
+        }
 
         private async void GravarButton_Clicked(object sender, EventArgs e)
         {
             try
             {
-                _verificaCargaDados = DadosServicos.Instance.VerificaCargaDados;
+                ShowLoading(true);                
 
                 if (_verificaCargaDados == null)
                 {
@@ -177,23 +237,28 @@ namespace AppPallet.Views
                     }
                     else
                     {
+                        ShowLoading(false);
                         //await DisplayAlert("Erro", "Falha ao enviar dados.", "OK");
                         DependencyService.Get<IMessage>().LongAlert("Falha ao enviar dados.");
                     }
                 }
                 else
                 {
+                    ShowLoading(false);
                     //await DisplayAlert("Erro", "Entradas inválidas.", "OK");
                     DependencyService.Get<IMessage>().LongAlert("Entradas inválidas.");
                 }
             }
             catch (Exception ex)
             {
+                ShowLoading(false);
                 //await DisplayAlert("Erro", $"Ocorreu um erro: {ex.Message}", "OK");
                 DependencyService.Get<IMessage>().LongAlert($"Ocorreu um erro: {ex.Message}");
             }
+            finally {
+                ShowLoading(false);
+            }
         }
-
 
         private async Task<bool> SendDataToServer(int cargaId, int quantidadeEntregue, int quantidadeDevolvido, string photoPath)
         {
@@ -201,26 +266,30 @@ namespace AppPallet.Views
 
             try
             {
+                ShowLoading(true);
                 using (var client = new HttpClient())
                 {
+                    var nomeImagem = Path.GetFileName(_photoPath); //!= null ? Convert.ToBase64String(ReduceImageSize(photoPath)).Replace("/", ";") : null;
                     var data = new
                     {
                         cargaId,
                         quantidadeEntregue,
                         quantidadeDevolvido,
-                        foto = photoPath != null ? Convert.ToBase64String(ReduceImageSize(photoPath)) : null
+                        foto = nomeImagem
                     };
 
                     var json = JsonConvert.SerializeObject(data);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(url, content);
+
                     if (response.IsSuccessStatusCode)
                     {
                         return true;
                     }
                     else
                     {
+                        ShowLoading(false);
                         string errorMessage = await response.Content.ReadAsStringAsync();
                         DependencyService.Get<IMessage>().LongAlert($"Falha ao enviar dados. StatusCode: {response.StatusCode} Message: {errorMessage}");
                         return false;
@@ -229,188 +298,76 @@ namespace AppPallet.Views
             }
             catch (HttpRequestException httpEx)
             {
+                ShowLoading(false);
                 DependencyService.Get<IMessage>().LongAlert($"Erro de rede ao enviar dados: {httpEx.Message}");
             }
             catch (TaskCanceledException timeoutEx)
             {
+                ShowLoading(false);
                 DependencyService.Get<IMessage>().LongAlert($"Tempo de solicitação esgotado: {timeoutEx.Message}");
             }
             catch (Exception ex)
             {
+                ShowLoading(false);
                 DependencyService.Get<IMessage>().LongAlert($"Erro ao enviar dados para o servidor: {ex.Message}");
+            }
+            finally {
+                ShowLoading(false);
             }
 
             return false;
         }
+
         private byte[] ReduceImageSize(string photoPath)
         {
             using (var inputStream = File.OpenRead(photoPath))
             {
-                // Decodifica a imagem original
                 using (var originalImage = SKBitmap.Decode(inputStream))
                 {
-                    // Define o tamanho de redimensionamento
-                    var newSize = new SKImageInfo(1000, 1000); // Ajuste conforme necessário
-                    var resizedImage = originalImage.Resize(newSize, SKFilterQuality.Medium);
+                    var initialSize = new SKImageInfo(600, 600);
+                    var resizedImage = originalImage.Resize(initialSize, SKFilterQuality.Medium);
 
-                    using (var ms = new MemoryStream())
+                    int quality = 100;
+                    byte[] imageBytes = null;
+
+                    // Tenta diferentes qualidades e redimensionamentos
+                    do
                     {
-                        // Cria uma imagem SKImage a partir da imagem redimensionada
-                        using (var image = SKImage.FromBitmap(resizedImage))
+                        using (var ms = new MemoryStream())
                         {
-                            // Codifica a imagem em formato JPEG com qualidade reduzida
-                            var imageData = image.Encode(SKEncodedImageFormat.Jpeg, 50); // Ajuste a qualidade conforme necessário
-                            imageData.SaveTo(ms);
+                            using (var image = SKImage.FromBitmap(resizedImage))
+                            {
+                                var imageData = image.Encode(SKEncodedImageFormat.Jpeg, quality);
+                                imageData.SaveTo(ms);
+                                imageBytes = ms.ToArray();
+                            }
                         }
-                        return ms.ToArray();
+
+                        quality -= 10;
+
+                        if (quality < 10 && imageBytes.Length > 16000)
+                        {
+                            var newSize = new SKImageInfo((int)(initialSize.Width * 0.9), (int)(initialSize.Height * 0.9));
+                            if (newSize.Width < 100 || newSize.Height < 100)
+                            {
+                                newSize = new SKImageInfo(100, 100);
+                            }
+
+                            resizedImage = originalImage.Resize(newSize, SKFilterQuality.Medium);
+                            quality = 100;
+                        }
                     }
+                    while (imageBytes.Length > 16000 && (resizedImage.Width > 100 && resizedImage.Height > 100));
+
+                    return imageBytes;
                 }
             }
         }
 
-        //private async Task<bool> SendDataToServer(int cargaId, int quantidadeEntregue, int quantidadeDevolvido, string photoPath)
-        //{
-        //    var url = "http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/UPLoadArquivo";
-
-        //    try
-        //    {
-        //        using (var form = new MultipartFormDataContent())
-        //        {
-        //            // Adiciona os parâmetros de dados
-        //            form.Add(new StringContent(cargaId.ToString()), "cargaId");
-        //            form.Add(new StringContent(quantidadeEntregue.ToString()), "quantidadeEntregue");
-        //            form.Add(new StringContent(quantidadeDevolvido.ToString()), "quantidadeDevolvido");                    
-
-        //            // Adiciona a foto
-        //            if (!string.IsNullOrEmpty(photoPath))
-        //            {
-        //                var photoBytes = File.ReadAllBytes(photoPath);
-        //                var photoContent = new ByteArrayContent(photoBytes);
-        //                photoContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg"); // Ajuste o tipo de mídia conforme necessário
-        //                form.Add(photoContent, "foto", Path.GetFileName(photoPath));
-        //            }
-
-        //            // Mostrar o conteúdo da solicitação antes de enviar
-        //            await LogMultipartFormDataContentAsync(form);
-
-        //            var response = await _client.PostAsync(url, form);
-        //            if (response.IsSuccessStatusCode)
-        //            {
-        //                return true;
-        //            }
-        //            else
-        //            {
-        //                string errorMessage = await response.Content.ReadAsStringAsync();
-        //                DependencyService.Get<IMessage>().LongAlert($"Falha ao enviar dados. StatusCode: {response.StatusCode} Message: {errorMessage}");
-        //                return false;
-        //            }
-        //        }
-        //    }
-        //    catch (HttpRequestException httpEx)
-        //    {
-        //        DependencyService.Get<IMessage>().LongAlert($"Erro de rede ao enviar dados: {httpEx.Message}");
-        //    }
-        //    catch (TaskCanceledException timeoutEx)
-        //    {
-        //        DependencyService.Get<IMessage>().LongAlert($"Tempo de solicitação esgotado: {timeoutEx.Message}");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DependencyService.Get<IMessage>().LongAlert($"Erro ao enviar dados para o servidor: {ex.Message}");
-        //    }
-
-        //    return false;
-        //}
-
-        //private async Task LogMultipartFormDataContentAsync(MultipartFormDataContent content)
-        //{
-        //    foreach (var part in content)
-        //    {
-        //        var contentDisposition = part.Headers.ContentDisposition;
-        //        var name = contentDisposition.Name.Trim('"');
-        //        var fileName = contentDisposition.FileName?.Trim('"');
-        //        var mediaType = part.Headers.ContentType?.MediaType;
-
-        //        Console.WriteLine($"Content Name: {name}");
-        //        Console.WriteLine($"File Name: {fileName}");
-        //        Console.WriteLine($"Media Type: {mediaType}");
-
-        //        if (name == "foto" && fileName != null)
-        //        {
-        //            // Read file content and log it
-        //            var fileContent = await part.ReadAsByteArrayAsync();
-        //            Console.WriteLine($"File Size: {fileContent.Length} bytes");
-        //        }
-        //        else
-        //        {
-        //            var stringContent = await part.ReadAsStringAsync();
-        //            Console.WriteLine($"Content: {stringContent}");
-        //        }
-        //    }
-        //}
-
-
-
-        //private async Task<bool> SendDataToServer(int cargaId, int quantidadeEntregue, int quantidadeDevolvido)
-        //{
-        //    var url = $"http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/GravaPaletes/{cargaId}/{quantidadeEntregue}/{quantidadeDevolvido}/{_photoPath}";
-
-        //    try
-        //    {
-        //        Console.WriteLine($"URL being called: {url}");
-
-        //        var request = new HttpRequestMessage(HttpMethod.Post, url);
-
-        //        // Add any necessary headers here
-        //        request.Headers.Add("User-Agent", "XamarinApp");
-
-        //        // Ler a foto como bytes e converter para Base64
-        //        if (_photoPath != null)
-        //        {
-        //            var photoBytes = File.ReadAllBytes(_photoPath);
-        //            var base64Photo = Convert.ToBase64String(photoBytes);
-
-        //            var dataToSend = new
-        //            {
-        //                Foto = base64Photo
-        //            };
-
-        //            var json = JsonConvert.SerializeObject(dataToSend);
-        //            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-        //            request.Content = content;
-        //        }
-
-        //        var response = await _client.SendAsync(request);
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            string errorMessage = await response.Content.ReadAsStringAsync();
-        //            //await DisplayAlert("Erro", $"Falha ao enviar dados. StatusCode: {response.StatusCode}, Message: {errorMessage}", "OK");
-        //            DependencyService.Get<IMessage>().LongAlert($"Falha ao enviar dados. StatusCode: {response.StatusCode} Message: {errorMessage}");
-        //            return false;
-        //        }
-        //    }
-        //    catch (HttpRequestException httpEx)
-        //    {
-        //        //await DisplayAlert("Erro", $"Erro de rede ao enviar dados: {httpEx.Message}", "OK");
-        //        DependencyService.Get<IMessage>().LongAlert($"Erro de rede ao enviar dados: {httpEx.Message}");
-        //    }
-        //    catch (TaskCanceledException timeoutEx)
-        //    {
-        //        //await DisplayAlert("Erro", $"Tempo de solicitação esgotado: {timeoutEx.Message}", "OK");
-        //        DependencyService.Get<IMessage>().LongAlert($"Tempo de solicitação esgotado: {timeoutEx.Message}");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //await DisplayAlert("Erro", $"Erro ao enviar dados para o servidor: {ex.Message}", "OK");
-        //        DependencyService.Get<IMessage>().LongAlert($"Erro ao enviar dados para o servidor: {ex.Message}");
-        //    }
-
-        //    return false;
-        //}
+        private void ShowLoading(bool show)
+        {
+            loadingOverlay.IsVisible = show;
+            activityIndicator.IsRunning = show;
+        }
     }
 }

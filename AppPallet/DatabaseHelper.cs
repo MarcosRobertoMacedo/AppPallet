@@ -32,6 +32,13 @@ namespace AppPallet
             //sqliteconnection.CreateTable<SavingClass>();
         }
 
+        // Verificar se há um login salvo
+        public bool IsUserLoggedIn()
+        {
+            var login = sqliteconnection.Table<Login>().FirstOrDefault();
+            return login != null;
+        }
+
         // Inserir dados Login
         public void InsertLogin(Login login)
         {
@@ -103,6 +110,12 @@ namespace AppPallet
             return (from data in sqliteconnection.Table<LoginAcesso>()
                     select data).ToList();
         }
+        //Pegar todos os dados VerificaCarga
+        public List<VerificaCarga> GetAllVerificaCargaData()
+        {
+            return (from data in sqliteconnection.Table<VerificaCarga>()
+                    select data).ToList();
+        }
         //Pegar dados especifico por id
         public Login GetLoginByCodigo(string id)
         {
@@ -111,6 +124,10 @@ namespace AppPallet
         public LoginAcesso GetLoginAcessoByCodigo(string id)
         {
             return sqliteconnection.Table<LoginAcesso>().FirstOrDefault(t => t.codigo == id);
+        }
+        public VerificaCarga GetVerificaCargaByCodigo(string id)
+        {
+            return sqliteconnection.Table<VerificaCarga>().FirstOrDefault(t => t.ID == id);
         }
         // Deletar todos os dados Login
         public void DeleteAllLogin()
@@ -122,6 +139,11 @@ namespace AppPallet
         {
             sqliteconnection.DeleteAll<LoginAcesso>();
         }
+        // Deletar todos os dados VerificaCarga
+        public void DeleteAllVerificaCarga()
+        {
+            sqliteconnection.DeleteAll<VerificaCarga>();
+        }
         // Deletar um dado especifico por id
         public void DeleteLogin(int id)
         {
@@ -130,6 +152,10 @@ namespace AppPallet
         public void DeleteLoginAcesso(int id)
         {
             sqliteconnection.Delete<LoginAcesso>(id);
+        }
+        public void DeleteVerificaCarga(int id)
+        {
+            sqliteconnection.Delete<VerificaCarga>(id);
         }
     }
 }

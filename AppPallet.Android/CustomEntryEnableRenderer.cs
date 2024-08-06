@@ -6,7 +6,7 @@ using AppPallet.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryEnableRenderer))]
+[assembly: ExportRenderer(typeof(CustomEntryEnable), typeof(CustomEntryEnableRenderer))]
 namespace AppPallet.Droid
 {
     public class CustomEntryEnableRenderer : EntryRenderer

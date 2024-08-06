@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -34,6 +35,23 @@ namespace AppPallet.Views
             this.BindingContext = new LoginViewModel();
         }
 
+        private async void usuariologado() 
+        {
+            var dbHelper = new DatabaseHelper();
+            if (dbHelper.IsUserLoggedIn())
+            {
+                ControleRepository buscaDados = new ControleRepository();
+                DadosServicos.Instance.AcessoDados = buscaDados.GetAllLoginAcessoData().FirstOrDefault();
+                DadosServicos.Instance.LoginDados = buscaDados.GetAllLoginData().FirstOrDefault();
+                Login dados = _controleRepository.GetAllLoginData().FirstOrDefault();
+                maskedEditCNPJ.Value = dados.cnpj; //"09334805000146";
+                maskedEditLogin.Value = dados.login; //"marceli";
+                maskedEditSenha.Value = dados.senha; //"it1010";
+                await Entrar();
+            }
+            else { ClearLoginFields(); }
+        }
+
         // Limpa os campos de entrada
         private void ClearLoginFields()
         {
@@ -49,7 +67,7 @@ namespace AppPallet.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            ClearLoginFields(); // Limpa os campos sempre que a página aparece
+            usuariologado();
         }
 
         private bool IsMaskedEditFilled(SfMaskedEdit maskedEdit)
@@ -73,6 +91,11 @@ namespace AppPallet.Views
 
         protected async void Login(object s, EventArgs e)
         {
+            await Entrar();
+        }
+
+        private async Task Entrar()
+        {
             try
             {
                 ShowLoading(true);
@@ -80,10 +103,6 @@ namespace AppPallet.Views
                 string cnpj = string.Empty;
                 string login = string.Empty;
                 string passwd = string.Empty;
-
-                maskedEditCNPJ.Value = "09334805000146";
-                maskedEditLogin.Value = "marceli";
-                maskedEditSenha.Value = "it1010";
 
                 string mensagemErro = "";
 
@@ -159,6 +178,7 @@ namespace AppPallet.Views
                 }
 
                 var obj = login[0];
+                obj.cnpj = cnpj;
                 obj.login = log;
                 obj.senha = pass;
 

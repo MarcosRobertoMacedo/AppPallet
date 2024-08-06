@@ -4,6 +4,7 @@ public class MonoPackageManager_Resources {
 		/* We need to ensure that "AppPallet.Android.dll" comes first in this list. */
 		"AppPallet.Android.dll",
 		"AppPallet.dll",
+		"FluentFTP.dll",
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.dll",
 		"PCLExt.FileStorage.Abstractions.dll",

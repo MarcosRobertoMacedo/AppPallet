@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentFTP" Version="51.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="PCLExt.FileStorage" Version="1.4.1.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />

@@ -53,6 +53,10 @@ namespace AppPallet
         {
             return _databaseHelper.GetAllLoginAcessoData();
         }
+        public List<VerificaCarga> GetAllVerificaCargaData()
+        {
+            return _databaseHelper.GetAllVerificaCargaData();
+        }
         // Pegar dados especifico por id
         public Login GetLoginByCodigo(string id)
         {
@@ -61,6 +65,10 @@ namespace AppPallet
         public LoginAcesso GetLoginAcessoByCodigo(string id)
         {
             return _databaseHelper.GetLoginAcessoByCodigo(id);
+        }
+        public VerificaCarga GetVerificaCargaByCodigo(string id)
+        {
+            return _databaseHelper.GetVerificaCargaByCodigo(id);
         }
         // Deletar todos dado
         public void DeleteAllLogin()
@@ -71,6 +79,10 @@ namespace AppPallet
         {
             _databaseHelper.DeleteAllLoginAcesso();
         }
+        public void DeleteAllVerificaCarga()
+        {
+            _databaseHelper.DeleteAllVerificaCarga();
+        }
         // Deletar um dado especifico por id
         public void DeleteLogin(int id)
         {
@@ -79,6 +91,10 @@ namespace AppPallet
         public void DeleteLoginAcesso(int id)
         {
             _databaseHelper.DeleteLoginAcesso(id);
+        }
+        public void DeleteVerificaCarga(int id)
+        {
+            _databaseHelper.DeleteVerificaCarga(id);
         }
     }
 }

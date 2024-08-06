@@ -22,14 +22,18 @@ namespace AppPallet
         // Pegar todos dados
         List<Login> GetAllLoginData();
         List<LoginAcesso> GetAllLoginAcessoData();
+        List<VerificaCarga> GetAllVerificaCargaData();
         // Pegar dados especifico por id
         Login GetLoginByCodigo(string id);
         LoginAcesso GetLoginAcessoByCodigo(string id);
+        VerificaCarga GetVerificaCargaByCodigo(string id);
         // Deletar todos dado
         void DeleteAllLogin();
         void DeleteAllLoginAcesso();
+        void DeleteAllVerificaCarga();
         // Deletar um dado especifico por id
         void DeleteLogin(int id);
         void DeleteLoginAcesso(int id);
+        void DeleteVerificaCarga(int id);
     }
 }

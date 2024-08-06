@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -16,6 +17,8 @@ namespace AppPallet.Views
         private static readonly HttpClient _client = new HttpClient();
         private LoginAcesso _acessoDados;
         private bool _isCheckingUrl;
+        private bool _isUpdatingPositions;
+        private CancellationTokenSource _cancellationTokenSource;
 
         public CopaPalletPage()
         {
@@ -31,7 +34,6 @@ namespace AppPallet.Views
                 await Navigation.PushAsync(new BaixaPalletPage());
             }
         }
-
         private async Task ShowCustomAlertPage()
         {
             var customAlertPage = new CustomPopupPage();
@@ -43,7 +45,7 @@ namespace AppPallet.Views
             _viewModel.OnAppearing();
             PositionStarting();
             _acessoDados = DadosServicos.Instance.AcessoDados;
-            await FetchAndUpdatePositions(_acessoDados.empresa);
+            await StartFetchAndUpdatePositionsPeriodically();
 
             // Método assíncrono para verificar a URL periodicamente
             async Task CheckUrlPeriodically()
@@ -92,8 +94,52 @@ namespace AppPallet.Views
             // Inicia o método assíncrono
             _ = CheckUrlPeriodically(); // Lançar a tarefa sem esperar
         }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            _cancellationTokenSource?.Cancel(); // Cancela o loop ao sair da página
+            _isUpdatingPositions = false;
+            _isCheckingUrl = false;
+        }
+        private async Task StartFetchAndUpdatePositionsPeriodically()
+        {
+            _cancellationTokenSource = new CancellationTokenSource();
+            var token = _cancellationTokenSource.Token;
+            _isUpdatingPositions = true;
 
+            while (!token.IsCancellationRequested)
+            {
+                try
+                {
+                    // Chama o método que você deseja executar periodicamente
+                    await FetchAndUpdatePositions(_acessoDados.empresa); // Certifique-se de que isso é um método assíncrono
 
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Console.WriteLine("Posições atualizadas.");
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Console.WriteLine($"Erro ao atualizar posições: {ex.Message}");
+                    });
+                }
+
+                try
+                {
+                    // Espera 1 minuto antes de verificar novamente
+                    await Task.Delay(TimeSpan.FromMinutes(1), token);
+                }
+                catch (TaskCanceledException)
+                {
+                    // A tarefa foi cancelada, você pode lidar com isso se necessário
+                }
+            }
+
+            _isUpdatingPositions = false;
+        }
 
         public async Task<VerificaCarga> CheckUrl()
         {

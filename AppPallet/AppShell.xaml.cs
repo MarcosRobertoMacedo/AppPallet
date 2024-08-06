@@ -8,16 +8,29 @@ namespace AppPallet
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {
+        public IControleRepository _controleRepository;
+
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            _controleRepository = new ControleRepository();
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//LoginPage");
+            try
+            {
+                _controleRepository.DeleteAllLogin();
+                _controleRepository.DeleteAllLoginAcesso();
+                _controleRepository.DeleteAllVerificaCarga();
+                await Shell.Current.GoToAsync("//LoginPage");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }
