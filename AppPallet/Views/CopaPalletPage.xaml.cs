@@ -66,7 +66,7 @@ namespace AppPallet.Views
                                     if (Shell.Current.CurrentPage is CopaPalletPage)
                                     {
                                         // Navega para BaixaPalletPage quando a URL estiver acessível
-                                        await Shell.Current.GoToAsync("//BaixaPalletPage");
+                                        await Shell.Current.GoToAsync("//BaixaPalletPage");                                       
                                     }
                                     else
                                     {

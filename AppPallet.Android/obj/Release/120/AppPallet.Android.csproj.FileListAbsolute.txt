@@ -644,3 +644,6 @@ C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Releas
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\androidx\proguard\fc78bbe9-d213-43dc-aa14-f362805e865b.txt
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\aapt_rules.txt
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\android\manifest\aapt_rules.txt
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\android\src\crc64e99f36f9af527773\CustomDatePickerRenderer.java
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\android\src\crc64a0e0a82d0db9a07d\IntermediateActivity.java
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\android\src\xamarin\essentials\fileProvider.java

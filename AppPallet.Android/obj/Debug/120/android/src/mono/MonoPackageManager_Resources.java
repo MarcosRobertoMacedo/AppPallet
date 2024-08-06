@@ -9,6 +9,7 @@ public class MonoPackageManager_Resources {
 		"PCLExt.FileStorage.Abstractions.dll",
 		"PCLExt.FileStorage.dll",
 		"Rg.Plugins.Popup.dll",
+		"SkiaSharp.dll",
 		"SQLite-net.dll",
 		"SQLiteNetExtensions.dll",
 		"SQLiteNetExtensionsAsync.dll",

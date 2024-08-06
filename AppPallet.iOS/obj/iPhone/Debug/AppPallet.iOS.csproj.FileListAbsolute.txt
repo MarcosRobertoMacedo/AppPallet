@@ -71,6 +71,8 @@ C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhone\Deb
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhone\Debug\PCLExt.FileStorage.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhone\Debug\Rg.Plugins.Popup.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhone\Debug\Rg.Plugins.Popup.pdb
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhone\Debug\SkiaSharp.dll
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhone\Debug\SkiaSharp.pdb
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhone\Debug\SQLite-net.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhone\Debug\SQLiteNetExtensions.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhone\Debug\SQLiteNetExtensions.pdb

@@ -21,7 +21,6 @@ public class MonoPackageManager_Resources {
 		"Xamarin.AndroidX.SwipeRefreshLayout.dll",
 		"Xamarin.AndroidX.ViewPager.dll",
 		"Xamarin.Google.Android.Material.dll",
-		"AppPallet.dll",
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.dll",
 		"PCLExt.FileStorage.Abstractions.dll",
@@ -52,6 +51,7 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Forms.Platform.dll",
 		"Xamarin.Forms.Xaml.dll",
 		"Xamarin.Google.Guava.ListenableFuture.dll",
+		"AppPallet.dll",
 	};
 	public static String[] Dependencies = new String[]{
 	};

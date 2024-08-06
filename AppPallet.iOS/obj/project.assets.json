@@ -53,6 +53,60 @@
           }
         }
       },
+      "SkiaSharp/2.88.9-preview.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.9-preview.1.1"
+        },
+        "compile": {
+          "lib/xamarinios1.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/xamarinios1.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.9-preview.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios1.0/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios1.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/xamarinios1.0/SkiaSharp.NativeAssets.iOS.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/ios/native/libSkiaSharp.framework/Info.plist": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/ios/native/libSkiaSharp.framework/_CodeSignature/CodeResources": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/ios/native/libSkiaSharp.framework/libSkiaSharp": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/iossimulator/native/libSkiaSharp.framework/Info.plist": {
+            "assetType": "native",
+            "rid": "iossimulator"
+          },
+          "runtimes/iossimulator/native/libSkiaSharp.framework/_CodeSignature/CodeResources": {
+            "assetType": "native",
+            "rid": "iossimulator"
+          },
+          "runtimes/iossimulator/native/libSkiaSharp.framework/libSkiaSharp": {
+            "assetType": "native",
+            "rid": "iossimulator"
+          }
+        }
+      },
       "sqlite-net-pcl/1.7.335": {
         "type": "package",
         "dependencies": {
@@ -454,6 +508,7 @@
           "Rg.Plugins.Popup": "2.1.0",
           "SQLiteNetExtensions": "2.1.0",
           "SQLiteNetExtensions.Async": "2.1.0",
+          "SkiaSharp": "2.88.9-preview.1.1",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
           "Syncfusion.Xamarin.SfPicker": "26.1.40",
@@ -521,6 +576,34 @@
           }
         }
       },
+      "SkiaSharp/2.88.9-preview.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.9-preview.1.1"
+        },
+        "compile": {
+          "lib/xamarinios1.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/xamarinios1.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.9-preview.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios1.0/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios1.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/xamarinios1.0/SkiaSharp.NativeAssets.iOS.targets": {}
+        }
+      },
       "sqlite-net-pcl/1.7.335": {
         "type": "package",
         "dependencies": {
@@ -922,6 +1005,7 @@
           "Rg.Plugins.Popup": "2.1.0",
           "SQLiteNetExtensions": "2.1.0",
           "SQLiteNetExtensions.Async": "2.1.0",
+          "SkiaSharp": "2.88.9-preview.1.1",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
           "Syncfusion.Xamarin.SfPicker": "26.1.40",
@@ -989,6 +1073,34 @@
           }
         }
       },
+      "SkiaSharp/2.88.9-preview.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.9-preview.1.1"
+        },
+        "compile": {
+          "lib/xamarinios1.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/xamarinios1.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.9-preview.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios1.0/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios1.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/xamarinios1.0/SkiaSharp.NativeAssets.iOS.targets": {}
+        }
+      },
       "sqlite-net-pcl/1.7.335": {
         "type": "package",
         "dependencies": {
@@ -1390,6 +1502,7 @@
           "Rg.Plugins.Popup": "2.1.0",
           "SQLiteNetExtensions": "2.1.0",
           "SQLiteNetExtensions.Async": "2.1.0",
+          "SkiaSharp": "2.88.9-preview.1.1",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
           "Syncfusion.Xamarin.SfPicker": "26.1.40",
@@ -1457,6 +1570,34 @@
           }
         }
       },
+      "SkiaSharp/2.88.9-preview.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.9-preview.1.1"
+        },
+        "compile": {
+          "lib/xamarinios1.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/xamarinios1.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.9-preview.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios1.0/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios1.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/xamarinios1.0/SkiaSharp.NativeAssets.iOS.targets": {}
+        }
+      },
       "sqlite-net-pcl/1.7.335": {
         "type": "package",
         "dependencies": {
@@ -1858,6 +1999,7 @@
           "Rg.Plugins.Popup": "2.1.0",
           "SQLiteNetExtensions": "2.1.0",
           "SQLiteNetExtensions.Async": "2.1.0",
+          "SkiaSharp": "2.88.9-preview.1.1",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
           "Syncfusion.Xamarin.SfPicker": "26.1.40",
@@ -1925,6 +2067,34 @@
           }
         }
       },
+      "SkiaSharp/2.88.9-preview.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.9-preview.1.1"
+        },
+        "compile": {
+          "lib/xamarinios1.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/xamarinios1.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.9-preview.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios1.0/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios1.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/xamarinios1.0/SkiaSharp.NativeAssets.iOS.targets": {}
+        }
+      },
       "sqlite-net-pcl/1.7.335": {
         "type": "package",
         "dependencies": {
@@ -2326,6 +2496,7 @@
           "Rg.Plugins.Popup": "2.1.0",
           "SQLiteNetExtensions": "2.1.0",
           "SQLiteNetExtensions.Async": "2.1.0",
+          "SkiaSharp": "2.88.9-preview.1.1",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
           "Syncfusion.Xamarin.SfPicker": "26.1.40",
@@ -2463,6 +2634,105 @@
         "readme.txt",
         "rg.plugins.popup.2.1.0.nupkg.sha512",
         "rg.plugins.popup.nuspec"
+      ]
+    },
+    "SkiaSharp/2.88.9-preview.1.1": {
+      "sha512": "YzYuZiFxHwHT0vz1KLfIc4NJAqsWoFNc5xXCIUfmssr9NB7ZM9MYnpO7oWqR1GD//S/tdoceZVMTu47BoiArLQ==",
+      "type": "package",
+      "path": "skiasharp/2.88.9-preview.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "interactive-extensions/dotnet/SkiaSharp.DotNet.Interactive.dll",
+        "lib/monoandroid1.0/SkiaSharp.dll",
+        "lib/monoandroid1.0/SkiaSharp.pdb",
+        "lib/monoandroid1.0/SkiaSharp.xml",
+        "lib/net462/SkiaSharp.dll",
+        "lib/net462/SkiaSharp.pdb",
+        "lib/net462/SkiaSharp.xml",
+        "lib/net6.0-android30.0/SkiaSharp.dll",
+        "lib/net6.0-android30.0/SkiaSharp.pdb",
+        "lib/net6.0-android30.0/SkiaSharp.xml",
+        "lib/net6.0-ios13.6/SkiaSharp.dll",
+        "lib/net6.0-ios13.6/SkiaSharp.pdb",
+        "lib/net6.0-ios13.6/SkiaSharp.xml",
+        "lib/net6.0-maccatalyst13.5/SkiaSharp.dll",
+        "lib/net6.0-maccatalyst13.5/SkiaSharp.pdb",
+        "lib/net6.0-maccatalyst13.5/SkiaSharp.xml",
+        "lib/net6.0-macos10.15/SkiaSharp.dll",
+        "lib/net6.0-macos10.15/SkiaSharp.pdb",
+        "lib/net6.0-macos10.15/SkiaSharp.xml",
+        "lib/net6.0-tizen7.0/SkiaSharp.dll",
+        "lib/net6.0-tizen7.0/SkiaSharp.pdb",
+        "lib/net6.0-tizen7.0/SkiaSharp.xml",
+        "lib/net6.0-tvos13.4/SkiaSharp.dll",
+        "lib/net6.0-tvos13.4/SkiaSharp.pdb",
+        "lib/net6.0-tvos13.4/SkiaSharp.xml",
+        "lib/net6.0/SkiaSharp.dll",
+        "lib/net6.0/SkiaSharp.pdb",
+        "lib/net6.0/SkiaSharp.xml",
+        "lib/netcoreapp3.1/SkiaSharp.dll",
+        "lib/netcoreapp3.1/SkiaSharp.pdb",
+        "lib/netcoreapp3.1/SkiaSharp.xml",
+        "lib/netstandard1.3/SkiaSharp.dll",
+        "lib/netstandard1.3/SkiaSharp.pdb",
+        "lib/netstandard1.3/SkiaSharp.xml",
+        "lib/netstandard2.0/SkiaSharp.dll",
+        "lib/netstandard2.0/SkiaSharp.pdb",
+        "lib/netstandard2.0/SkiaSharp.xml",
+        "lib/netstandard2.1/SkiaSharp.dll",
+        "lib/netstandard2.1/SkiaSharp.pdb",
+        "lib/netstandard2.1/SkiaSharp.xml",
+        "lib/tizen40/SkiaSharp.dll",
+        "lib/tizen40/SkiaSharp.pdb",
+        "lib/tizen40/SkiaSharp.xml",
+        "lib/uap10.0.10240/SkiaSharp.dll",
+        "lib/uap10.0.10240/SkiaSharp.pdb",
+        "lib/uap10.0.10240/SkiaSharp.xml",
+        "lib/uap10.0.16299/SkiaSharp.dll",
+        "lib/uap10.0.16299/SkiaSharp.pdb",
+        "lib/uap10.0.16299/SkiaSharp.xml",
+        "lib/xamarinios1.0/SkiaSharp.dll",
+        "lib/xamarinios1.0/SkiaSharp.pdb",
+        "lib/xamarinios1.0/SkiaSharp.xml",
+        "lib/xamarinmac2.0/SkiaSharp.dll",
+        "lib/xamarinmac2.0/SkiaSharp.pdb",
+        "lib/xamarinmac2.0/SkiaSharp.xml",
+        "lib/xamarintvos1.0/SkiaSharp.dll",
+        "lib/xamarintvos1.0/SkiaSharp.pdb",
+        "lib/xamarintvos1.0/SkiaSharp.xml",
+        "lib/xamarinwatchos1.0/SkiaSharp.dll",
+        "lib/xamarinwatchos1.0/SkiaSharp.pdb",
+        "lib/xamarinwatchos1.0/SkiaSharp.xml",
+        "skiasharp.2.88.9-preview.1.1.nupkg.sha512",
+        "skiasharp.nuspec"
+      ]
+    },
+    "SkiaSharp.NativeAssets.iOS/2.88.9-preview.1.1": {
+      "sha512": "oZXxSU4QwcbOWE/BM/kMiFFcntiuB/SuBQyQoaTYzIhR0XtKHrgJIjFHRp+YojIa9nlDB5PnkoRtzgHv3yWu2A==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.ios/2.88.9-preview.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net6.0-ios13.6/SkiaSharp.NativeAssets.iOS.targets",
+        "build/xamarinios1.0/SkiaSharp.NativeAssets.iOS.targets",
+        "buildTransitive/net6.0-ios13.6/SkiaSharp.NativeAssets.iOS.targets",
+        "buildTransitive/xamarinios1.0/SkiaSharp.NativeAssets.iOS.targets",
+        "lib/net6.0-ios13.6/_._",
+        "lib/xamarinios1.0/_._",
+        "runtimes/ios/native/libSkiaSharp.framework/Info.plist",
+        "runtimes/ios/native/libSkiaSharp.framework/_CodeSignature/CodeResources",
+        "runtimes/ios/native/libSkiaSharp.framework/libSkiaSharp",
+        "runtimes/iossimulator/native/libSkiaSharp.framework/Info.plist",
+        "runtimes/iossimulator/native/libSkiaSharp.framework/_CodeSignature/CodeResources",
+        "runtimes/iossimulator/native/libSkiaSharp.framework/libSkiaSharp",
+        "skiasharp.nativeassets.ios.2.88.9-preview.1.1.nupkg.sha512",
+        "skiasharp.nativeassets.ios.nuspec"
       ]
     },
     "sqlite-net-pcl/1.7.335": {
@@ -3114,6 +3384,8 @@
       "Rg.Plugins.Popup >= 2.1.0",
       "SQLiteNetExtensions >= 2.1.0",
       "SQLiteNetExtensions.Async >= 2.1.0",
+      "SkiaSharp >= 2.88.9-preview.1.1",
+      "SkiaSharp.NativeAssets.iOS >= 2.88.9-preview.1.1",
       "Syncfusion.Xamarin.Buttons >= 26.1.40",
       "Syncfusion.Xamarin.SfMaskedEdit >= 26.1.40",
       "Syncfusion.Xamarin.SfPicker >= 26.1.40",
@@ -3184,6 +3456,14 @@
           "SQLiteNetExtensions.Async": {
             "target": "Package",
             "version": "[2.1.0, )"
+          },
+          "SkiaSharp": {
+            "target": "Package",
+            "version": "[2.88.9-preview.1.1, )"
+          },
+          "SkiaSharp.NativeAssets.iOS": {
+            "target": "Package",
+            "version": "[2.88.9-preview.1.1, )"
           },
           "Syncfusion.Xamarin.Buttons": {
             "target": "Package",

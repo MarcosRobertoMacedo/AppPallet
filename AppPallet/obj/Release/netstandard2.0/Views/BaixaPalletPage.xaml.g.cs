@@ -17,16 +17,16 @@ namespace AppPallet.Views {
     public partial class BaixaPalletPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.DatePicker dataDatePicker;
+        private global::AppPallet.CustomDatePicker dataDatePicker;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::AppPallet.CustomEntry placaEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry entregaEntry;
+        private global::AppPallet.CustomEntry entregaEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry devolucaoEntry;
+        private global::AppPallet.CustomEntry devolucaoEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button GravarButton;
@@ -34,10 +34,10 @@ namespace AppPallet.Views {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(BaixaPalletPage));
-            dataDatePicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.DatePicker>(this, "dataDatePicker");
+            dataDatePicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomDatePicker>(this, "dataDatePicker");
             placaEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntry>(this, "placaEntry");
-            entregaEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "entregaEntry");
-            devolucaoEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "devolucaoEntry");
+            entregaEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntry>(this, "entregaEntry");
+            devolucaoEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntry>(this, "devolucaoEntry");
             GravarButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "GravarButton");
         }
     }

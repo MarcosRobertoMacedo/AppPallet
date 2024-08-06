@@ -30,6 +30,8 @@ com.google.android.material.bottomnavigation.BottomNavigationView;C:\Users\teste
 com.google.android.material.tabs.TabLayout;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\lp\62\jl\res\layout\fallbacktabbardonotuse.xml
 com.google.android.material.tabs.TabLayout;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\lp\62\jl\res\layout\rootlayout.xml
 com.google.android.material.tabs.TabLayout;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\lp\62\jl\res\layout\tabbar.xml
+crc643f46942d9dd1fff9.ShellFlyoutLayout;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\lp\62\jl\res\layout\flyoutcontent.xml
+crc64720bb2db43a66fe9.FormsViewPager;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\lp\62\jl\res\layout\rootlayout.xml
 declare-styleable;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\lp\4\jl\res\values\attrs.xml
 declare-styleable;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\lp\62\jl\res\values\attrs.xml
 declare-styleable;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Release\120\lp\7\jl\res\values\attrs.xml

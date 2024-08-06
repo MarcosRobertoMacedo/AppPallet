@@ -63,6 +63,14 @@
               "target": "Package",
               "version": "[2.1.0, )"
             },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[2.88.9-preview.1.1, )"
+            },
+            "SkiaSharp.NativeAssets.iOS": {
+              "target": "Package",
+              "version": "[2.88.9-preview.1.1, )"
+            },
             "Syncfusion.Xamarin.Buttons": {
               "target": "Package",
               "version": "[26.1.40, )"
@@ -176,6 +184,10 @@
             "SQLiteNetExtensions.Async": {
               "target": "Package",
               "version": "[2.1.0, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[2.88.9-preview.1.1, )"
             },
             "Syncfusion.Xamarin.Buttons": {
               "target": "Package",
