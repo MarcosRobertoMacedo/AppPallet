@@ -2916,3 +2916,4 @@ C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\stamp\_GenerateJavaStubs.stamp
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\android\src\crc64e99f36f9af527773\CustomEntryEnableRenderer.java
