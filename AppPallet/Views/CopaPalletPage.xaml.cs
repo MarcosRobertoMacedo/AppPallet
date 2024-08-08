@@ -45,7 +45,7 @@ namespace AppPallet.Views
             _viewModel.OnAppearing();
             PositionStarting();
             _acessoDados = DadosServicos.Instance.AcessoDados;
-            await StartFetchAndUpdatePositionsPeriodically();
+            //await StartFetchAndUpdatePositionsPeriodically();
 
             // Método assíncrono para verificar a URL periodicamente
             async Task CheckUrlPeriodically()

@@ -55,6 +55,10 @@
               "target": "Package",
               "version": "[1.4.1.1, )"
             },
+            "Plugin.CurrentActivity": {
+              "target": "Package",
+              "version": "[2.1.0.4, )"
+            },
             "Rg.Plugins.Popup": {
               "target": "Package",
               "version": "[2.1.0, )"
@@ -198,6 +202,10 @@
             "Syncfusion.Xamarin.SfPicker": {
               "target": "Package",
               "version": "[26.1.40, )"
+            },
+            "Xam.Plugin.Media": {
+              "target": "Package",
+              "version": "[6.0.2, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",

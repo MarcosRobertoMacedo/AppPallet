@@ -2,74 +2,74 @@
 using FluentFTP.Exceptions;
 using System;
 using System.IO;
+using System.Net;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace AppPallet.Services
 {
     public class FtpService
     {
-        private string _host;
-        private int _port;
+        private string ftpServer = "prosystem.dyndns-work.com";
+        private string ftpUsername = ""; // Deixe em branco se não houver nome de usuário
+        private string ftpPassword = ""; // Deixe em branco se não houver senha
 
-        public FtpService(string host, int port = 21)
+        public async Task UploadFileAsync(string localFilePath, Page page)
         {
-            _host = host;
-            _port = port;
-        }
+            var fileName = Path.GetFileName(localFilePath);
+            var ftpUri = new Uri($"ftp://{ftpServer}/{fileName}");
 
-        public bool UploadFile(string localFilePath, string remoteFilePath)
-        {
             try
             {
-                using (var ftpClient = new FtpClient(_host, _port))
+                var request = (FtpWebRequest)WebRequest.Create(ftpUri);
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                request.Credentials = new NetworkCredential(ftpUsername, ftpPassword);
+
+                using (var fileStream = File.OpenRead(localFilePath))
+                using (var requestStream = await request.GetRequestStreamAsync())
                 {
-                    // Configurações adicionais
-                    ftpClient.Config.ConnectTimeout = 10000; // Tempo de conexão de 10 segundos
-                    ftpClient.Config.DataConnectionType = FtpDataConnectionType.PASV; // Modo PASV
-                    ftpClient.Config.EncryptionMode = FtpEncryptionMode.None; // Sem criptografia
+                    await fileStream.CopyToAsync(requestStream);
+                }
 
-                    // Conectar ao servidor FTP
-                    ftpClient.Connect();
-
-                    // Verificar se o arquivo local existe antes de tentar o upload
-                    if (!File.Exists(localFilePath))
+                using (var response = (FtpWebResponse)await request.GetResponseAsync())
+                {
+                    if (response.StatusCode == FtpStatusCode.ClosingData)
                     {
-                        Console.WriteLine("Arquivo local não encontrado.");
-                        return false;
-                    }
-
-                    // Realizar o upload do arquivo
-                    FtpStatus uploadStatus = ftpClient.UploadFile(localFilePath, remoteFilePath);
-
-                    // Verificar o status do upload
-                    if (uploadStatus == FtpStatus.Success)
-                    {
-                        Console.WriteLine("Arquivo enviado com sucesso!");
-                        return true;
+                        await page.DisplayAlert("Success", "File uploaded successfully", "OK");
                     }
                     else
                     {
-                        Console.WriteLine($"Falha ao enviar o arquivo: {uploadStatus}");
-                        return false;
+                        await page.DisplayAlert("Error", $"Upload failed: {response.StatusDescription}", "OK");
                     }
                 }
             }
-            catch (FtpCommandException ftpEx)
+            catch (WebException webEx)
             {
-                // Exceção do FluentFTP
-                Console.WriteLine($"Erro no comando FTP: {ftpEx.Message}");
-                return false;
+                if (webEx.Response is FtpWebResponse ftpResponse)
+                {
+                    var statusDescription = ftpResponse.StatusDescription;
+                    await page.DisplayAlert("FTP Error", $"FTP Error: {statusDescription}", "OK");
+                }
+                else
+                {
+                    await page.DisplayAlert("Web Error", $"Web Error: {webEx.Message}", "OK");
+                }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                await page.DisplayAlert("Permission Error", "Permission denied. Please ensure the app has access to read the file.", "OK");
+            }
+            catch (FileNotFoundException)
+            {
+                await page.DisplayAlert("File Error", "File not found. Please check the file path.", "OK");
             }
             catch (IOException ioEx)
             {
-                // Exceção de I/O
-                Console.WriteLine($"Erro de I/O: {ioEx.Message}");
-                return false;
+                await page.DisplayAlert("IO Error", $"IO Error: {ioEx.Message}", "OK");
             }
             catch (Exception ex)
             {
-                // Exceções gerais
-                Console.WriteLine($"Erro geral: {ex.Message}");
-                return false;
+                await page.DisplayAlert("General Error", $"An unexpected error occurred: {ex.Message}", "OK");
             }
         }
     }

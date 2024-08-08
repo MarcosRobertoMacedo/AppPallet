@@ -58,6 +58,8 @@
                         </Frame>
                         <Button x:Name="CapturarFotoButton" Text="📷" Grid.Column="2" Clicked="CapturarFoto_Clicked"
                                 WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button x:Name="TitarFotoButton" Text="📷" Grid.Column="3" Clicked="TirarFoto_Clicked"
+        WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Grid>
 
                     <!-- Data Section -->

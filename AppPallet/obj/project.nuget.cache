@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/Wl+HvcF5i4=",
+  "dgSpecHash": "9bfBr10bYW4=",
   "success": true,
   "projectFilePath": "C:\\Users\\teste\\OneDrive\\Documentos\\GitHub\\AppPallet\\AppPallet\\AppPallet.csproj",
   "expectedPackageFiles": [
@@ -29,6 +29,7 @@
     "C:\\Users\\teste\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\teste\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\teste\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.3\\system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512",
+    "C:\\Users\\teste\\.nuget\\packages\\xam.plugin.media\\6.0.2\\xam.plugin.media.6.0.2.nupkg.sha512",
     "C:\\Users\\teste\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
     "C:\\Users\\teste\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
   ],

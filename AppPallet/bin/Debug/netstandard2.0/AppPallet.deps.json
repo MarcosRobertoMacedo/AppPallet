@@ -20,6 +20,7 @@
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
           "Syncfusion.Xamarin.SfPicker": "26.1.40",
+          "Xam.Plugin.Media": "6.0.2",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
           "sqlite-net-pcl": "1.7.335"
@@ -252,6 +253,14 @@
           }
         }
       },
+      "Xam.Plugin.Media/6.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Plugin.Media.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Xamarin.Essentials/1.7.0": {
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
@@ -461,6 +470,13 @@
       "sha512": "sha512-3TIsJhD1EiiT0w2CcDMN/iSSwnNnsrnbzeVHSKkaEgV85txMprmuO+Yq2AdSbeVGcg28pdNDTPK87tJhX7VFHw==",
       "path": "system.runtime.compilerservices.unsafe/4.5.3",
       "hashPath": "system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512"
+    },
+    "Xam.Plugin.Media/6.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QLl5CXxSDF92+E154djfDKOoPSjvGkQSxYmLY0Fitnb6P4B103JQDU7lZlH0ez67GtzZDa8kWvS0Go0Yv1w9og==",
+      "path": "xam.plugin.media/6.0.2",
+      "hashPath": "xam.plugin.media.6.0.2.nupkg.sha512"
     },
     "Xamarin.Essentials/1.7.0": {
       "type": "package",

@@ -58,6 +58,9 @@ C:\Users\marco\Documents\Projetos Sites\Roche\AppPallet\AppPallet\obj\Debug\nets
 C:\Users\marco\Documents\Projetos Sites\Roche\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppPallet.dll
 C:\Users\marco\Documents\Projetos Sites\Roche\AppPallet\AppPallet\obj\Debug\netstandard2.0\ref\AppPallet.dll
 C:\Users\marco\Documents\Projetos Sites\Roche\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppPallet.pdb
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\bin\Debug\netstandard2.0\AppPallet.deps.json
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\bin\Debug\netstandard2.0\AppPallet.dll
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\bin\Debug\netstandard2.0\AppPallet.pdb
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppPallet.csproj.AssemblyReference.cache
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppPallet.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\App.xaml.g.cs
@@ -73,9 +76,6 @@ C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstand
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppPallet.AssemblyInfo.cs
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppPallet.csproj.CoreCompileInputs.cache
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppPallet.sourcelink.json
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\bin\Debug\netstandard2.0\AppPallet.deps.json
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\bin\Debug\netstandard2.0\AppPallet.dll
-C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\bin\Debug\netstandard2.0\AppPallet.pdb
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\AppPallet.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet\obj\Debug\netstandard2.0\refint\AppPallet.dll

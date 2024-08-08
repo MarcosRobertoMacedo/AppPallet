@@ -9,6 +9,8 @@ public class MonoPackageManager_Resources {
 		"Newtonsoft.Json.dll",
 		"PCLExt.FileStorage.Abstractions.dll",
 		"PCLExt.FileStorage.dll",
+		"Plugin.CurrentActivity.dll",
+		"Plugin.Media.dll",
 		"Rg.Plugins.Popup.dll",
 		"SkiaSharp.dll",
 		"SQLite-net.dll",
