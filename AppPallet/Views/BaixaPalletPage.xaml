@@ -56,10 +56,10 @@
                         <Frame BorderColor="LightBlue" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
                             <local:CustomEntryEnable x:Name="caminhoFotoEntry" Placeholder="Caminho Foto" BackgroundColor="Transparent" />
                         </Frame>
-                        <Button x:Name="CapturarFotoButton" Text="📷" Grid.Column="2" Clicked="CapturarFoto_Clicked"
+                        <!--<Button x:Name="CapturarFotoButton" Text="📷" Grid.Column="2" Clicked="CapturarFoto_Clicked"
+                                WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>-->
+                        <Button x:Name="TitarFotoButton" Text="📷" Grid.Column="2" Clicked="TirarFoto_Clicked"
                                 WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Button x:Name="TitarFotoButton" Text="📷" Grid.Column="3" Clicked="TirarFoto_Clicked"
-        WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Grid>
 
                     <!-- Data Section -->

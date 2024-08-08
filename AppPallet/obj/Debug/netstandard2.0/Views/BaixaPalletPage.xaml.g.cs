@@ -20,9 +20,6 @@ namespace AppPallet.Views {
         private global::AppPallet.CustomEntryEnable caminhoFotoEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Button CapturarFotoButton;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button TitarFotoButton;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
@@ -50,7 +47,6 @@ namespace AppPallet.Views {
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(BaixaPalletPage));
             caminhoFotoEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntryEnable>(this, "caminhoFotoEntry");
-            CapturarFotoButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "CapturarFotoButton");
             TitarFotoButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "TitarFotoButton");
             dataDatePicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomDatePicker>(this, "dataDatePicker");
             placaEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntryEnable>(this, "placaEntry");

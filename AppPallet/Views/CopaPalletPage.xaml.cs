@@ -19,6 +19,9 @@ namespace AppPallet.Views
         private bool _isCheckingUrl;
         private bool _isUpdatingPositions;
         private CancellationTokenSource _cancellationTokenSource;
+        private CancellationTokenSource _checkUrlCancellationTokenSource;
+        private bool _isCheckingUrlVisible;
+        private string _url = "http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe";
 
         public CopaPalletPage()
         {
@@ -39,61 +42,40 @@ namespace AppPallet.Views
             var customAlertPage = new CustomPopupPage();
             await Navigation.PushModalAsync(customAlertPage);
         }
+
+        private void AtualizarData()
+        {
+            DateTime today = DateTime.Today;
+            int year = today.Year;
+            int month = today.Month;
+
+            // Calculando o primeiro e o último dia do mês atual
+            DateTime firstDayOfMonth = new DateTime(year, month, 1);
+            DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+            // Formatando as datas
+            string formattedFirstDay = firstDayOfMonth.ToString("dd/MM/yyyy");
+            string formattedLastDay = lastDayOfMonth.ToString("dd/MM/yyyy");
+
+            // Atualizando o texto do Label
+            DataLabel.Text = $"{formattedFirstDay} a {formattedLastDay}";
+        }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             _viewModel.OnAppearing();
-            PositionStarting();
+            AtualizarData();
+            PosicaoInicial();
             _acessoDados = DadosServicos.Instance.AcessoDados;
-            //await StartFetchAndUpdatePositionsPeriodically();
 
-            // Método assíncrono para verificar a URL periodicamente
-            async Task CheckUrlPeriodically()
-            {
-                while (true)
-                {
-                    if (!_isCheckingUrl)
-                    {
-                        _isCheckingUrl = true;
-                        try
-                        {
-                            var verificaCarga = await CheckUrl();
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                if (verificaCarga != null)
-                                {
-                                    Console.WriteLine("URL acessível.");
+            // Inicia o método assíncrono para atualizar posições
+            _ = StartFetchAndUpdatePositionsPeriodically();
 
-                                    // Verifica se a página atual é a CopapalletPage antes de navegar
-                                    if (Shell.Current.CurrentPage is CopaPalletPage)
-                                    {
-                                        // Navega para BaixaPalletPage quando a URL estiver acessível
-                                        await Shell.Current.GoToAsync("//BaixaPalletPage");                                       
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Não está na página CopapalletPage.");
-                                    }
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Erro ao acessar a URL ou dados inválidos.");
-                                }
-                            });
-                        }
-                        finally
-                        {
-                            _isCheckingUrl = false;
-                        }
-                    }
-
-                    await Task.Delay(TimeSpan.FromMinutes(1)); // Espera 1 minuto antes de verificar novamente
-                }
-            }
-
-            // Inicia o método assíncrono
-            _ = CheckUrlPeriodically(); // Lançar a tarefa sem esperar
+            // Inicia o método assíncrono para verificar a URL periodicamente
+            _ = CheckUrlPeriodically();
         }
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -101,6 +83,7 @@ namespace AppPallet.Views
             _isUpdatingPositions = false;
             _isCheckingUrl = false;
         }
+
         private async Task StartFetchAndUpdatePositionsPeriodically()
         {
             _cancellationTokenSource = new CancellationTokenSource();
@@ -112,7 +95,7 @@ namespace AppPallet.Views
                 try
                 {
                     // Chama o método que você deseja executar periodicamente
-                    await FetchAndUpdatePositions(_acessoDados.empresa); // Certifique-se de que isso é um método assíncrono
+                    await BuscaPosicoesEquipes(_acessoDados.empresa); // Certifique-se de que isso é um método assíncrono
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
@@ -141,11 +124,54 @@ namespace AppPallet.Views
             _isUpdatingPositions = false;
         }
 
+        private async Task CheckUrlPeriodically()
+        {
+            while (true)
+            {
+                if (!_isCheckingUrl)
+                {
+                    _isCheckingUrl = true;
+                    try
+                    {
+                        var verificaCarga = await CheckUrl();
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            if (verificaCarga != null)
+                            {
+                                Console.WriteLine("URL acessível.");
+
+                                // Verifica se a página atual é a CopaPalletPage antes de navegar
+                                if (Shell.Current.CurrentPage is CopaPalletPage)
+                                {
+                                    // Navega para BaixaPalletPage quando a URL estiver acessível
+                                    await Shell.Current.GoToAsync("//BaixaPalletPage");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Não está na página CopaPalletPage.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Erro ao acessar a URL ou dados inválidos.");
+                            }
+                        });
+                    }
+                    finally
+                    {
+                        _isCheckingUrl = false;
+                    }
+                }
+
+                await Task.Delay(TimeSpan.FromMinutes(1)); // Espera 1 minuto antes de verificar novamente
+            }
+        }
+
         public async Task<VerificaCarga> CheckUrl()
         {
             try
             {
-                string UrlToCheck = $"http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/VerificaCarga/{_acessoDados.empresa}/{_acessoDados.codigo}";
+                string UrlToCheck = _url + $"/VerificaCarga/{_acessoDados.empresa}/{_acessoDados.codigo}";
 
                 var response = await _client.GetAsync(UrlToCheck);
 
@@ -187,11 +213,13 @@ namespace AppPallet.Views
         }
 
 
-        private async Task FetchAndUpdatePositions(string empresaId)
+
+
+        private async Task BuscaPosicoesEquipes(string empresaId)
         {
             try
             {
-                string url = $"http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/PosicaoEquipes/{empresaId}";
+                string url = _url + $"/PosicaoEquipes/{empresaId}";
                 var response = await _client.GetStringAsync(url);
                 var positions = JArray.Parse(response);
                 int qtd = 0;
@@ -201,7 +229,7 @@ namespace AppPallet.Views
                     qtd++;
                     string equipe = (string)position["EQUIPE"];
                     int quant = (int)position["QUANT"];
-                    UpdatePotinhoPosition(equipe, quant, qtd);
+                    AtualizaPontos(equipe, quant, qtd);
                 }
             }
             catch (HttpRequestException httpEx)
@@ -214,14 +242,14 @@ namespace AppPallet.Views
             }
         }
 
-        private void PositionStarting()
+        private void PosicaoInicial()
         {
             AbsoluteLayout.SetLayoutBounds(PotinhoAmarelo, new Rectangle(0.2, 0.18, 10, 10));
             AbsoluteLayout.SetLayoutBounds(PotinhoVerde, new Rectangle(0.2, 0.20, 10, 10));
             AbsoluteLayout.SetLayoutBounds(PotinhoAzul, new Rectangle(0.2, 0.22, 10, 10));
         }
 
-        private void UpdatePotinhoPosition(string equipe, int paletesEntregues, int qtd)
+        private void AtualizaPontos(string equipe, int paletesEntregues, int qtd)
         {
             double x = 0.2, y = 0.22;
 

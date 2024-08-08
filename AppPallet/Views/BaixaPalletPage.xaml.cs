@@ -36,6 +36,8 @@ namespace AppPallet.Views
         // Convert the image to a byte array
         byte[] imageBytes;
 
+        private string _url = "http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe";
+
         public BaixaPalletPage()
         {
             InitializeComponent();
@@ -53,7 +55,7 @@ namespace AppPallet.Views
         private async void LoadData()
         {
             ShowLoading(true);
-            string url = $"http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/VerificaCarga/{_acessoDados.empresa}/{_acessoDados.codigo}";
+            string url = _url + $"/VerificaCarga/{_acessoDados.empresa}/{_acessoDados.codigo}";
 
             try
             {
@@ -71,6 +73,13 @@ namespace AppPallet.Views
                         if (verificaCargaList != null && verificaCargaList.Count > 0)
                         {
                             var data = verificaCargaList[0];
+
+                            if (data.ID == "0" || data.DATA == "0")
+                            {
+                                // Redireciona para CopaPalletPage
+                                await Shell.Current.GoToAsync("//CopaPalletPage");
+                                return;
+                            }
 
                             if (DateTime.TryParse(data.DATA, out DateTime parsedDate))
                             {
@@ -122,6 +131,7 @@ namespace AppPallet.Views
                 ShowLoading(false);
             }
         }
+
 
         private bool IsJson(string input)
         {
@@ -261,10 +271,10 @@ namespace AppPallet.Views
                 using (var httpClient = new HttpClient())
                 {
                     httpClient.Timeout = TimeSpan.FromSeconds(30); // Define um timeout para a requisição
-                                                                   //var response = await httpClient.PostAsync("http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/UPLoadArquivo/", httpContent);
+                    //var response = await httpClient.PostAsync("http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/UPLoadArquivo/", httpContent);
 
                     var encodedImage = Uri.EscapeDataString(base64Image);
-                    var url = $"http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/UPLoadArquivo/{cargaId}/{quantidadeEntregue}/{quantidadeEntregue}/{encodedImage}";
+                    var url = _url + $"/UPLoadArquivo/{cargaId}/{quantidadeEntregue}/{quantidadeEntregue}/{encodedImage}";
 
                     var response = await httpClient.PostAsync(url, null);
                     if (response.IsSuccessStatusCode)
@@ -397,7 +407,7 @@ namespace AppPallet.Views
         }
         private async Task<bool> SendMultiPartDataToServer(int cargaId, int quantidadeEntregue, int quantidadeDevolvido, string photoPath)
         {
-            var url = "http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/UPLoadArquivo/";
+            var url = _url + "/UPLoadArquivo/";
 
             try
             {
