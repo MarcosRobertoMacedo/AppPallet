@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppPallet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c2c2ee7f7c5b5516bd18e5319a2bba32af665d44")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6ed9a5e13a5d5652ec37fae6ae8511aa77f1395")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppPallet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppPallet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -187,6 +187,8 @@ namespace AppPallet.Views
                 _controleRepository.InsertLogin(obj);
                 DadosServicos.Instance.LoginDados = obj;
 
+                //Preferences.Set("UserName", log);
+
                 await AcessoLogin(urlLoginAcesso, log, pass);
             }
             catch (HttpRequestException httpEx)

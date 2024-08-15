@@ -26,7 +26,9 @@ namespace AppPallet.Views
         public CopaPalletPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
             BindingContext = _viewModel = new ItemsViewModel();
+
         }
 
         private async Task ShowActionSheet()

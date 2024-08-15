@@ -29,7 +29,7 @@ namespace AppPallet.Views {
         private global::AppPallet.CustomEntryEnable placaEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::AppPallet.CustomEntryEnable entregaEntry;
+        private global::AppPallet.CustomEntry entregaEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::AppPallet.CustomEntry devolucaoEntry;
@@ -50,7 +50,7 @@ namespace AppPallet.Views {
             TitarFotoButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "TitarFotoButton");
             dataDatePicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomDatePicker>(this, "dataDatePicker");
             placaEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntryEnable>(this, "placaEntry");
-            entregaEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntryEnable>(this, "entregaEntry");
+            entregaEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntry>(this, "entregaEntry");
             devolucaoEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntry>(this, "devolucaoEntry");
             GravarButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "GravarButton");
             loadingOverlay = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "loadingOverlay");

@@ -9,21 +9,32 @@
     ".NETStandard,Version=v2.0/": {
       "AppPallet/1.0.0": {
         "dependencies": {
+          "FluentFTP": "51.0.0",
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "13.0.3",
           "PCLExt.FileStorage": "1.4.1.1",
           "Rg.Plugins.Popup": "2.1.0",
           "SQLiteNetExtensions": "2.1.0",
           "SQLiteNetExtensions.Async": "2.1.0",
+          "SkiaSharp": "2.88.9-preview.1.1",
           "Syncfusion.Xamarin.Buttons": "26.1.40",
           "Syncfusion.Xamarin.SfMaskedEdit": "26.1.40",
           "Syncfusion.Xamarin.SfPicker": "26.1.40",
+          "Xam.Plugin.Media": "6.0.2",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
           "sqlite-net-pcl": "1.7.335"
         },
         "runtime": {
           "AppPallet.dll": {}
+        }
+      },
+      "FluentFTP/51.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/FluentFTP.dll": {
+            "assemblyVersion": "51.0.0.0",
+            "fileVersion": "51.0.0.0"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
@@ -63,6 +74,21 @@
           }
         }
       },
+      "SkiaSharp/2.88.9-preview.1.1": {
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.9-preview.1.1",
+          "SkiaSharp.NativeAssets.macOS": "2.88.9-preview.1.1",
+          "System.Memory": "4.5.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SkiaSharp.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.9.0"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.9-preview.1.1": {},
+      "SkiaSharp.NativeAssets.Win32/2.88.9-preview.1.1": {},
       "sqlite-net-pcl/1.7.335": {
         "dependencies": {
           "SQLitePCLRaw.bundle_green": "2.0.3"
@@ -113,7 +139,7 @@
       },
       "SQLitePCLRaw.core/2.0.3": {
         "dependencies": {
-          "System.Memory": "4.5.3"
+          "System.Memory": "4.5.5"
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.core.dll": {
@@ -190,24 +216,24 @@
           }
         }
       },
-      "System.Buffers/4.4.0": {
+      "System.Buffers/4.5.1": {
         "runtime": {
           "lib/netstandard2.0/System.Buffers.dll": {
-            "assemblyVersion": "4.0.2.0",
-            "fileVersion": "4.6.25519.3"
+            "assemblyVersion": "4.0.3.0",
+            "fileVersion": "4.6.28619.1"
           }
         }
       },
-      "System.Memory/4.5.3": {
+      "System.Memory/4.5.5": {
         "dependencies": {
-          "System.Buffers": "4.4.0",
+          "System.Buffers": "4.5.1",
           "System.Numerics.Vectors": "4.5.0",
-          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+          "System.Runtime.CompilerServices.Unsafe": "4.5.3"
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {
-            "assemblyVersion": "4.0.1.1",
-            "fileVersion": "4.6.27617.2"
+            "assemblyVersion": "4.0.1.2",
+            "fileVersion": "4.6.31308.1"
           }
         }
       },
@@ -219,11 +245,19 @@
           }
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.3": {
         "runtime": {
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
             "assemblyVersion": "4.0.4.1",
-            "fileVersion": "4.6.26919.2"
+            "fileVersion": "4.6.28619.1"
+          }
+        }
+      },
+      "Xam.Plugin.Media/6.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Plugin.Media.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -262,6 +296,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "FluentFTP/51.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PqUaL33qXb/Y6f0kiZQLojK+nsE2HNoOOwJe62OCczAJXaCaoVWioV7jnzsu1vwceDiAyUH32L/KjvH3mpO3FQ==",
+      "path": "fluentftp/51.0.0",
+      "hashPath": "fluentftp.51.0.0.nupkg.sha512"
+    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
@@ -296,6 +337,27 @@
       "sha512": "sha512-caKjkvimzpUqk4pO/WSFn3uOX43uZNW5rPWCx7eXkOlGG9Br90MTwNVS1nxhtyypB69uUe/0GQPEC3rz+kscbA==",
       "path": "rg.plugins.popup/2.1.0",
       "hashPath": "rg.plugins.popup.2.1.0.nupkg.sha512"
+    },
+    "SkiaSharp/2.88.9-preview.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YzYuZiFxHwHT0vz1KLfIc4NJAqsWoFNc5xXCIUfmssr9NB7ZM9MYnpO7oWqR1GD//S/tdoceZVMTu47BoiArLQ==",
+      "path": "skiasharp/2.88.9-preview.1.1",
+      "hashPath": "skiasharp.2.88.9-preview.1.1.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.macOS/2.88.9-preview.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yD6raLMhyAIxqZ3QVeOezT4aWsMvYnVFI8H2e+JNyYkC3cdWyeKN7Jo4zunLq8xOBqpZcvl5nldnxoHY12y8rg==",
+      "path": "skiasharp.nativeassets.macos/2.88.9-preview.1.1",
+      "hashPath": "skiasharp.nativeassets.macos.2.88.9-preview.1.1.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Win32/2.88.9-preview.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PQFGr81yzlwN+Nj+rFw+OBvEbfYlO4YDDMwZ9lDxNoDx7ujt7gGotK4u+qfCpiH5eF28MTGZfJM1wz+C274g/Q==",
+      "path": "skiasharp.nativeassets.win32/2.88.9-preview.1.1",
+      "hashPath": "skiasharp.nativeassets.win32.2.88.9-preview.1.1.nupkg.sha512"
     },
     "sqlite-net-pcl/1.7.335": {
       "type": "package",
@@ -381,19 +443,19 @@
       "path": "syncfusion.xamarin.sfpicker/26.1.40",
       "hashPath": "syncfusion.xamarin.sfpicker.26.1.40.nupkg.sha512"
     },
-    "System.Buffers/4.4.0": {
+    "System.Buffers/4.5.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
-      "path": "system.buffers/4.4.0",
-      "hashPath": "system.buffers.4.4.0.nupkg.sha512"
+      "sha512": "sha512-Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
+      "path": "system.buffers/4.5.1",
+      "hashPath": "system.buffers.4.5.1.nupkg.sha512"
     },
-    "System.Memory/4.5.3": {
+    "System.Memory/4.5.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
-      "path": "system.memory/4.5.3",
-      "hashPath": "system.memory.4.5.3.nupkg.sha512"
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
     },
     "System.Numerics.Vectors/4.5.0": {
       "type": "package",
@@ -402,12 +464,19 @@
       "path": "system.numerics.vectors/4.5.0",
       "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
     },
-    "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+    "System.Runtime.CompilerServices.Unsafe/4.5.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
-      "path": "system.runtime.compilerservices.unsafe/4.5.2",
-      "hashPath": "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
+      "sha512": "sha512-3TIsJhD1EiiT0w2CcDMN/iSSwnNnsrnbzeVHSKkaEgV85txMprmuO+Yq2AdSbeVGcg28pdNDTPK87tJhX7VFHw==",
+      "path": "system.runtime.compilerservices.unsafe/4.5.3",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512"
+    },
+    "Xam.Plugin.Media/6.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QLl5CXxSDF92+E154djfDKOoPSjvGkQSxYmLY0Fitnb6P4B103JQDU7lZlH0ez67GtzZDa8kWvS0Go0Yv1w9og==",
+      "path": "xam.plugin.media/6.0.2",
+      "hashPath": "xam.plugin.media.6.0.2.nupkg.sha512"
     },
     "Xamarin.Essentials/1.7.0": {
       "type": "package",

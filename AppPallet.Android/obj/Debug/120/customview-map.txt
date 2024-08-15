@@ -37,6 +37,7 @@ enum;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\D
 enum;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\lp\7\jl\res\values\attrs.xml
 external-cache-path;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\lp\64\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 external-path;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\lp\64\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+external-path;obj\Debug\120\res\xml\file_paths.xml
 foreground;obj\Debug\120\res\mipmap-anydpi-v26\icon.xml
 foreground;obj\Debug\120\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\lp\65\jl\res\layout\bottomtablayout.xml
@@ -75,6 +76,7 @@ pathInterpolator;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.A
 pathInterpolator;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\lp\7\jl\res\interpolator\sfcheckbox_unchecked_interpolator0.xml
 pathInterpolator;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\lp\7\jl\res\interpolator\sfcheckbox_unchecked_interpolator1.xml
 paths;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\lp\64\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+paths;obj\Debug\120\res\xml\file_paths.xml
 RelativeLayout;obj\Debug\120\res\drawable\splash_screen.xml
 resources;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\lp\10\jl\res\values\attrs.xml
 resources;C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.Android\obj\Debug\120\lp\65\jl\res\values\attrs.xml

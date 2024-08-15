@@ -1,9 +1,12 @@
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\AppPallet.iOS.exe
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\FluentFTP.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\Newtonsoft.Json.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\PCLExt.FileStorage.Abstractions.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\PCLExt.FileStorage.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\Rg.Plugins.Popup.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\Rg.Plugins.Popup.pdb
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\SkiaSharp.dll
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\SkiaSharp.pdb
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\SQLite-net.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\SQLiteNetExtensions.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\SQLiteNetExtensions.pdb
@@ -26,6 +29,8 @@ C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimu
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\System.Buffers.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\System.Memory.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\Plugin.Media.dll
+C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\Plugin.Media.pdb
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\Xamarin.Essentials.dll
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\Xamarin.Essentials.pdb
 C:\Users\teste\OneDrive\Documentos\GitHub\AppPallet\AppPallet.iOS\bin\iPhoneSimulator\Release\Xamarin.Forms.Core.dll

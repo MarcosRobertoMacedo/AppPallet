@@ -38,9 +38,13 @@ namespace AppPallet.Views
 
         private string _url = "http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe";
 
+        private const string DevolucaoKey = "devolucaoEntry";
+        private const string EntregaKey = "entregaEntry";
+
         public BaixaPalletPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
             _controleRepository = new ControleRepository();
             ftpService = new FtpService();
         }
@@ -87,8 +91,28 @@ namespace AppPallet.Views
                             }
 
                             placaEntry.Text = data.PLACA;
-                            entregaEntry.Text = data.QUANT;
-                            devolucaoEntry.Text = data.QUANTDV;
+
+                            var devolucao = Preferences.Get(DevolucaoKey, null);
+                            var entrega = Preferences.Get(EntregaKey, null);
+
+                            // Verifica se há devolução ou se o valor atual de entregaEntry é diferente do esperado
+                            if (!string.IsNullOrWhiteSpace(devolucao) || (entrega != null && entregaEntry.Text != data.QUANT))
+                            {
+                                // Atualiza os campos com os valores das preferências, se existirem
+                                entregaEntry.Text = entrega ?? data.QUANT;
+                                devolucaoEntry.Text = devolucao ?? string.Empty;
+
+                                // Remove os dados armazenados nas preferências
+                                Preferences.Remove(EntregaKey);
+                                Preferences.Remove(DevolucaoKey);
+                            }
+                            else
+                            {
+                                // Se não houver devolução ou o valor for igual ao esperado, atualiza os campos para os valores padrão do serviço
+                                entregaEntry.Text = data.QUANT;
+                                devolucaoEntry.Text = string.Empty;
+                            }
+
 
                             DadosServicos.Instance.VerificaCargaDados = data;
                             _verificaCargaDados = DadosServicos.Instance.VerificaCargaDados;
@@ -132,44 +156,107 @@ namespace AppPallet.Views
             }
         }
 
-
         private bool IsJson(string input)
         {
             input = input.Trim();
             return input.StartsWith("{") && input.EndsWith("}") || input.StartsWith("[") && input.EndsWith("]");
         }
 
-        #region Enviar Foto Json
         private async void TirarFoto_Clicked(object sender, EventArgs e) { await TakePhotoAsync(); }
+
         private async Task TakePhotoAsync()
         {
-            await CrossMedia.Current.Initialize();
-
-            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            try
             {
-                await App.Current.MainPage.DisplayAlert("No Camera", "No camera available.", "OK");
-                return;
+                await CrossMedia.Current.Initialize();
+
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    await App.Current.MainPage.DisplayAlert("Nenhuma Câmera", "Nenhuma câmera disponível.", "OK");
+                    return;
+                }
+
+                var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                {
+                    Directory = "Sample",
+                    Name = "Baixa_Pallet.jpg"
+                });
+
+                if (file == null)
+                    return;
+
+                // Salvar o caminho da foto
+                _photoPath = file.Path;
+                caminhoFotoEntry.Text = _photoPath;
+
+                // Salvar os dados dos campos
+                Preferences.Set(EntregaKey, entregaEntry.Text);
+                Preferences.Set(DevolucaoKey, devolucaoEntry.Text);
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    file.GetStream().CopyTo(memoryStream);
+                    imageBytes = memoryStream.ToArray();
+                }
             }
-
-            var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            catch (Exception ex)
             {
-                Directory = "Sample",
-                Name = "Baixa_Pallet.jpg"
-            });
-
-            if (file == null)
-                return;
-
-            // Set the photo path to the file path
-            caminhoFotoEntry.Text = file.Path;
-
-
-            using (var memoryStream = new MemoryStream())
-            {
-                file.GetStream().CopyTo(memoryStream);
-                imageBytes = memoryStream.ToArray();
+                DependencyService.Get<IMessage>().LongAlert($"Ocorreu um erro: {ex.Message}");
             }
+            
         }
+
+        //private async void GravarButton_Clicked(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        ShowLoading(true);
+
+        //        if (_verificaCargaDados == null)
+        //        {
+        //            DependencyService.Get<IMessage>().LongAlert("Dados da carga não encontrados.");
+        //            return;
+        //        }
+
+        //        if (int.TryParse(entregaEntry.Text, out int quantidadeEntregue) &&
+        //            int.TryParse(devolucaoEntry.Text, out int quantidadeDevolvido) &&
+        //            int.TryParse(_verificaCargaDados.ID, out int cargaId))
+        //        {
+        //            Console.WriteLine($"Carga ID: {cargaId}, Quantidade Entregue: {quantidadeEntregue}, Quantidade Devolvido: {quantidadeDevolvido}");
+
+        //            // Enviar Json
+        //            bool success = await UploadImageAsync(cargaId, quantidadeEntregue, quantidadeDevolvido, imageBytes);
+
+        //            if (success)
+        //            {
+        //                DependencyService.Get<IMessage>().LongAlert("Dados enviados com sucesso!");
+        //                clearBaixaPallet();
+        //                await Shell.Current.GoToAsync("//CopaPalletPage");
+        //            }
+        //            else
+        //            {
+        //                ShowLoading(false);
+        //                DependencyService.Get<IMessage>().LongAlert("Falha ao enviar dados.");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ShowLoading(false);
+        //            DependencyService.Get<IMessage>().LongAlert("Entradas inválidas.");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ShowLoading(false);
+        //        DependencyService.Get<IMessage>().LongAlert($"Ocorreu um erro: {ex.Message}");
+        //    }
+        //    finally
+        //    {
+        //        ShowLoading(false);
+        //    }
+        //}
+
+
         private async void GravarButton_Clicked(object sender, EventArgs e)
         {
             try
@@ -225,13 +312,13 @@ namespace AppPallet.Views
         {
             if (imageBytes == null || imageBytes.Length == 0)
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Image data is invalid or empty.", "OK");
+                await App.Current.MainPage.DisplayAlert("Error", "Os dados da imagem são inválidos ou estão vazios.", "OK");
                 return false;
             }
 
             if (cargaId <= 0 || quantidadeEntregue < 0 || quantidadeDevolvido < 0)
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Invalid input data.", "OK");
+                await App.Current.MainPage.DisplayAlert("Error", "Dados de entrada inválidos.", "OK");
                 return false;
             }
 
@@ -253,7 +340,7 @@ namespace AppPallet.Views
                 // Checando se o tamanho é aceitável (opcional)
                 if (base64ImageSizeInBytes > 5000000) // Por exemplo, limite de 5MB
                 {
-                    await App.Current.MainPage.DisplayAlert("Error", "The image is too large.", "OK");
+                    await App.Current.MainPage.DisplayAlert("Error", "A imagem é muito grande.", "OK");
                     return false;
                 }
 
@@ -274,90 +361,201 @@ namespace AppPallet.Views
                     //var response = await httpClient.PostAsync("http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe/UPLoadArquivo/", httpContent);
 
                     var encodedImage = Uri.EscapeDataString(base64Image);
-                    var url = _url + $"/UPLoadArquivo/{cargaId}/{quantidadeEntregue}/{quantidadeEntregue}/{encodedImage}";
+                    var url = _url + $"/UPLoadArquivo/{cargaId}/{quantidadeEntregue}/{quantidadeDevolvido}/{encodedImage}";
 
                     var response = await httpClient.PostAsync(url, null);
                     if (response.IsSuccessStatusCode)
                     {
-                        await App.Current.MainPage.DisplayAlert("Success", "Image uploaded successfully!", "OK");
+                        await App.Current.MainPage.DisplayAlert("Success", "Baixa feita com Sucesso!", "OK");
                         return true;
                     }
                     else
                     {
                         var errorMessage = await response.Content.ReadAsStringAsync();
-                        await App.Current.MainPage.DisplayAlert("Error", $"Failed to upload image. Status: {response.StatusCode}, Message: {errorMessage}", "OK");
+                        await App.Current.MainPage.DisplayAlert("Error", $"Falha ao carregar a imagem. Status: {response.StatusCode}, Message: {errorMessage}", "OK");
                         return false;
                     }
                 }
             }
             catch (HttpRequestException httpEx)
             {
-                await App.Current.MainPage.DisplayAlert("Network Error", $"A network error occurred: {httpEx.Message}", "OK");
+                await App.Current.MainPage.DisplayAlert("Network Error", $"Ocorreu um erro de rede: {httpEx.Message}", "OK");
                 return false;
             }
             catch (TaskCanceledException timeoutEx)
             {
-                await App.Current.MainPage.DisplayAlert("Timeout Error", $"The request timed out: {timeoutEx.Message}", "OK");
+                await App.Current.MainPage.DisplayAlert("Timeout Error", $"A solicitação expirou: {timeoutEx.Message}", "OK");
                 return false;
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Error", $"An unexpected error occurred: {ex.Message}", "OK");
+                await App.Current.MainPage.DisplayAlert("Error", $"Ocorreu um erro inesperado: {ex.Message}", "OK");
                 return false;
             }
         }
-        public async Task<string> CompressAndConvertImageToBase64(byte[] imageBytes, int maxWidth = 300, int maxHeight = 300)
+        public async Task<string> CompressAndConvertImageToBase64(byte[] imageBytes, int maxWidth = 300, int maxHeight = 300, int maxBase64Length = 16000, int quality = 75)
         {
-            using (var inputStream = new MemoryStream(imageBytes))
+            byte[] compressedImageBytes;
+            string base64Image;
+            int base64ImageSizeInBytes;
+            double sizeInMb;
+            int currentWidth = maxWidth;
+            int currentHeight = maxHeight;
+
+            do
             {
-                using (var originalBitmap = SKBitmap.Decode(inputStream))
+                using (var inputStream = new MemoryStream(imageBytes))
                 {
-                    var scale = Math.Min((float)maxWidth / originalBitmap.Width, (float)maxHeight / originalBitmap.Height);
-                    var newWidth = (int)(originalBitmap.Width * scale);
-                    var newHeight = (int)(originalBitmap.Height * scale);
-
-                    using (var resizedBitmap = originalBitmap.Resize(new SKImageInfo(newWidth, newHeight), SKFilterQuality.High))
+                    using (var originalBitmap = SKBitmap.Decode(inputStream))
                     {
-                        using (var image = SKImage.FromBitmap(resizedBitmap))
+                        var scale = Math.Min((float)currentWidth / originalBitmap.Width, (float)currentHeight / originalBitmap.Height);
+                        var newWidth = (int)(originalBitmap.Width * scale);
+                        var newHeight = (int)(originalBitmap.Height * scale);
+
+                        using (var resizedBitmap = originalBitmap.Resize(new SKImageInfo(newWidth, newHeight), SKFilterQuality.High))
                         {
-                            using (var outputStream = new MemoryStream())
+                            using (var image = SKImage.FromBitmap(resizedBitmap))
                             {
-                                var imageData = image.Encode(SKEncodedImageFormat.Jpeg, 75); // 75 é a qualidade de compressão
-                                imageData.SaveTo(outputStream);
-                                var compressedImageBytes = outputStream.ToArray();
-                                var base64Image = Convert.ToBase64String(compressedImageBytes);
-
-                                // Calculando o tamanho da string Base64 em bytes
-                                int base64ImageSizeInBytes = System.Text.Encoding.UTF8.GetByteCount(base64Image);
-
-                                // Calcula o tamanho em megabytes
-                                double sizeInMb = base64ImageSizeInBytes / (1024.0 * 1024.0);
-
-                                // Verifique o tamanho do Base64 para garantir que está dentro do limite
-                                if (base64Image.Length > 16000)
+                                using (var outputStream = new MemoryStream())
                                 {
-                                    throw new Exception("Imagem excede o tamanho máximo permitido após compressão.");
-                                }
+                                    var imageData = image.Encode(SKEncodedImageFormat.Jpeg, quality); // Define a qualidade da compressão
+                                    imageData.SaveTo(outputStream);
+                                    compressedImageBytes = outputStream.ToArray();
+                                    base64Image = Convert.ToBase64String(compressedImageBytes);
 
-                                return base64Image;
+                                    // Calcula o tamanho da string Base64 em bytes
+                                    base64ImageSizeInBytes = System.Text.Encoding.UTF8.GetByteCount(base64Image);
+
+                                    // Calcula o tamanho em megabytes
+                                    sizeInMb = base64ImageSizeInBytes / (1024.0 * 1024.0);
+                                }
                             }
                         }
                     }
                 }
+
+                // Reduzir as dimensões para a próxima iteração se necessário
+                currentWidth = (int)(currentWidth * 0.9);  // Reduz em 10%
+                currentHeight = (int)(currentHeight * 0.9);
+
+            } while (base64ImageSizeInBytes > maxBase64Length && currentWidth > 1 && currentHeight > 1);
+
+            if (base64ImageSizeInBytes > maxBase64Length)
+            {
+                throw new Exception("Imagem excede o tamanho máximo permitido após múltiplas compressões.");
             }
+
+            return base64Image;
         }
-        #endregion
+
+
+        //private async Task<bool> UploadImageAsync(int cargaId, int quantidadeEntregue, int quantidadeDevolvido, byte[] imageBytes)
+        //{
+        //    if (imageBytes == null || imageBytes.Length == 0)
+        //    {
+        //        await App.Current.MainPage.DisplayAlert("Error", "Os dados da imagem são inválidos ou estão vazios.", "OK");
+        //        return false;
+        //    }
+
+        //    if (cargaId <= 0 || quantidadeEntregue < 0 || quantidadeDevolvido < 0)
+        //    {
+        //        await App.Current.MainPage.DisplayAlert("Error", "Dados de entrada inválidos.", "OK");
+        //        return false;
+        //    }
+
+        //    try
+        //    {
+        //        var base64Image = await CompressAndConvertImageToBase64(imageBytes);
+
+        //        var content = new
+        //        {
+        //            CargaId = cargaId,
+        //            QuantidadeEntregue = quantidadeEntregue,
+        //            QuantidadeDevolvido = quantidadeDevolvido,
+        //            Foto = base64Image
+        //        };
+
+        //        var json = JsonConvert.SerializeObject(content);
+        //        var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+        //        using (var httpClient = new HttpClient())
+        //        {
+        //            httpClient.Timeout = TimeSpan.FromSeconds(30); // Define um timeout para a requisição
+
+        //            var encodedImage = Uri.EscapeDataString(base64Image);
+        //            var url = _url + $"/UPLoadArquivo/{cargaId}/{quantidadeEntregue}/{quantidadeDevolvido}/{encodedImage}";
+
+        //            var response = await httpClient.PostAsync(url, null);
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                await App.Current.MainPage.DisplayAlert("Success", "Baixa feita com Sucesso!", "OK");
+        //                return true;
+        //            }
+        //            else
+        //            {
+        //                var errorMessage = await response.Content.ReadAsStringAsync();
+        //                await App.Current.MainPage.DisplayAlert("Error", $"Falha ao carregar a imagem. Status: {response.StatusCode}, Message: {errorMessage}", "OK");
+        //                return false;
+        //            }
+        //        }
+        //    }
+        //    catch (HttpRequestException httpEx)
+        //    {
+        //        await App.Current.MainPage.DisplayAlert("Network Error", $"Ocorreu um erro de rede: {httpEx.Message}", "OK");
+        //        return false;
+        //    }
+        //    catch (TaskCanceledException timeoutEx)
+        //    {
+        //        await App.Current.MainPage.DisplayAlert("Timeout", $"A operação foi cancelada devido ao timeout: {timeoutEx.Message}", "OK");
+        //        return false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await App.Current.MainPage.DisplayAlert("Error", $"Falha ao carregar a imagem: {ex.Message}", "OK");
+        //        return false;
+        //    }
+        //}
+
+        //private async Task<string> CompressAndConvertImageToBase64(byte[] imageBytes)
+        //{
+        //    using (var original = SKBitmap.Decode(imageBytes))
+        //    {
+        //        int originalWidth = original.Width;
+        //        int originalHeight = original.Height;
+        //        float maxDimension = Math.Max(originalWidth, originalHeight);
+        //        float scale = 600f / maxDimension;
+
+        //        int newWidth = (int)(originalWidth * scale);
+        //        int newHeight = (int)(originalHeight * scale);
+
+        //        using (var resized = original.Resize(new SKImageInfo(newWidth, newHeight), SKFilterQuality.Medium))
+        //        {
+        //            using (var image = SKImage.FromBitmap(resized))
+        //            {
+        //                using (var data = image.Encode(SKEncodedImageFormat.Jpeg, 80))
+        //                {
+        //                    return Convert.ToBase64String(data.ToArray());
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         private void ShowLoading(bool show)
         {
-            loadingOverlay.IsVisible = show;
             activityIndicator.IsRunning = show;
+            activityIndicator.IsVisible = show;
+            //mainLayout.IsVisible = !show;
         }
+
         private void clearBaixaPallet()
         {
+            Preferences.Remove(EntregaKey);
+            Preferences.Remove(DevolucaoKey);
+            entregaEntry.Text = string.Empty;
+            devolucaoEntry.Text = string.Empty;
             caminhoFotoEntry.Text = string.Empty;
-            imageBytes = new byte[0];
-            _photoPath = "";
+            imageBytes = null;
         }
 
         #region EnvioFotoMulitPart

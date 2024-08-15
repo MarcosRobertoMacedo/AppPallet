@@ -32,8 +32,12 @@ namespace AppPallet.Droid
             {
                 GradientDrawable gd = new GradientDrawable();
                 gd.SetColor(global::Android.Graphics.Color.Transparent);
+
                 this.Control.SetBackground(gd);
-                Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.Gray));
+
+                // Define a cor do texto como cinza claro
+                Control.SetTextColor(global::Android.Graphics.Color.LightGray);
+                Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.LightGray));
             }
         }
     }

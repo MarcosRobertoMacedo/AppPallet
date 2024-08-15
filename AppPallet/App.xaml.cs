@@ -14,7 +14,6 @@ namespace AppPallet
         public App()
         {
             InitializeComponent();
-
             //DependencyService.Register<IMessageService, MessageService>();
             MainPage = new AppShell();
 

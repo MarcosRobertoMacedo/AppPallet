@@ -67,12 +67,18 @@
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
     </MenuItem>
 
+    <!---->
     <FlyoutItem Title="Copa dos Paletes" Icon="icon_feed.png" IsEnabled="True" >
         <ShellContent Route="CopaPalletPage" ContentTemplate="{DataTemplate local:CopaPalletPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Baixa Palete" Icon="icon_about.png" IsEnabled="True" >
         <ShellContent Route="BaixaPalletPage" ContentTemplate="{DataTemplate local:BaixaPalletPage}" />
     </FlyoutItem>
+    
+     <!-- Define as páginas como rotas, mas não as exibe no Flyout 
+    <ShellContent  ContentTemplate="{DataTemplate local:CopaPalletPage}" IsEnabled="False"/>
+    <ShellContent Route="BaixaPalletPage" ContentTemplate="{DataTemplate local:BaixaPalletPage}" />
+    -->
 
     <TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
