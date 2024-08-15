@@ -5,6 +5,15 @@
        Title="Prosystem Pallet"
        x:Class="AppPallet.AppShell">
 
+    <Shell.FlyoutHeader>
+        <StackLayout BackgroundColor="{StaticResource Primary}">
+            <Label Text="{Binding UserName, StringFormat='Oi, {0}'}"
+               FontSize="Medium" 
+               TextColor="White" 
+               Margin="20,10,10,10"/>
+        </StackLayout>
+    </Shell.FlyoutHeader>
+
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">

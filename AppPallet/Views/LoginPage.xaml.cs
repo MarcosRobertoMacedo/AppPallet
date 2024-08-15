@@ -231,6 +231,8 @@ namespace AppPallet.Views
 
                 _acessoDados = DadosServicos.Instance.AcessoDados;
                 _loginDados = DadosServicos.Instance.LoginDados;
+                
+                CarregaNomeUsuario(_loginDados.login);
 
                 await Shell.Current.GoToAsync($"//{nameof(CopaPalletPage)}");
             }
@@ -247,6 +249,17 @@ namespace AppPallet.Views
             finally
             {
                 ShowLoading(false);
+            }
+        }
+
+        private void CarregaNomeUsuario(string login) {
+            // Salve o nome do usuário nas Preferences
+            Xamarin.Essentials.Preferences.Set("UserName", login);
+
+            // Atualize o nome do usuário no AppShell
+            if (Shell.Current is AppShell appShell)
+            {
+                appShell.UpdateUserName(login);
             }
         }
 
