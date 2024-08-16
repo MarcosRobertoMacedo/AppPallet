@@ -168,6 +168,10 @@ namespace AppPallet.Views
         {
             try
             {
+                // Salvar os dados dos campos
+                Preferences.Set(EntregaKey, entregaEntry.Text);
+                Preferences.Set(DevolucaoKey, devolucaoEntry.Text);
+
                 await CrossMedia.Current.Initialize();
 
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -188,10 +192,6 @@ namespace AppPallet.Views
                 // Salvar o caminho da foto
                 _photoPath = file.Path;
                 caminhoFotoEntry.Text = _photoPath;
-
-                // Salvar os dados dos campos
-                Preferences.Set(EntregaKey, entregaEntry.Text);
-                Preferences.Set(DevolucaoKey, devolucaoEntry.Text);
 
                 using (var memoryStream = new MemoryStream())
                 {
