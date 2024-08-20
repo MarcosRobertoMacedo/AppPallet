@@ -36,8 +36,8 @@ namespace AppPallet.Droid
                 this.Control.SetBackground(gd);
 
                 // Define a cor do texto como cinza claro
-                Control.SetTextColor(global::Android.Graphics.Color.LightGray);
-                Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.LightGray));
+                Control.SetTextColor(global::Android.Graphics.Color.DarkGray);
+                Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.DarkGray));
             }
         }
     }

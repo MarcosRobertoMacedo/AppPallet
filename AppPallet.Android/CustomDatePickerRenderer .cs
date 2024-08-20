@@ -3,6 +3,7 @@ using Xamarin.Forms.Platform.Android;
 using AppPallet;
 using AppPallet.Droid;
 using Android.Content;
+using Android.Content.Res;
 
 [assembly: ExportRenderer(typeof(CustomDatePicker), typeof(CustomDatePickerRenderer))]
 namespace AppPallet.Droid
@@ -21,6 +22,8 @@ namespace AppPallet.Droid
             {
                 // Remove a linha de sublinhado
                 Control.Background = null;
+                Control.SetTextColor(global::Android.Graphics.Color.DarkGray);
+                Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.DarkGray));
             }
         }
     }

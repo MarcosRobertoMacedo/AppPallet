@@ -16,12 +16,13 @@ namespace AppPallet.Views
         ItemsViewModel _viewModel;
         private static readonly HttpClient _client = new HttpClient();
         private LoginAcesso _acessoDados;
+        private Login _loginDados;
         private bool _isCheckingUrl;
         private bool _isUpdatingPositions;
         private CancellationTokenSource _cancellationTokenSource;
         private CancellationTokenSource _checkUrlCancellationTokenSource;
         private bool _isCheckingUrlVisible;
-        private string _url = "http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe";
+        private string _url = "";
 
         public CopaPalletPage()
         {
@@ -70,6 +71,8 @@ namespace AppPallet.Views
             AtualizarData();
             PosicaoInicial();
             _acessoDados = DadosServicos.Instance.AcessoDados;
+            _loginDados = DadosServicos.Instance.LoginDados;
+            _url = $"http://{_loginDados.servidor}:{_loginDados.porta}/datasnap/rest/TserverAPPnfe";
 
             // Inicia o método assíncrono para atualizar posições
             _ = StartFetchAndUpdatePositionsPeriodically();

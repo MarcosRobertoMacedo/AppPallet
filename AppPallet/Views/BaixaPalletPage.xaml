@@ -53,14 +53,14 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="Foto  " FontSize="Medium" VerticalOptions="Center" />
-                        <Frame BorderColor="LightBlue" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
+                        <Label Text="Foto : " FontSize="Medium" VerticalOptions="Center" />
+                        <Frame BorderColor="Transparent" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
                             <local:CustomEntryEnable x:Name="caminhoFotoEntry" Placeholder="Caminho Foto" BackgroundColor="Transparent" />
                         </Frame>
                         <!--<Button x:Name="CapturarFotoButton" Text="📷" Grid.Column="2" Clicked="CapturarFoto_Clicked"
                                 WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>-->
-                        <Button x:Name="TitarFotoButton" Text="📷" Grid.Column="2" Clicked="TirarFoto_Clicked"
-                                WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button x:Name="TitarFotoButton" Grid.Column="2" Clicked="TirarFoto_Clicked" WidthRequest="40" HeightRequest="40"
+                         VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent" ImageSource="foto.png"/>
                     </Grid>
 
                     <!-- Data Section -->
@@ -69,8 +69,8 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="Data  " FontSize="Medium" Grid.Column="0" VerticalOptions="Center" />
-                        <Frame BorderColor="LightBlue" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
+                        <Label Text="Data : " FontSize="Medium" Grid.Column="0" VerticalOptions="Center" />
+                        <Frame BorderColor="Transparent" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
                             <local:CustomDatePicker x:Name="dataDatePicker" IsEnabled="false" Format="dd/MM/yyyy" BackgroundColor="Transparent" />
                         </Frame>
                     </Grid>
@@ -82,9 +82,23 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="Placa" FontSize="Medium" Grid.Column="0" VerticalOptions="Center" />
-                        <Frame BorderColor="LightBlue" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
+                        <Label Text="Placa :" FontSize="Medium" Grid.Column="0" VerticalOptions="Center" />
+                        <Frame BorderColor="Transparent" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
                             <local:CustomEntryEnable x:Name="placaEntry" IsReadOnly="True" Placeholder="Placa" BackgroundColor="Transparent" />
+                        </Frame>
+                        <Frame Grid.Column="2" BackgroundColor="Transparent" WidthRequest="80"></Frame>
+                    </Grid>
+
+                    <!-- Nome Section -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Nome :" FontSize="Medium" Grid.Column="0" VerticalOptions="Center" />
+                        <Frame BorderColor="Transparent" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
+                            <local:CustomEntryEnable x:Name="nomeEntry" IsReadOnly="True" Placeholder="Nome" BackgroundColor="Transparent" />
                         </Frame>
                         <Frame Grid.Column="2" BackgroundColor="Transparent" WidthRequest="80"></Frame>
                     </Grid>
@@ -95,7 +109,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="Entrega" FontSize="Large" VerticalOptions="Center" />
+                        <Label Text="Entrega :" FontSize="Large" VerticalOptions="Center" />
                         <Frame BorderColor="LightBlue" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
                             <local:CustomEntry x:Name="entregaEntry" Keyboard="Numeric" WidthRequest="60" HorizontalTextAlignment="Center" BackgroundColor="Transparent" />
                         </Frame>
@@ -107,7 +121,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="Devolução" FontSize="Large" VerticalOptions="Center" />
+                        <Label Text="Devolução :" FontSize="Large" VerticalOptions="Center" />
                         <Frame BorderColor="LightBlue" Grid.Column="1" Padding="10,0,10,0" CornerRadius="5" HorizontalOptions="FillAndExpand">
                             <local:CustomEntry x:Name="devolucaoEntry" Keyboard="Numeric" WidthRequest="60" HorizontalTextAlignment="Center" BackgroundColor="Transparent" />
                         </Frame>

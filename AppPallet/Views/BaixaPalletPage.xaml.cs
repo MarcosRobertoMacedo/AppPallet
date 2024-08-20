@@ -24,6 +24,7 @@ namespace AppPallet.Views
         public IControleRepository _controleRepository;
         ObservableCollection<LoginAcesso> dadosAcesso { get; set; } = new ObservableCollection<LoginAcesso>();
         private LoginAcesso _acessoDados;
+        private Login _loginDados;
         private VerificaCarga _verificaCargaDados;
         private static readonly HttpClient _client = new HttpClient(new HttpClientHandler
         {
@@ -36,7 +37,7 @@ namespace AppPallet.Views
         // Convert the image to a byte array
         byte[] imageBytes;
 
-        private string _url = "http://prosystem.dyndns-work.com:8081/datasnap/rest/TserverAPPnfe";
+        private string _url = "";
 
         private const string DevolucaoKey = "devolucaoEntry";
         private const string EntregaKey = "entregaEntry";
@@ -53,12 +54,15 @@ namespace AppPallet.Views
         {
             base.OnAppearing();
             _acessoDados = DadosServicos.Instance.AcessoDados;
+            _loginDados = DadosServicos.Instance.LoginDados;
+            _url = $"http://{_loginDados.servidor}:{_loginDados.porta}/datasnap/rest/TserverAPPnfe";
             LoadData();
         }
 
         private async void LoadData()
         {
             ShowLoading(true);
+
             string url = _url + $"/VerificaCarga/{_acessoDados.empresa}/{_acessoDados.codigo}";
 
             try
@@ -91,6 +95,8 @@ namespace AppPallet.Views
                             }
 
                             placaEntry.Text = data.PLACA;
+
+                            nomeEntry.Text = _loginDados.login;
 
                             var devolucao = Preferences.Get(DevolucaoKey, null);
                             var entrega = Preferences.Get(EntregaKey, null);
