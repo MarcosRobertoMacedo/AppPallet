@@ -94,6 +94,8 @@ namespace AppPallet.Views
                                 dataDatePicker.Date = parsedDate;
                             }
 
+                            numeroCargaEntry.Text = data.ID.Replace(" ","");
+
                             placaEntry.Text = data.PLACA;
 
                             nomeEntry.Text = _loginDados.login;

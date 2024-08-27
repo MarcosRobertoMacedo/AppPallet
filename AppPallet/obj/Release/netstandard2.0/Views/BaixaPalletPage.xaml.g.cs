@@ -17,13 +17,10 @@ namespace AppPallet.Views {
     public partial class BaixaPalletPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::AppPallet.CustomEntryEnable caminhoFotoEntry;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Button TitarFotoButton;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::AppPallet.CustomDatePicker dataDatePicker;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::AppPallet.CustomEntryEnable numeroCargaEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::AppPallet.CustomEntryEnable placaEntry;
@@ -38,6 +35,12 @@ namespace AppPallet.Views {
         private global::AppPallet.CustomEntry devolucaoEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::AppPallet.CustomEntryEnable caminhoFotoEntry;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Button TirarFotoButton;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button GravarButton;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
@@ -49,13 +52,14 @@ namespace AppPallet.Views {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(BaixaPalletPage));
-            caminhoFotoEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntryEnable>(this, "caminhoFotoEntry");
-            TitarFotoButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "TitarFotoButton");
             dataDatePicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomDatePicker>(this, "dataDatePicker");
+            numeroCargaEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntryEnable>(this, "numeroCargaEntry");
             placaEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntryEnable>(this, "placaEntry");
             nomeEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntryEnable>(this, "nomeEntry");
             entregaEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntry>(this, "entregaEntry");
             devolucaoEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntry>(this, "devolucaoEntry");
+            caminhoFotoEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AppPallet.CustomEntryEnable>(this, "caminhoFotoEntry");
+            TirarFotoButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "TirarFotoButton");
             GravarButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "GravarButton");
             loadingOverlay = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "loadingOverlay");
             activityIndicator = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "activityIndicator");

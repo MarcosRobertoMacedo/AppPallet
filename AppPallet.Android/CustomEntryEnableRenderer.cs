@@ -30,15 +30,22 @@ namespace AppPallet.Droid
 
             if (Control != null)
             {
+                Control.Gravity = Android.Views.GravityFlags.End | Android.Views.GravityFlags.CenterVertical;
+
+                // Outros ajustes permanecem iguais
                 GradientDrawable gd = new GradientDrawable();
                 gd.SetColor(global::Android.Graphics.Color.Transparent);
 
                 this.Control.SetBackground(gd);
 
-                // Define a cor do texto como cinza claro
                 Control.SetTextColor(global::Android.Graphics.Color.DarkGray);
                 Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.DarkGray));
+
+                //Control.SetPadding(0, 0, 0, 0);
+                //Control.SetIncludeFontPadding(false);
+                Control.SetBackground(null);
             }
+
         }
     }
 }
